@@ -1,6 +1,7 @@
 #ifndef LISTADEPORTES_H
 #define LISTADEPORTES_H
 
+#include <sstream>
 
 #include <cstdlib>
 #include <iostream>
@@ -26,6 +27,7 @@ struct ListaDeportes {
 
     void insertarAlInicio (int vecesSemana, string nombre);
     void insertarAlFinal(int vecesSemana, string nombre);
+    string imprimir();
 
 };
 

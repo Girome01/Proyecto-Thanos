@@ -24,6 +24,7 @@ struct ListaSimple {
 
     void insertarAlInicio (string nombre);
     void insertarAlFinal(string nombre);
+    string imprimir();
 
 };
 

@@ -8,6 +8,7 @@ struct ListaSimple;
 #include "listadoble.h"
 #include "listasimple.h"
 
+#include <sstream>
 #include <QList>
 #include <cstdlib>
 #include <iostream>
@@ -17,7 +18,7 @@ struct Persona{
     int ID;
     bool vivo; // True si esta vivo false si esta muerto
     string nombre;
-    string apeelido;
+    string apellido;
     bool genero; // true = femenino false = masculino
     string creencia;
     string profesion;
@@ -32,15 +33,19 @@ struct Persona{
     string estadoMarital;
     Persona* esposa;
     ListaDoble* hijos;
-    int ejerPorSema;
     ListaSimple* deportes;
     string paisVive;
     string continenteVive;
 
     Persona();
 
-    void imprimir();
-
+    string imprimir();
+    string imprimirAmigos();
+    string obtenerGenero();
+    string obtenerVivo();
+    string verificarAmigos();
+    string verificarEsposa();
+    string verificarHijos();
 };
 
 #endif // PERSONA_H

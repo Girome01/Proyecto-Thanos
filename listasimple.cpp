@@ -27,3 +27,13 @@ void ListaSimple::insertarAlFinal (string nombre){
         ultimoNodo = nuevo;
     }
 }
+
+string ListaSimple::imprimir(){
+    string texto = "";
+    NodoSimple * temp = primerNodo;
+    while(temp!=0){
+        texto += temp->nombre+"\n";
+        temp = temp->siguiente;
+    }
+    return texto;
+}

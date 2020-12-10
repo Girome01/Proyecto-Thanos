@@ -41,15 +41,14 @@ bool ListaPecVir::modificarCantidad(int _dato, string _nombre){
 }
 
 string ListaPecVir::imprimir(){
-    /*
     string texto = "";
     PecadoVirtud * temp = primerNodo;
-    while(temp!=0) {
-        texto += temp->nombre+"\t"+temp->cantidad+"\n";
-        }
+    while(temp!=0){
+        stringstream buff;
+        buff << temp->cantidad;
+        string cant = buff.str();
+        texto += temp->nombre+"\t"+cant+"\n";
         temp = temp->siguiente;
     }
     return texto;
-    */
-    return "";
 }

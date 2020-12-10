@@ -43,6 +43,8 @@ struct ListaDoble{
     bool isEmpty();
     void insertarAlInicio (Persona* _persona);
     void insertarAlFinal (Persona* _persona);
+    string imprimir();
+    string imprimirAmigos();
 
 };
 

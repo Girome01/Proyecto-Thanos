@@ -1,6 +1,8 @@
 #ifndef LIOSTAPECVIR_H
 #define LIOSTAPECVIR_H
 
+#include <sstream>
+
 #include <cstdlib>
 #include <iostream>
 using namespace std;

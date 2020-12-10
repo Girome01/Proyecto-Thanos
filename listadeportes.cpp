@@ -27,3 +27,16 @@ void ListaDeportes::insertarAlFinal (int vecesSemana, string nombre){
         ultimoNodo = nuevo;
     }
 }
+
+string ListaDeportes::imprimir(){
+    string texto = "";
+    NodoDeporte * temp = primerNodo;
+    while(temp!=0){
+        stringstream buff;
+        buff << temp->vecesSemana;
+        string cant = buff.str();
+        texto += temp->nombre+"\tCantidad de veces por semana: "+cant+"\n";
+        temp = temp->siguiente;
+    }
+    return texto;
+}
