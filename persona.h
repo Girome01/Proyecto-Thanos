@@ -15,6 +15,7 @@ using namespace std;
 
 struct Persona{
     int ID;
+    bool vivo; // True si esta vivo false si esta muerto
     string nombre;
     string apeelido;
     bool genero; // true = femenino false = masculino
@@ -37,6 +38,9 @@ struct Persona{
     string continenteVive;
 
     Persona();
+
+    void imprimir();
+
 };
 
 #endif // PERSONA_H

@@ -26,6 +26,7 @@ struct ListaPecVir {
     void insertarAlInicio (int cantidad, string nombre);
     void insertarAlFinal(int cantidad, string nombre);
     bool modificarCantidad(int dato, string nombre);
+    string imprimir();
 
 };
 

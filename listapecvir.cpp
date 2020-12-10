@@ -39,3 +39,17 @@ bool ListaPecVir::modificarCantidad(int _dato, string _nombre){
     }
     return false;
 }
+
+string ListaPecVir::imprimir(){
+    /*
+    string texto = "";
+    PecadoVirtud * temp = primerNodo;
+    while(temp!=0) {
+        texto += temp->nombre+"\t"+temp->cantidad+"\n";
+        }
+        temp = temp->siguiente;
+    }
+    return texto;
+    */
+    return "";
+}
