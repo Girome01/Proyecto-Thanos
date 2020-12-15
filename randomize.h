@@ -18,6 +18,12 @@ struct Randomize{
     void generarPecados(ListaPecVir *listapecvir);
     bool esHijoPosible(Persona *padre, Persona *hijo);
     void agregarHijos(ListaDoble *personas, Persona *persona);
+    int aletorioDia();
+    int aleatorioMes();
+    int aletorioAno();
+    bool aleatorioGenero();
+    int edad();
+    string estadoMarital();
 
 };
 
