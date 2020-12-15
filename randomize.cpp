@@ -170,7 +170,7 @@ void Randomize::agregarHijos(ListaDoble *personas, Persona *padre){
     int contador=0;
     NodoPersona * tmp = personas->primerNodo;
     while (tmp != NULL){
-        if(tmp->persona->apeelido==padre->apeelido){
+        if(tmp->persona->apellido == padre->apellido){
             if(esHijoPosible(tmp->persona, padre)){
                     if(tmp->persona->paisVive==padre->paisVive){
                         /*
