@@ -170,7 +170,7 @@ void Randomize::agregarHijos(ListaDoble *personas, Persona *padre){
     int contador=0;
     NodoPersona * tmp = personas->primerNodo;
     while (tmp != NULL){
-        if(tmp->persona->apeelido==padre->apeelido){
+        if(tmp->persona->apellido == padre->apellido){
             if(esHijoPosible(tmp->persona, padre)){
                     if(tmp->persona->paisVive==padre->paisVive){
                         /*
@@ -190,3 +190,54 @@ void Randomize::agregarHijos(ListaDoble *personas, Persona *padre){
     }
 }
 
+
+//QString meses[]={"xsasa","sdsd"};
+int Randomize::aletorioDia(){
+    std::uniform_int_distribution<int> distribucion(1,29);
+    int dia= distribucion(*QRandomGenerator::global());
+    return dia;
+}
+
+int Randomize::aleatorioMes(){
+    string meses[12]={"enero", "febrero","marzo","abril","mayo","junio","julio","agosto","setiembre","octubre","noviembre","diciembre"};
+    std::uniform_int_distribution<int> mes1(0,11);
+    int mes= mes1(*QRandomGenerator::global());
+    return mes;
+}
+
+int Randomize::aletorioAno(){
+    std::uniform_int_distribution<int> ano1(1900,2020);
+    int ano= ano1(*QRandomGenerator::global());
+    return ano;
+}
+
+bool Randomize::aleatorioGenero(){
+    std::uniform_int_distribution<int> genero1(1,2);
+    int genero= genero1(*QRandomGenerator::global());
+    if(genero==1){
+        cout << "El genero de la persona es masculino:" << genero;
+        return false;
+    }
+    else{
+        cout << "El genero de la persona es femenino: "<< genero;
+        return true;
+    }
+}
+
+int Randomize::edad(){
+    int ano = aletorioAno();
+    int edad=2020-ano;
+    return edad;
+}
+
+string Randomize::estadoMarital(){
+    std::uniform_int_distribution<int> soltero1(0,100);
+    int estadoMarital= soltero1(*QRandomGenerator::global());
+
+    if( 0 <= estadoMarital && estadoMarital <= 10){
+        return "Soltero";
+    }else if(10 <= estadoMarital && estadoMarital<= 90){
+        return "Casado";
+    }else
+        return "Divorsiado";
+}

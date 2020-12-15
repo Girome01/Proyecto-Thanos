@@ -9,11 +9,12 @@ using namespace std;
 struct Archivo{
     Archivo();
 
-    //QT ES UNA MIERDA
+    //QT ES UNA MIERDA 2.0
     //TKM GIL
     // _archivo tiene que llevar la extencion .txt
     void escribir(string _texto, string _archivo);
     string leer(string _archivo);
+    //qt es una mierda
 };
 
 #endif // ARCHIVO_H
