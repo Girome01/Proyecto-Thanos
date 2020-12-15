@@ -16,7 +16,8 @@ SOURCES += \
     listasimple.cpp \
     main.cpp \
     mainwindow.cpp \
-    persona.cpp
+    persona.cpp \
+    randomize.cpp
 
 HEADERS += \
     archivo.h \
@@ -25,7 +26,8 @@ HEADERS += \
     listapecvir.h \
     listasimple.h \
     mainwindow.h \
-    persona.h
+    persona.h \
+    randomize.h
 
 FORMS += \
     mainwindow.ui
