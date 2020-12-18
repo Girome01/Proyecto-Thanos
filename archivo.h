@@ -10,6 +10,7 @@ struct Archivo{
     Archivo();
 
     //QT ES UNA MIERDA 2.0
+    //Hi :)
     //TKM GIL
     // _archivo tiene que llevar la extencion .txt
     void escribir(string _texto, string _archivo);
