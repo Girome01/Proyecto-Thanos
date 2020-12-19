@@ -10,7 +10,6 @@ CONFIG += c++11
 
 SOURCES += \
     archivo.cpp \
-    insertSort.cpp \
     listadeportes.cpp \
     listadoble.cpp \
     listapecvir.cpp \
@@ -22,7 +21,6 @@ SOURCES += \
 
 HEADERS += \
     archivo.h \
-    insertSort.h \
     listadeportes.h \
     listadoble.h \
     listapecvir.h \

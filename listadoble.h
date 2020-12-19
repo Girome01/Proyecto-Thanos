@@ -45,6 +45,7 @@ struct ListaDoble{
     void insertarAlFinal (Persona* _persona);
     string imprimir();
     string imprimirAmigos();
+    void insertionSort(Persona* _persona);
 
 };
 
