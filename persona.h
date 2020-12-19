@@ -37,6 +37,10 @@ struct Persona{
     string paisVive;
     string continenteVive;
 
+    bool esHijo = false; // boolean si es hijo de alguien o no
+    Persona* padre;
+    Persona* madre;
+
     Persona();
 
     string imprimir();
