@@ -136,7 +136,7 @@ string Randomize::generarPais(vector<string> listaPaises){
         //std::vector<int> arr;
 
 
-        ifstream archivo3("C:/Users/dpere/Desktop/Paises.txt");//aqui va el path de la carpeta donde estan los archivos
+        ifstream archivo3("C:/Users/dpere/Desktop/PrograNueva/ProyectoThanos/Paises.txt");//aqui va el path de la carpeta donde estan los archivos
             while (getline(archivo3,linea)){
                 texto= texto + linea + "\n";
                 arregloPaises[contador]=texto;
@@ -305,7 +305,7 @@ string Randomize::RandomCreencia(){
     contador=0;
     string arregloCreencias[10];
 
-    ifstream archivo("C:/Users/dpere/Desktop/sa.txt");//aquí va el path de la carpeta donde está el archivo txt
+    ifstream archivo("C:/Users/dpere/Desktop/PrograNueva/ProyectoThanos/ArchivoCreencias.txt");//aquí va el path de la carpeta donde está el archivo txt
         while (getline(archivo,linea)){
             texto= texto + linea + "\n";
             arregloCreencias[contador]=texto;
@@ -333,7 +333,7 @@ string Randomize::RandomProfesion(){
     contador=0;
     string arregloProfesiones[89];
 
-    ifstream archivo2("C:/Users/dpere/Desktop/Profesiones.txt");//aquí va el path de la carpeta donde está el archivo txt
+    ifstream archivo2("C:/Users/dpere/Desktop/PrograNueva/ProyectoThanos/Profesiones.txt");//aquí va el path de la carpeta donde está el archivo txt
         while (getline(archivo2,linea)){
             texto= texto + linea + "\n";
             arregloProfesiones[contador]=texto;
