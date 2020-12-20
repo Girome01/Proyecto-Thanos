@@ -1,6 +1,7 @@
 #ifndef RANDOMIZE_H
 #define RANDOMIZE_H
 
+#include<fstream>
 #include "persona.h"
 #include "listapecvir.h"
 #include <QRandomGenerator>
@@ -22,8 +23,10 @@ struct Randomize{
     int aleatorioMes();
     int aletorioAno();
     bool aleatorioGenero();
-    int edad();
+    int edad(int ano);
     string estadoMarital();
+    string RandomCreencia();
+    string RandomProfesion();
 
 };
 

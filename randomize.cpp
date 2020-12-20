@@ -29,6 +29,10 @@ Randomize::Randomize()
 
 // *****************VALIDACIÓN DIVISIÓN ENTRE 0*************************
 
+string linea="";
+string texto="";
+int contador=0;
+
 string Randomize::generarNombresM(vector<string> listaNombresM){
     std::uniform_int_distribution<int> dist(0,999);
     int indice=dist(*QRandomGenerator::global())%999;
@@ -125,6 +129,59 @@ string Randomize::generarPais(vector<string> listaPaises){
     //Generar ***lista*** países en otro lugar.
     //La lógica es igual que la función comentada de arriba. :)
 
+        linea="";
+        texto="";
+        contador=0;
+        string arregloPaises[194];
+        //std::vector<int> arr;
+
+
+        ifstream archivo3("C:/Users/dpere/Desktop/Paises.txt");//aqui va el path de la carpeta donde estan los archivos
+            while (getline(archivo3,linea)){
+                texto= texto + linea + "\n";
+                arregloPaises[contador]=texto;
+                contador++;
+                texto="";
+                linea="";
+            }
+
+            archivo3.close();
+
+
+            std::uniform_int_distribution<int> randomNum(0,50);
+            int randomCantPaises= randomNum(*QRandomGenerator::global());
+            cout << "Los paises visitados son: " << randomCantPaises << endl;
+            if(0<= randomCantPaises && randomCantPaises <=2){
+                for(int i=0; i <= randomCantPaises ; i++) {
+                    return arregloPaises[i];
+                }
+            }
+
+            else if(3<= randomCantPaises && randomCantPaises <=10){
+                for(int i=0; i <= randomCantPaises ; i++) {
+                    return arregloPaises[i];
+                }
+            }
+            else if(11<= randomCantPaises && randomCantPaises <=15){
+                for(int i=0; i <= randomCantPaises ; i++) {
+                    return arregloPaises[i];
+                }
+            }
+            else if(16<= randomCantPaises && randomCantPaises <=25){
+                for(int i=0; i <= randomCantPaises ; i++) {
+                    return arregloPaises[i];
+                }
+            }
+            else{
+                for(int i=0; i <= randomCantPaises ; i++) {
+                    return arregloPaises[i];
+                }
+            }
+
+            return 0;
+
+ //--------------------------------Esta parte la hizo Gil-----------------------------
+
     std::uniform_int_distribution<int> dist(0,100);
     int indice=dist(*QRandomGenerator::global())%100;
     for (int i=0; i<=listaPaises.size(); i++){
@@ -208,6 +265,7 @@ int Randomize::aleatorioMes(){
 int Randomize::aletorioAno(){
     std::uniform_int_distribution<int> ano1(1900,2020);
     int ano= ano1(*QRandomGenerator::global());
+    edad(ano);
     return ano;
 }
 
@@ -224,8 +282,8 @@ bool Randomize::aleatorioGenero(){
     }
 }
 
-int Randomize::edad(){
-    int ano = aletorioAno();
+int Randomize::edad(int ano){
+    //int ano = aletorioAno();
     int edad=2020-ano;
     return edad;
 }
@@ -240,4 +298,59 @@ string Randomize::estadoMarital(){
         return "Casado";
     }else
         return "Divorsiado";
+}
+string Randomize::RandomCreencia(){
+    linea="";
+    texto="";
+    contador=0;
+    string arregloCreencias[10];
+
+    ifstream archivo("C:/Users/dpere/Desktop/sa.txt");//aquí va el path de la carpeta donde está el archivo txt
+        while (getline(archivo,linea)){
+            texto= texto + linea + "\n";
+            arregloCreencias[contador]=texto;
+            //cout << "contador: " << contador << endl;
+            //cout << "El contenido del arreglo en la pocision " << contador << "es: " << arregloCreencias[contador] << endl;
+            contador++;
+            texto="";
+            linea="";
+
+        }
+        archivo.close();
+        QString qArchivo = QString::fromStdString(texto);
+
+        std::uniform_int_distribution<int> random(0,9);
+        int randomCreencia= random(*QRandomGenerator::global());
+        cout << "El numero random es: " << randomCreencia << endl;
+        cout << "La creecia aleatoria que se escogio es: " << arregloCreencias[randomCreencia] << endl;
+
+        return arregloCreencias[randomCreencia];
+}
+
+string Randomize::RandomProfesion(){
+    linea="";
+    texto="";
+    contador=0;
+    string arregloProfesiones[89];
+
+    ifstream archivo2("C:/Users/dpere/Desktop/Profesiones.txt");//aquí va el path de la carpeta donde está el archivo txt
+        while (getline(archivo2,linea)){
+            texto= texto + linea + "\n";
+            arregloProfesiones[contador]=texto;
+            //cout << "contador: " << contador << endl;
+            //cout << "El contenido del arreglo en la pocision " << contador << "es: " << arregloProfesiones[contador] << endl;
+            contador++;
+            texto="";
+            linea="";
+
+        }
+        archivo2.close();
+        QString qArchivo2 = QString::fromStdString(texto);
+        //cout << "El contenido del arreglo de profesiones en la pocision 4 es:  "<<arregloProfesiones[4] << endl;
+        std::uniform_int_distribution<int> random1(0,88);
+        int randomProfesiones= random1(*QRandomGenerator::global());
+        cout << "El numero random es: " << randomProfesiones << endl;
+        cout << "La profesion aleatoria que se escogio es: " << arregloProfesiones[randomProfesiones] << endl;
+
+        return arregloProfesiones[randomProfesiones];
 }
