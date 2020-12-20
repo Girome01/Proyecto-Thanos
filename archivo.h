@@ -13,6 +13,8 @@ struct Archivo{
     //Hi :)
     //TKM GIL
     // _archivo tiene que llevar la extencion .txt
+    //wwwwww
+    //weeewewwew
     void escribir(string _texto, string _archivo);
     string leer(string _archivo);
     //qt es una mierda
