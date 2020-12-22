@@ -4,9 +4,11 @@
 struct ListaPecVir;
 struct ListaDoble;
 struct ListaSimple;
+struct Randomize;
 #include "listapecvir.h"
 #include "listadoble.h"
 #include "listasimple.h"
+#include "randomize.h"
 
 #include <sstream>
 #include <QList>
@@ -15,24 +17,24 @@ struct ListaSimple;
 using namespace std;
 
 struct Persona{
-    int ID;
-    bool vivo; // True si esta vivo false si esta muerto
-    string nombre;
-    string apellido;
-    bool genero; // true = femenino false = masculino
+    int ID; //DONE
+    bool vivo=true; // True si esta vivo false si esta muerto || DONE
+    string nombre; //DONE
+    string apellido; //DONE
+    bool genero; // true = femenino, false = masculino || DONE
     string creencia;
     string profesion;
-    string nacDia;
-    string nacMes;
-    string nacAno;
-    ListaPecVir* pecados;
-    ListaPecVir* virtudes;
+    string nacDia; //DONE
+    string nacMes; //DONE
+    string nacAno; //DONE
+    ListaPecVir* pecados; //DONE
+    ListaPecVir* virtudes; //DONE
     string rangoEtario;
     ListaSimple* paises;
     ListaDoble* amigos;
-    string estadoMarital;
-    Persona* esposa;
-    ListaDoble* hijos;
+    string estadoMarital; //DONE
+    Persona* esposa; //*********Falta asignar esposa
+    ListaDoble* hijos; //semi-done
     ListaSimple* deportes;
     string paisVive;
     string continenteVive;
@@ -40,6 +42,7 @@ struct Persona{
     bool esHijo = false; // boolean si es hijo de alguien o no
     Persona* padre;
     Persona* madre;
+    Randomize* random;
 
     Persona();
 

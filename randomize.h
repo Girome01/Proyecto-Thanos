@@ -19,7 +19,7 @@ struct Randomize{
     bool esHijoPosible(Persona *padre, Persona *hijo);
     void agregarHijos(ListaDoble *personas, Persona *persona);
     int aletorioDia();
-    int aleatorioMes();
+    string  aleatorioMes();
     int aletorioAno();
     bool aleatorioGenero();
     int edad();
