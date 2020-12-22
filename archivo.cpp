@@ -20,16 +20,17 @@ void Archivo::escribir(string _texto, string _archivo){
 
 string Archivo::leer(string _archivo){
     ifstream archivo;
-    string texto="",linea;
+    string texto="",linea="";
 
     archivo.open(_archivo.c_str(),ios::in);
 
     if(archivo.fail()){
         cout<<"No se pudo abrir el archivo"<<endl;
+        texto="";
     }else{
         while(!archivo.eof()){
             getline(archivo,linea);
-            texto += linea;
+            texto+=linea;
         }
         cout<<"Se leyo el archivo"<<endl;
     }

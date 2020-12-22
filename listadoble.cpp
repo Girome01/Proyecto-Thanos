@@ -55,3 +55,23 @@ string ListaDoble::imprimirAmigos(){
     }
     return texto;
 }
+
+void ListaDoble::insertionSort(Persona* _persona){
+    if(isEmpty()){
+        insertarAlInicio(_persona);
+    }else if(primerNodo->persona->ID > _persona->ID){
+        insertarAlInicio(_persona);
+    }else if(ultimoNodo->persona->ID < _persona->ID){
+        insertarAlFinal(_persona);
+    }else{
+        NodoPersona* temp = primerNodo;
+        while(temp->siguiente->persona->ID < _persona->ID){
+            temp = temp->siguiente;
+        }
+        NodoPersona * nuevo = new NodoPersona(_persona);
+        nuevo->siguiente = temp->siguiente;
+        nuevo->anterior = temp;
+        temp->siguiente->anterior = nuevo;
+        temp->siguiente = nuevo;
+    }
+}

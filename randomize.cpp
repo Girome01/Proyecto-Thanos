@@ -5,34 +5,9 @@ Randomize::Randomize()
 
 }
 
-// GENERACIÓN DE LA LISTA DE NOMBRES MASCULINOS DESDE ARCHIVOS. LÓGICA SE UTILIZA PARA TODOS LOS ARCHIVOS!!!!
-//UTILIZA VECTOR.
-//EL DELIMITADOR ENTRE NOMBRES ES #.
-
-/*
- * QString texto=leerArchivo();
-    std::vector<string> listaNombres;
-    if(texto!=NULL){
-        std::string delimiter = "#";
-
-        size_t last = 0;
-        size_t next = 0;
-        while ((next = texto.toStdString().find(delimiter, last)) != string::npos) {
-            //cout << texto.toStdString().substr(last, next-last) << endl;
-            listaNombres.push_back(texto.toStdString().substr(last, next-last));
-            last = next + 1;
-        }
-        cout << texto.toStdString().substr(last) << endl;
-        return listaNombres;
-
-*/
-
-// *****************VALIDACIÓN DIVISIÓN ENTRE 0*************************
-
 string Randomize::generarNombresM(vector<string> listaNombresM){
-    std::uniform_int_distribution<int> dist(0,999);
-    int indice=dist(*QRandomGenerator::global())%999;
-    for (int i=0; i<=listaNombresM.size();i++){
+    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    for (int i=0; i<int(listaNombresM.size());i++){
         if(i==indice){
             string nombre=listaNombresM.at(i); //VECTOR
             return nombre;
@@ -42,9 +17,8 @@ string Randomize::generarNombresM(vector<string> listaNombresM){
 }
 
 string Randomize::generarNombresF(vector<string> listaNombresF){
-    std::uniform_int_distribution<int> dist(0,999);
-    int indice=dist(*QRandomGenerator::global())%999;
-    for (int i=0; i<=listaNombresF.size();i++){
+    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    for (int i=0; i<int(listaNombresF.size());i++){
         if(i==indice){
             string nombre=listaNombresF.at(i); //VECTOR
             return nombre;
@@ -54,9 +28,8 @@ string Randomize::generarNombresF(vector<string> listaNombresF){
 }
 
 string Randomize::generarApellidos(vector<string> listaApellidos){
-    std::uniform_int_distribution<int> dist(0,99);
-    int indice=dist(*QRandomGenerator::global())%99;
-    for (int i=0; i<=listaApellidos.size(); i++){
+    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    for (int i=0; i<int(listaApellidos.size()); i++){
         if(i==indice){
             string nombre=listaApellidos.at(i); //VECTOR
             return nombre;
@@ -74,27 +47,28 @@ bool Randomize::estaID(ListaDoble *personas, int id){
             }
              tmp = tmp->siguiente;
     }
+    return false;
 
 }
 
 int Randomize::generarId(ListaDoble *personas){
-    std::uniform_int_distribution<int> dist(0,999999);
-    int id=dist(*QRandomGenerator::global())%999999;
+    int id=int(QRandomGenerator::global()->bounded(0, 999999));
+    if(!personas->isEmpty()){
+        NodoPersona * tmp = personas->primerNodo;
+        while (tmp != NULL && !estaID(personas, id)){
+                if(estaID(personas, id)){
+                    Randomize::generarId(personas);
+                }
+                tmp->persona->ID=id;
 
-    NodoPersona * tmp = personas->primerNodo;
-    while (tmp != NULL){
-            if(estaID(personas, id)){
-                Randomize::generarId(personas);
-            }
-
-            tmp=tmp->siguiente;
+                tmp=tmp->siguiente;
+        }
     }
     return id;
 }
 
 string Randomize::generarContinente(){
-    std::uniform_int_distribution<int> dist(0,5);
-    int continente=dist(*QRandomGenerator::global())%5;
+    int continente=int(QRandomGenerator::global()->bounded(0, 6));
 
     switch(continente){
     case 0:
@@ -121,13 +95,8 @@ string Randomize::generarContinente(){
 }
 
 string Randomize::generarPais(vector<string> listaPaises){
-
-    //Generar ***lista*** países en otro lugar.
-    //La lógica es igual que la función comentada de arriba. :)
-
-    std::uniform_int_distribution<int> dist(0,100);
-    int indice=dist(*QRandomGenerator::global())%100;
-    for (int i=0; i<=listaPaises.size(); i++){
+    int indice=int(QRandomGenerator::global()->bounded(0, 4)); //CAMBIAR POR 100 CUANDO YA ESTEN LOS 100
+    for (int i=0; i<=int(listaPaises.size()); i++){
         if(i==indice){
             string nombreP=listaPaises.at(i); //VECTOR
             return nombreP;
@@ -139,8 +108,7 @@ string Randomize::generarPais(vector<string> listaPaises){
 void Randomize::generarPecados(ListaPecVir *listapecvir){
     PecadoVirtud * tmp = listapecvir->primerNodo;
     while (tmp != NULL){
-        std::uniform_int_distribution<int> dist(0,99);
-        int sumaIncidencia=dist(*QRandomGenerator::global())%99;
+        int sumaIncidencia=int(QRandomGenerator::global()->bounded(0, 100));
         tmp->cantidad+=sumaIncidencia;
         tmp=tmp->siguiente;
     }
@@ -165,22 +133,20 @@ bool Randomize::esHijoPosible(Persona *hijo, Persona *padre){
 }
 
 void Randomize::agregarHijos(ListaDoble *personas, Persona *padre){
-    std::uniform_int_distribution<int> dist(0,4);
-    int indice=dist(*QRandomGenerator::global())%4;
+    int indice=int(QRandomGenerator::global()->bounded(0, 5));;
     int contador=0;
     NodoPersona * tmp = personas->primerNodo;
     while (tmp != NULL){
         if(tmp->persona->apellido == padre->apellido){
             if(esHijoPosible(tmp->persona, padre)){
-                    if(tmp->persona->paisVive==padre->paisVive){
-                        /*
-                         * if(!tmp->persona->esHijo) Esto podría ser un bool true si ya tiene padres asignados
-                         *                           false sino. (¿?) Incluso tener quién es el padre y la madre.
-                        */
-                        if(contador<=indice){
-                            padre->hijos->insertarAlInicio(tmp->persona);
-                            padre->esposa->hijos->insertarAlInicio(tmp->persona);
-                            contador++;
+                    if(tmp->persona->paisVive==padre->paisVive || tmp->persona->paisVive==padre->esposa->paisVive){
+                         if(!tmp->persona->esHijo){
+                            if(contador<=indice){
+                                padre->hijos->insertarAlInicio(tmp->persona);
+                                padre->esposa->hijos->insertarAlInicio(tmp->persona);
+                                tmp->persona->esHijo=true;
+                                contador++;
+                            }
                         }
                     }
             }
@@ -190,24 +156,19 @@ void Randomize::agregarHijos(ListaDoble *personas, Persona *padre){
     }
 }
 
-
-//QString meses[]={"xsasa","sdsd"};
 int Randomize::aletorioDia(){
-    std::uniform_int_distribution<int> distribucion(1,29);
-    int dia= distribucion(*QRandomGenerator::global());
+    int dia=int(QRandomGenerator::global()->bounded(0, 30));
     return dia;
 }
 
-int Randomize::aleatorioMes(){
+string Randomize::aleatorioMes(){
     string meses[12]={"enero", "febrero","marzo","abril","mayo","junio","julio","agosto","setiembre","octubre","noviembre","diciembre"};
-    std::uniform_int_distribution<int> mes1(0,11);
-    int mes= mes1(*QRandomGenerator::global());
-    return mes;
+    int mesInt=int(QRandomGenerator::global()->bounded(0, 11));
+    return meses[mesInt];
 }
 
 int Randomize::aletorioAno(){
-    std::uniform_int_distribution<int> ano1(1900,2020);
-    int ano= ano1(*QRandomGenerator::global());
+    int ano=int(QRandomGenerator::global()->bounded(1900,2021));
     return ano;
 }
 
@@ -239,5 +200,5 @@ string Randomize::estadoMarital(){
     }else if(10 <= estadoMarital && estadoMarital<= 90){
         return "Casado";
     }else
-        return "Divorsiado";
+        return "Divorciado";
 }
