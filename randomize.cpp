@@ -192,13 +192,78 @@ int Randomize::edad(){
 }
 
 string Randomize::estadoMarital(){
-    std::uniform_int_distribution<int> soltero1(0,100);
-    int estadoMarital= soltero1(*QRandomGenerator::global());
+    int estadoMarital=int(QRandomGenerator::global()->bounded(0, 101));
 
-    if( 0 <= estadoMarital && estadoMarital <= 10){
+    if(estadoMarital <= 10){
         return "Soltero";
     }else if(10 <= estadoMarital && estadoMarital<= 90){
         return "Casado";
     }else
         return "Divorciado";
 }
+
+string Randomize::generarRangoEtario(int anno){
+    int edad=2020-anno;
+    if(edad<=1){
+        return "Infantil";
+    }else if(edad>=2 && edad<=4){
+        return "Pre-escolar";
+    }else if(edad>=5 && edad<=10){
+        return "Escolar";
+    }else if(edad>=11 && edad<=14){
+        return "Pubertad";
+    }else if(edad>=15 && edad<=19){
+        return "Adolescencia";
+    }else if(edad>=20 && edad<=24){
+        return "Joven";
+    }else if(edad>=25 && edad<=34){
+        return "Adulto joven";
+    }else if(edad>=35 && edad<=64){
+        return "Adulto maduro";
+    }else if(edad>=65){
+        return "Adulto mayor";
+    }else{
+        return 0;
+    }
+}
+
+bool Randomize::comprobarAmigos(Persona *amigo, Persona *personaActual){
+    NodoPersona * tmp = amigo->amigos->primerNodo;
+    NodoPersona * tmp2 = personaActual->amigos->primerNodo;
+    if(tmp==NULL || tmp2==NULL)
+        return false;
+    while(tmp!=NULL){
+        while(tmp2!=NULL){
+            if(tmp->persona==tmp2->persona)
+                return true;
+            tmp2=tmp2->siguiente;
+        }
+        tmp=tmp->siguiente;
+    }
+    return false;
+}
+
+void Randomize::agregarAmigos(ListaDoble *personas,  Persona *personaActual){ //Agrega a algunos varias veces, revisar logica. Consulta?
+    int cantidadAmigos=int(QRandomGenerator::global()->bounded(0, 51));
+    int probabilidadPais=int(QRandomGenerator::global()->bounded(0, 100));
+    int probabilidadComun=int(QRandomGenerator::global()->bounded(0, 100));
+    NodoPersona * tmp = personas->primerNodo;
+    for(int i=0; i<cantidadAmigos; i++){
+        while (tmp != NULL){
+            if((personaActual->paisVive==tmp->persona->paisVive &&
+               personaActual->ID!=tmp->persona->ID) || probabilidadPais<=40){
+                personaActual->amigos->insertarAlFinal(tmp->persona);
+                tmp->persona->amigos->insertarAlFinal(personaActual);
+            }else if(comprobarAmigos(tmp->persona,personaActual)
+              && personaActual->ID!=tmp->persona->ID){
+                if(probabilidadComun<=70){
+                     personaActual->amigos->insertarAlFinal(tmp->persona);
+                     tmp->persona->amigos->insertarAlFinal(personaActual);
+                }
+            }
+            tmp=tmp->siguiente;
+        }
+    }
+}
+
+

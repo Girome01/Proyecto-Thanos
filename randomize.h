@@ -24,6 +24,9 @@ struct Randomize{
     bool aleatorioGenero();
     int edad();
     string estadoMarital();
+    string generarRangoEtario(int anno);
+    bool comprobarAmigos(Persona *amigo, Persona *personaActual);
+    void agregarAmigos(ListaDoble *personas, Persona *personaActual);
 
 };
 
