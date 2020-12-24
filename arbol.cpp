@@ -55,11 +55,22 @@ QList<int> Arbol::listaMayores(QList<int> _posiciones, int pos){
 
 void Arbol::crearArbol(QList<int> lista, ListaDoble* personas, NodoArbol* nodo){
     int pos = lista.at( (lista.size()/2) );
-    if(pos > 1){
-        if(nodo == NULL){
-            nodo = new NodoArbol(personas->BuscarEnPos(pos));
-        }
+    if(nodo == NULL){
+        nodo = new NodoArbol(personas->BuscarEnPos(pos));
+    }
+    if(lista.size() > 1){
         crearArbol(listaMayores(lista,pos),personas,nodo->hijoderecho);
         crearArbol(listaMenores(lista,pos),personas,nodo->hijoizquierdo);
     }
 }
+
+void Arbol::inOrden(NodoArbol* nodo)
+{
+   if (nodo != NULL)
+   {
+     inOrden(nodo->hijoizquierdo);
+     cout << nodo->persona->persona->imprimirAmigos()<< " -> ";
+     inOrden(nodo->hijoderecho);
+   }
+}
+

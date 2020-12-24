@@ -32,6 +32,7 @@ struct Arbol{
     void imprimirArray();
     QList<int> listaMenores(QList<int> _posiciones, int pos);
     QList<int> listaMayores(QList<int> _posiciones, int pos);
+    void inOrden(NodoArbol* nodo);
 };
 
 #endif // ARBOL_H
