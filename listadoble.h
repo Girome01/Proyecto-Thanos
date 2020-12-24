@@ -46,6 +46,7 @@ struct ListaDoble{
     string imprimir();
     string imprimirAmigos();
     void insertionSort(Persona* _persona);
+    NodoPersona* BuscarEnPos(int posicion);
 
 };
 
