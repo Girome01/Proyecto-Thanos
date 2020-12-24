@@ -75,3 +75,19 @@ void ListaDoble::insertionSort(Persona* _persona){
         temp->siguiente = nuevo;
     }
 }
+
+NodoPersona* ListaDoble::BuscarEnPos(int posicion){
+        if (posicion <= 0){
+            return primerNodo;
+        }
+        else if( posicion >= largo() ){
+            return ultimoNodo;
+        }
+        else{
+            NodoPersona * temp = primerNodo;
+            for(int i = 1; i < posicion; i++){
+                temp = temp->siguiente;
+            }
+            return temp->siguiente;
+        }
+    }
