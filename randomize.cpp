@@ -36,7 +36,6 @@ string Randomize::generarApellidos(vector<string> listaApellidos){
         }
     }
     return 0;
-
 }
 
 bool Randomize::estaID(ListaDoble *personas, int id){
@@ -48,7 +47,6 @@ bool Randomize::estaID(ListaDoble *personas, int id){
              tmp = tmp->siguiente;
     }
     return false;
-
 }
 
 int Randomize::generarId(ListaDoble *personas){
@@ -245,8 +243,8 @@ bool Randomize::comprobarAmigos(Persona *amigo, Persona *personaActual){
 
 void Randomize::agregarAmigos(ListaDoble *personas,  Persona *personaActual){ //Agrega a algunos varias veces, revisar logica. Consulta?
     int cantidadAmigos=int(QRandomGenerator::global()->bounded(0, 51));
-    int probabilidadPais=int(QRandomGenerator::global()->bounded(0, 100));
-    int probabilidadComun=int(QRandomGenerator::global()->bounded(0, 100));
+    int probabilidadPais=int(QRandomGenerator::global()->bounded(0, 101));
+    int probabilidadComun=int(QRandomGenerator::global()->bounded(0, 101));
     NodoPersona * tmp = personas->primerNodo;
     for(int i=0; i<cantidadAmigos; i++){
         while (tmp != NULL){
@@ -254,6 +252,7 @@ void Randomize::agregarAmigos(ListaDoble *personas,  Persona *personaActual){ //
                personaActual->ID!=tmp->persona->ID) || probabilidadPais<=40){
                 personaActual->amigos->insertarAlFinal(tmp->persona);
                 tmp->persona->amigos->insertarAlFinal(personaActual);
+
             }else if(comprobarAmigos(tmp->persona,personaActual)
               && personaActual->ID!=tmp->persona->ID){
                 if(probabilidadComun<=70){
