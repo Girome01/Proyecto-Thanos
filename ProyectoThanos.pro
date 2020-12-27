@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arbol.cpp \
     archivo.cpp \
     listadeportes.cpp \
     listadoble.cpp \
@@ -17,10 +18,10 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     persona.cpp \
-    personatest.cpp \
     randomize.cpp
 
 HEADERS += \
+    arbol.h \
     archivo.h \
     listadeportes.h \
     listadoble.h \
@@ -28,7 +29,6 @@ HEADERS += \
     listasimple.h \
     mainwindow.h \
     persona.h \
-    personatest.h \
     randomize.h
 
 FORMS += \
