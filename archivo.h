@@ -9,8 +9,11 @@ using namespace std;
 struct Archivo{
     Archivo();
 
-    //QT ES UNA MIERDA 2.0
+    //QT ES UNA MIERDA 3.0
+    //Hi :)
     //TKM GIL
+    //tkm gil
+    //wenas
     // _archivo tiene que llevar la extencion .txt
     //wwww
     void escribir(string _texto, string _archivo);

@@ -1,6 +1,10 @@
 #include "persona.h"
 
 Persona::Persona(){
+    pecados=new ListaPecVir;
+    virtudes=new ListaPecVir;
+    hijos=new ListaDoble;
+    amigos=new ListaDoble;
 
 }
 
@@ -48,7 +52,8 @@ string Persona::imprimir(){
     //Faltan los datos que son int
     // Ocupo pasarlos a ints y no se
     string texto = "";
-    texto +="Nombre: "+this->nombre+"\tApellido: "+this->apellido+"\nID: "+id+"\tEstado: "+
+    texto +="Nombre: "+this->nombre+"\tApellido: "+this->apellido+"\nID: "+id+"\t";
+/*         Estado: "+
             this->obtenerVivo()+"\nFecha de nacimiento: "+this->nacDia+"-"+this->nacMes+
             "-"+this->nacAno+"\t"+this->rangoEtario+"\nGenero: "+this->obtenerGenero()+
             "\nContinente donde vive: "+this->continenteVive+"\tPais donde vive: "+this->paisVive+
@@ -57,5 +62,6 @@ string Persona::imprimir(){
             this->profesion+"\n Pecados: \n"+this->pecados->imprimir()+"\nVistudes: \n"+
             this->virtudes->imprimir()+"\nPaises visitados: \n"+this->paises->imprimir()+
             "Amigos: "+this->verificarAmigos()+"Ejercicio: "+this->deportes->imprimir();
+                    */
     return texto;
 }
