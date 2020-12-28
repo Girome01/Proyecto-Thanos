@@ -225,6 +225,22 @@ string Randomize::generarRangoEtario(int anno){
     }
 }
 
+bool Randomize::comprobarExistencia(Persona *amigo, Persona *personaActual){
+    NodoPersona * tmp = amigo->amigos->primerNodo;
+    NodoPersona * tmp2 = personaActual->amigos->primerNodo;
+    if(tmp==NULL || tmp2==NULL)
+        return false;
+    while(tmp!=NULL){
+        while(tmp2!=NULL){
+            if(tmp->persona->ID==tmp2->persona->ID)
+                return true;
+            tmp2=tmp2->siguiente;
+        }
+        tmp=tmp->siguiente;
+    }
+    return false;
+}
+
 bool Randomize::comprobarAmigos(Persona *amigo, Persona *personaActual){
     NodoPersona * tmp = amigo->amigos->primerNodo;
     NodoPersona * tmp2 = personaActual->amigos->primerNodo;
@@ -233,7 +249,7 @@ bool Randomize::comprobarAmigos(Persona *amigo, Persona *personaActual){
     while(tmp!=NULL){
         while(tmp2!=NULL){
             if(tmp->persona==tmp2->persona)
-                return true;
+                    return true;
             tmp2=tmp2->siguiente;
         }
         tmp=tmp->siguiente;
@@ -250,14 +266,17 @@ void Randomize::agregarAmigos(ListaDoble *personas,  Persona *personaActual){ //
         while (tmp != NULL){
             if((personaActual->paisVive==tmp->persona->paisVive &&
                personaActual->ID!=tmp->persona->ID) || probabilidadPais<=40){
-                personaActual->amigos->insertarAlFinal(tmp->persona);
-                tmp->persona->amigos->insertarAlFinal(personaActual);
-
+                if(!comprobarExistencia(tmp->persona, personaActual)){
+                    personaActual->amigos->insertarAlFinal(tmp->persona);
+                    tmp->persona->amigos->insertarAlFinal(personaActual);
+                }
             }else if(comprobarAmigos(tmp->persona,personaActual)
               && personaActual->ID!=tmp->persona->ID){
                 if(probabilidadComun<=70){
-                     personaActual->amigos->insertarAlFinal(tmp->persona);
+                    if(!comprobarExistencia(tmp->persona, personaActual)){
+                     personaActual->amigos->insertarAlFinal(tmp->persona);\
                      tmp->persona->amigos->insertarAlFinal(personaActual);
+                    }
                 }
             }
             tmp=tmp->siguiente;
