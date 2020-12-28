@@ -31,7 +31,7 @@ void Arbol::crearArray(int _posicion, int largoLista){
 }
 
 void Arbol::imprimirArray(){
-    cout<<"IMprimir QList "<<endl;
+    cout<<"Imprimir QList "<<endl;
     for(int i = 0; i < posiciones.length();i++){
         cout<<posiciones.at(i)<<" -> "<<endl;
     }
@@ -54,9 +54,9 @@ QList<int> Arbol::listaMayores(QList<int> _posiciones, int pos){
 }
 
 void Arbol::crearArbol(QList<int> lista, ListaDoble* personas, NodoArbol* nodo){
-    int pos = lista.at( (lista.size()/2) );
+    int pos = lista.size()/2;
     if(nodo == NULL){
-        nodo = new NodoArbol(personas->BuscarEnPos(pos));
+        nodo = new NodoArbol(personas->BuscarEnPos(lista.at(pos)));
     }
     if(lista.size() > 1){
         crearArbol(listaMayores(lista,pos),personas,nodo->hijoderecho);
@@ -69,7 +69,7 @@ void Arbol::inOrden(NodoArbol* nodo)
    if (nodo != NULL)
    {
      inOrden(nodo->hijoizquierdo);
-     cout << nodo->persona->persona->imprimirAmigos()<< " -> ";
+     cout << nodo->persona->persona->imprimir()<< " -> ";
      inOrden(nodo->hijoderecho);
    }
 }
