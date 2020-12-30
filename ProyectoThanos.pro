@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     arbol.cpp \
     archivo.cpp \
+    eliminarhumanos.cpp \
     listadeportes.cpp \
     listadoble.cpp \
     listapecvir.cpp \
@@ -18,17 +19,20 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     persona.cpp \
+    personatest.cpp \
     randomize.cpp
 
 HEADERS += \
     arbol.h \
     archivo.h \
+    eliminarhumanos.h \
     listadeportes.h \
     listadoble.h \
     listapecvir.h \
     listasimple.h \
     mainwindow.h \
     persona.h \
+    personatest.h \
     randomize.h
 
 FORMS += \
