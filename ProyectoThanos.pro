@@ -12,6 +12,7 @@ SOURCES += \
     arbol.cpp \
     archivo.cpp \
     eliminarhumanos.cpp \
+    heap.cpp \
     listadeportes.cpp \
     listadoble.cpp \
     listapecvir.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     arbol.h \
     archivo.h \
     eliminarhumanos.h \
+    heap.h \
     listadeportes.h \
     listadoble.h \
     listapecvir.h \

@@ -4,9 +4,9 @@
 struct ListaDoble;
 #include "listadoble.h"
 #include "listadeportes.h"
-#include<iostream>
-#include<stdlib.h>
-#include<fstream>
+#include "heap.h"
+#include <cstdlib>
+#include <iostream>
 using namespace std;
 
 struct EliminarHumanos{
@@ -26,6 +26,14 @@ struct EliminarHumanos{
     void eliminarBlackDwarf(ListaDoble* eliminar);
     //Falta agregar uno funcion que obtenga un deporte random
     void BlackDwarf(int veces /*, ListaDeportes* deportes*/, ListaDoble* mundo);
+
+    Heap* crearListaCorvus(ListaDoble* mundo);
+    void eliminarCorvus(Heap* eliminar,ListaDoble* mundo);
+    void CorvusGlaive(ListaDoble* mundo);
+
+    Heap* crearListaMidnight(ListaDoble* mundo);
+    void eliminarMidnight(Heap* eliminar,ListaDoble* mundo);
+    void Midnight(ListaDoble* mundo);
 
 };
 

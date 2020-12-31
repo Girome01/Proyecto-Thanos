@@ -79,3 +79,47 @@ void EliminarHumanos::BlackDwarf(int veces /*, ListaDeportes* deportes*/, ListaD
     ListaDoble* eliminar = buscarHumBlack(veces,deporte,mundo);
     eliminarBlackDwarf(eliminar);
 }
+
+Heap* EliminarHumanos::crearListaCorvus(ListaDoble* mundo){
+    Heap* listaCorvus = new Heap(mundo);
+    for (int i = 0; i < mundo->largo() ; i++) {
+        listaCorvus->insertarCorvusGlaive(i);
+    }
+    return listaCorvus;
+}
+
+void EliminarHumanos::eliminarCorvus(Heap* eliminar,ListaDoble* mundo){
+    int personasElim = eliminar->size * 0.05;
+    for (int i = 0; i <= personasElim ; i++) {
+        NodoPersona* temp = mundo->BuscarEnPos(eliminar->extractMaxCorvusGlaive());
+        temp->persona->vivo = false;
+    }
+
+}
+
+void EliminarHumanos::CorvusGlaive(ListaDoble* mundo){
+    Heap* eliminar = crearListaCorvus( mundo);
+    eliminarCorvus(eliminar, mundo);
+}
+
+Heap* EliminarHumanos::crearListaMidnight(ListaDoble* mundo){
+    Heap* listaMidnight = new Heap(mundo);
+    for (int i = 0; i < mundo->largo() ; i++) {
+        listaMidnight->insertarMidnight(i);
+    }
+    return listaMidnight;
+}
+
+void EliminarHumanos::eliminarMidnight(Heap* eliminar,ListaDoble* mundo){
+    int personasElim = eliminar->size * 0.05;
+    for (int i = 0; i <= personasElim ; i++) {
+        NodoPersona* temp = mundo->BuscarEnPos(eliminar->extractMaxMidnight());
+        temp->persona->vivo = false;
+    }
+
+}
+
+void EliminarHumanos::Midnight(ListaDoble* mundo){
+    Heap* eliminar = crearListaMidnight( mundo);
+    eliminarMidnight(eliminar, mundo);
+}
