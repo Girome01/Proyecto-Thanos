@@ -113,17 +113,17 @@ void Randomize::generarPecados(ListaPecVir *listapecvir){
 }
 
 bool Randomize::esHijoPosible(Persona *hijo, Persona *padre){
-      if(2020-std::stoi(padre->nacAno)>=20 && 2020-std::stoi(padre->nacAno)<=24
-         && 2020-std::stoi(hijo->nacAno)<=4){
+      if(2021-std::stoi(padre->nacAno)>=20 && 2021-std::stoi(padre->nacAno)<=24
+         && 2021-std::stoi(hijo->nacAno)<=4){
           return true;
-      }else if(2020-std::stoi(padre->nacAno)>=25 && 2020-std::stoi(padre->nacAno)<=34
-         && 2020-std::stoi(hijo->nacAno)<=14){
+      }else if(2021-std::stoi(padre->nacAno)>=25 && 2021-std::stoi(padre->nacAno)<=34
+         && 2021-std::stoi(hijo->nacAno)<=14){
           return true;
-      }else if(2020-std::stoi(padre->nacAno)>=35 && 2020-std::stoi(padre->nacAno)<=64
-         && 2020-std::stoi(hijo->nacAno)>=15 && 2020-std::stoi(hijo->nacAno)<=34 ){
+      }else if(2021-std::stoi(padre->nacAno)>=35 && 2021-std::stoi(padre->nacAno)<=64
+         && 2021-std::stoi(hijo->nacAno)>=15 && 2021-std::stoi(hijo->nacAno)<=34 ){
           return true;
-      }else if(2020-std::stoi(padre->nacAno)<=65
-         && 2020-std::stoi(hijo->nacAno)>=25 && 2020-std::stoi(hijo->nacAno)<=64 ){
+      }else if(2021-std::stoi(padre->nacAno)<=65
+         && 2021-std::stoi(hijo->nacAno)>=25 && 2021-std::stoi(hijo->nacAno)<=64 ){
          return true;
       }else{
           return false;

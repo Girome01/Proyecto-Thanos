@@ -52,3 +52,13 @@ string ListaPecVir::imprimir(){
     }
     return texto;
 }
+
+int ListaPecVir::cantidadPecVir(){
+    PecadoVirtud * temp = primerNodo;
+    int cantidadTotal=0;
+    while(temp!=0) {
+        cantidadTotal+=temp->cantidad;
+        temp = temp->siguiente;
+    }
+    return cantidadTotal;
+}

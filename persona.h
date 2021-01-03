@@ -6,6 +6,7 @@ struct ListaDoble;
 struct ListaSimple;
 struct Randomize;
 #include "listapecvir.h"
+#include "listadeportes.h"
 #include "listadoble.h"
 #include "listasimple.h"
 #include "randomize.h"
@@ -35,7 +36,7 @@ struct Persona{
     string estadoMarital; //DONE
     Persona* esposa; //*********Falta asignar esposa
     ListaDoble* hijos; //semi-done
-    ListaSimple* deportes;
+    ListaDeportes* deportes;
     string paisVive;
     string continenteVive;
 
