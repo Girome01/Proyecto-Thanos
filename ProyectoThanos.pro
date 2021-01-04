@@ -15,6 +15,7 @@ SOURCES += \
     heap.cpp \
     listadeportes.cpp \
     listadoble.cpp \
+    listaelimsalv.cpp \
     listapecvir.cpp \
     listasimple.cpp \
     main.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     heap.h \
     listadeportes.h \
     listadoble.h \
+    listaelimsalv.h \
     listapecvir.h \
     listasimple.h \
     mainwindow.h \
