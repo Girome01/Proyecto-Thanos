@@ -23,7 +23,7 @@ struct EliminarHumanos{
     void EbonyMaw(ListaDoble* lista);
 
     ListaDoble* buscarHumBlack(int veces, string deporte, ListaDoble* mundo);
-    void eliminarBlackDwarf(ListaDoble* eliminar);
+    void eliminarBlackDwarf(ListaDoble* eliminar, int veces, string deporte);
     //Falta agregar uno funcion que obtenga un deporte random
     void BlackDwarf(int veces /*, ListaDeportes* deportes*/, ListaDoble* mundo);
 

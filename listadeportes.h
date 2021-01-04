@@ -2,9 +2,9 @@
 #define LISTADEPORTES_H
 
 #include <sstream>
-
 #include <cstdlib>
 #include <iostream>
+
 using namespace std;
 
 struct NodoDeporte {
@@ -27,6 +27,8 @@ struct ListaDeportes {
 
     void insertarAlInicio (int vecesSemana, string nombre);
     void insertarAlFinal(int vecesSemana, string nombre);
+    int largo();
+    int frecuenciaDeporte();
     bool esta(string deporte);
     NodoDeporte* obtener(string deporte);
     string imprimir();

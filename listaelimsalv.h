@@ -14,17 +14,18 @@ struct NodoDato {
     }
 };
 
-struct listaElimSalv{
+struct ListaElimSalv{
     NodoDato* primerNodo;
     NodoDato* ultimoNodo;
 
-    listaElimSalv(){
+    ListaElimSalv(){
         primerNodo = ultimoNodo = NULL;
     }
 
     int largo();
     bool isEmpty();
     string imrpimir();
+    void insertarAlFinal(string nombre);
 };
 
 #endif // LISTAELIMSALV_H

@@ -1,6 +1,6 @@
 #include "listaelimsalv.h"
 
-int listaElimSalv::largo(){
+int ListaElimSalv::largo(){
     NodoDato * temp = primerNodo;
     int largo = 0;
     while(temp != 0) {
@@ -10,11 +10,11 @@ int listaElimSalv::largo(){
     return largo;
 }
 
-bool listaElimSalv::isEmpty(){
+bool ListaElimSalv::isEmpty(){
     return primerNodo == NULL;
 }
 
-string listaElimSalv::imrpimir(){
+string ListaElimSalv::imrpimir(){
     string texto = "";
     NodoDato * temp = primerNodo;
     while(temp!=0){
@@ -23,4 +23,17 @@ string listaElimSalv::imrpimir(){
     }
     return texto;
 }
+
+void ListaElimSalv::insertarAlFinal(string _dato){
+    if (primerNodo == NULL){
+        primerNodo = new NodoDato(_dato);
+        ultimoNodo = primerNodo;
+    }
+    else{
+        NodoDato *nuevo = new NodoDato(_dato);
+        ultimoNodo->siguiente = nuevo;
+        ultimoNodo = nuevo;
+    }
+}
+
 
