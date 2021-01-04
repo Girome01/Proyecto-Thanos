@@ -22,13 +22,13 @@ int HashMap::funcionHash(Persona *persona){
         key--;
     }
 
-    if(persona->amigos->largo()<=25){ //2
+    if(persona->amigos->largo()>=25){ //2
         key++;
     }else{
         key--;
     }
 
-    if(persona->hijos->largo()<=2){ //3
+    if(persona->hijos->largo()>=2){ //3
         key++;
     }else{
         key--;
@@ -58,13 +58,13 @@ int HashMap::funcionHash(Persona *persona){
         key--;
     }
 
-    if(persona->deportes->largo()<=3){ //8
+    if(persona->deportes->largo()>=3){ //8
         key++;
     }else{
         key--;
     }
 
-    if(persona->deportes->frecuenciaDeporte()<=5){ //9
+    if(persona->deportes->frecuenciaDeporte()>=5){ //9
         key++;
     }else{
         key--;
@@ -121,7 +121,7 @@ void HashMap::eliminarPersonasAnno(int key){
     int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
     int filaEsp=0;
     for(int i=0; i<filas; i++){
-            if(hashtable[i][0].primerNodo->key==key)
+            if(hashtable[i][0].primerNodo->key==key) //El anno
                 filaEsp=i;
     }
    for(int j=0; j<columnas; j++){
@@ -134,7 +134,7 @@ void HashMap::eliminarPersonasNivel(int key){
     int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
     int colEsp=0;
     for(int j=0; j<columnas; j++){
-            if(hashtable[0][j].primerNodo->key==key)
+            if(hashtable[0][j].primerNodo->key==key) //El nivel
                 colEsp=j;
     }
     for(int i=0; i<filas; i++){//Se recorre la matriz
