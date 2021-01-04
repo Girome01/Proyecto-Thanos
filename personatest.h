@@ -2,6 +2,7 @@
 #define PERSONATEST_H
 #include "persona.h"
 #include "archivo.h"
+#include "arbol.h"
 #include <sstream>
 #include <QList>
 #include <cstdlib>

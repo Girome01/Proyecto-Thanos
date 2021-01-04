@@ -28,6 +28,26 @@ void ListaDeportes::insertarAlFinal (int vecesSemana, string nombre){
     }
 }
 
+int ListaDeportes::largo(){
+    int largo=0;
+    NodoDeporte * temp = primerNodo;
+    while(temp!=0){
+        largo++;
+        temp = temp->siguiente;
+    }
+    return largo;
+}
+
+int ListaDeportes::frecuenciaDeporte(){
+    NodoDeporte * temp = primerNodo;
+    int cantidadTotal=0;
+    while(temp!=0) {
+        cantidadTotal+=temp->vecesSemana;
+        temp = temp->siguiente;
+    }
+    return cantidadTotal;
+}
+
 string ListaDeportes::imprimir(){
     string texto = "";
     NodoDeporte * temp = primerNodo;
@@ -39,4 +59,26 @@ string ListaDeportes::imprimir(){
         temp = temp->siguiente;
     }
     return texto;
+}
+
+bool ListaDeportes::esta(string deporte){
+    NodoDeporte * temp = primerNodo;
+    while(temp!=0){
+        if(temp->nombre == deporte){
+            return true;
+        }
+        temp = temp->siguiente;
+    }
+    return false;
+}
+
+NodoDeporte* ListaDeportes::obtener(string deporte){
+    NodoDeporte * temp = primerNodo;
+    while(temp!=0){
+        if(temp->nombre == deporte){
+            return temp;
+        }
+        temp = temp->siguiente;
+    }
+    return NULL;
 }

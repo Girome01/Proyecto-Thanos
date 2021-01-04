@@ -47,6 +47,8 @@ struct ListaDoble{
     string imprimirAmigos();
     void insertionSort(Persona* _persona);
     NodoPersona* BuscarEnPos(int posicion);
+    NodoPersona* BuscarPorID(int ID);
+    void listaBlackDwarf(Persona* _persona);
 
 };
 
