@@ -14,6 +14,11 @@ struct Heap{
     QVector<int> vect = {-1};
     ListaDoble* lista;
 
+    Heap(){
+
+    }
+
+
     Heap(ListaDoble* _lista);
 
     int padre(int i){ return (i/2); }//i>>1
