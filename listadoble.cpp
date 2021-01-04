@@ -91,3 +91,30 @@ NodoPersona* ListaDoble::BuscarEnPos(int posicion){
             return temp->siguiente;
         }
     }
+
+NodoPersona* ListaDoble::BuscarPorID(int ID){
+    if (primerNodo->persona->ID == ID){
+        return primerNodo;
+    }
+    else if(ultimoNodo->persona->ID == ID){
+        return ultimoNodo;
+    }
+    else{
+        NodoPersona * temp = primerNodo;
+        for(int i = 1; i < largo(); i++){
+            if(temp->siguiente->persona->ID == ID){
+                return temp->siguiente;
+            }
+            temp = temp->siguiente;
+        }
+    }
+    return NULL;
+}
+
+void ListaDoble::listaBlackDwarf(Persona* _persona){
+    if(isEmpty()){
+        insertarAlInicio(_persona);
+    }else{
+        insertarAlFinal(_persona);
+    }
+}

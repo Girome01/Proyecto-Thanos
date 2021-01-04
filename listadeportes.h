@@ -27,6 +27,8 @@ struct ListaDeportes {
 
     void insertarAlInicio (int vecesSemana, string nombre);
     void insertarAlFinal(int vecesSemana, string nombre);
+    bool esta(string deporte);
+    NodoDeporte* obtener(string deporte);
     string imprimir();
 
 };

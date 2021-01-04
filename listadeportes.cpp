@@ -40,3 +40,25 @@ string ListaDeportes::imprimir(){
     }
     return texto;
 }
+
+bool ListaDeportes::esta(string deporte){
+    NodoDeporte * temp = primerNodo;
+    while(temp!=0){
+        if(temp->nombre == deporte){
+            return true;
+        }
+        temp = temp->siguiente;
+    }
+    return false;
+}
+
+NodoDeporte* ListaDeportes::obtener(string deporte){
+    NodoDeporte * temp = primerNodo;
+    while(temp!=0){
+        if(temp->nombre == deporte){
+            return temp;
+        }
+        temp = temp->siguiente;
+    }
+    return NULL;
+}
