@@ -10,6 +10,7 @@ struct Randomize;
 #include "listadoble.h"
 #include "listasimple.h"
 #include "randomize.h"
+#include "listadeportes.h"
 
 #include <sstream>
 #include <QList>
