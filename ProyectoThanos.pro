@@ -11,10 +11,12 @@ CONFIG += c++11
 SOURCES += \
     arbol.cpp \
     archivo.cpp \
+    hashmap.cpp \
     eliminarhumanos.cpp \
     heap.cpp \
     listadeportes.cpp \
     listadoble.cpp \
+    listahashmap.cpp \
     listapecvir.cpp \
     listasimple.cpp \
     main.cpp \
@@ -26,10 +28,12 @@ SOURCES += \
 HEADERS += \
     arbol.h \
     archivo.h \
+    hashmap.h \
     eliminarhumanos.h \
     heap.h \
     listadeportes.h \
     listadoble.h \
+    listahashmap.h \
     listapecvir.h \
     listasimple.h \
     mainwindow.h \

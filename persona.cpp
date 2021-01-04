@@ -5,6 +5,7 @@ Persona::Persona(){
     virtudes=new ListaPecVir;
     hijos=new ListaDoble;
     amigos=new ListaDoble;
+    deportes=new ListaDeportes;
 
 }
 

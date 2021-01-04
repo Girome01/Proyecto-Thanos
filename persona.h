@@ -6,6 +6,7 @@ struct ListaDoble;
 struct ListaSimple;
 struct Randomize;
 #include "listapecvir.h"
+#include "listadeportes.h"
 #include "listadoble.h"
 #include "listasimple.h"
 #include "randomize.h"

@@ -22,7 +22,7 @@ vector<string> PersonaTest::generarlistaNombres(string texto){
 
 void PersonaTest::pruebaPersona(){
         ListaDoble *personas=new ListaDoble();
-        for(int i=0;i<5;i++){
+        for(int i=0;i<1000;i++){
             Persona *personita=new Persona();
             personita->genero=personita->random->aleatorioGenero();
             cout<<personita->genero<<endl;
@@ -69,14 +69,23 @@ void PersonaTest::pruebaPersona(){
 
                 personita->random->generarId(personas);
         }
+        Arbol* arbol = new Arbol();
+        int total = arbol->obtenerPor(personas->largo());
+        cout<<"Num total "<<total<<endl;
+        arbol->crearArray(total, personas->largo());
+        arbol->imprimirArray();
 
         NodoPersona *tmp=personas->primerNodo;
         while(tmp!=NULL){
             //tmp->persona->random->agregarHijos(personas,tmp->persona);
             //tmp->persona->random->agregarAmigos(personas,tmp->persona);
+            NodoArbol *nodop1=new NodoArbol(tmp);
+            arbol->crearArbol(arbol->posiciones,personas,nodop1);
+            arbol->inOrden(nodop1);
             cout<<tmp->persona->nombre<<" "<<tmp->persona->apellido<<" "<<tmp->persona->ID<<" "<<tmp->persona->continenteVive<<" "<<tmp->persona->nacDia<<"/"<<tmp->persona->nacMes<<"/"<<tmp->persona->nacAno<<tmp->persona->rangoEtario<<endl<<tmp->persona->paisVive<<endl<<tmp->persona->estadoMarital<<endl<<tmp->persona->pecados->imprimir()<<endl;
             tmp=tmp->siguiente;
-        }
+       }
+
 
 
 }
