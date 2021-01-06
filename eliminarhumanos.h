@@ -12,6 +12,21 @@ using namespace std;
 struct EliminarHumanos{
     int maximoNebula;
 
+    string datosNebula = "";
+    string datTotNebula = "";
+
+    string datosEbony = "";
+    string datTotEbony = "";
+
+    string datosBlack = "";
+    string datTotBlack = "";
+
+    string datosCorvus = "";
+    string datTotCorvus = "";
+
+    string datosMidnight = "";
+    string datTotMidnight = "";
+
     EliminarHumanos();
 
     NodoPersona* obtenerHumNebula(ListaDoble* lista);
