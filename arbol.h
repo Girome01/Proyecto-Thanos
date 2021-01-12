@@ -14,6 +14,11 @@ struct NodoArbol{
        NodoPersona* persona;
        NodoArbol* hijoizquierdo;
        NodoArbol* hijoderecho;
+       bool hormiga=false;
+       int cantRecorridoHormiga=0;
+       bool detonarBomba=false;
+       bool telaranna=false;
+       bool mejorCamino=false;
 
        NodoArbol(NodoPersona* _persona){
             persona = _persona;
@@ -33,6 +38,7 @@ struct Arbol{
     QList<int> listaMenores(QList<int> _posiciones, int pos);
     QList<int> listaMayores(QList<int> _posiciones, int pos);
     void inOrden(NodoArbol* nodo);
+    int profundidad(NodoArbol *raiz);
 };
 
 #endif // ARBOL_H

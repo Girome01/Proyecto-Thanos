@@ -74,3 +74,16 @@ void Arbol::inOrden(NodoArbol* nodo)
    }
 }
 
+int Arbol::profundidad(NodoArbol *raiz){
+    if (raiz == NULL)
+           return 0;
+   else {
+       int alturaIzq = profundidad(raiz->hijoizquierdo);
+       int alturaDer = profundidad(raiz->hijoizquierdo);
+       if (alturaIzq >= alturaDer)
+            return alturaIzq + 1;
+       else
+            return alturaDer + 1;
+   }
+}
+

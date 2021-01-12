@@ -111,7 +111,6 @@ void HashMap::insertarElemento(Persona *persona){
             hashtable[0][j].primerNodo->key==key){ //Si la key del hashtable en el anno coincide con el anno de la persona y ademas coincide la key del num
                 hashtable[i][j].insertarAlInicio(persona->ID); //Agregue a la persona en esa pos
             }
-
         }
     }
 }
@@ -155,5 +154,5 @@ void HashMap::eliminarPersonasNivelAnno(int _keyA, int _keyN){
 }
 
 void HashMap::imprimirHM(){
-    //Pendiente
+    //Pendiente, mostrar la info de los villanos, pero con la info de Thanos
 }
