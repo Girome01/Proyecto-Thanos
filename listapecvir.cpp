@@ -62,6 +62,7 @@ int ListaPecVir::cantidadPecVir(){
     }
     return cantidadTotal;
  }
+
 int ListaPecVir::total(){
     int total=0;
     PecadoVirtud * temp = primerNodo;

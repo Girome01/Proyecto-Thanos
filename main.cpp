@@ -2,6 +2,7 @@
 #include "personatest.h"
 #include "mainwindow.h"
 #include "heap.h"
+#include "enviarcorreo.h"
 
 #include <QApplication>
 
@@ -25,7 +26,7 @@ int main(int argc, char *argv[])
     arbol->crearArray(total, 1350);
     arbol->imprimirArray();
     */
-
+    /*
     Heap* P = new Heap();
     if(P->isEmpty()){
         cout<<"Respuesta correcta"<<endl;
@@ -46,6 +47,6 @@ int main(int argc, char *argv[])
     }else{
         cout<<"Respuesta correcta"<<endl;
     }
+    */
 
-    return a.exec();
 }
