@@ -2,6 +2,7 @@
 #include "personatest.h"
 #include "mainwindow.h"
 #include "heap.h"
+#include "enviarcorreo.h"
 
 #include <QApplication>
 
@@ -24,7 +25,6 @@ int main(int argc, char *argv[])
     cout<<"Num total "<<total<<endl;
     arbol->crearArray(total, 1350);
     arbol->imprimirArray();
-    */
 
     Heap* P = new Heap();
     if(P->isEmpty()){
@@ -45,7 +45,10 @@ int main(int argc, char *argv[])
         cout<<"Error con nuestra funcion isEmpty"<<endl;
     }else{
         cout<<"Respuesta correcta"<<endl;
-    }
+    }*/
+
+    EnviarCorreo* correo = new EnviarCorreo();
+    correo->enviar("Hola sirvio el enviar corre");
 
     return a.exec();
 }
