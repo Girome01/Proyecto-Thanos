@@ -14,8 +14,9 @@ struct NodoArbol{
        NodoPersona* persona;
        NodoArbol* hijoizquierdo;
        NodoArbol* hijoderecho;
-       bool hormiga=false;
        int cantRecorridoHormiga=0;
+       int marcaNodo=0;
+       bool hormiga=false;
        bool detonarBomba=false;
        bool telaranna=false;
        bool mejorCamino=false;
