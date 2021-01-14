@@ -15,11 +15,10 @@ struct NodoArbol{
        NodoArbol* hijoizquierdo;
        NodoArbol* hijoderecho;
        int cantRecorridoHormiga=0;
-       int marcaNodo=0;
+       int marcaNodo;
        bool hormiga=false;
        bool detonarBomba=false;
        bool telaranna=false;
-       bool mejorCamino=false;
 
        NodoArbol(NodoPersona* _persona){
             persona = _persona;
