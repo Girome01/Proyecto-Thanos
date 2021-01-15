@@ -20,6 +20,8 @@ void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
                 NodoPersona* matar = eliminar->persona->amigos->BuscarEnPos(i);
                 if(matar->persona->vivo){
                     matar->persona->vivo = false;
+                    elimNebula += 1;
+                    totalElimNebula += 1;
                     matar->persona->eliminado->insertarAlFinal(texto);
                     QString m_time = QTime::currentTime().toString();
                     string time = m_time.toStdString();
@@ -36,6 +38,7 @@ void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
 
 void EliminarHumanos::Nebula(ListaDoble* lista){
     datosNebula = "";
+    elimNebula = 0;
     this->maximoNebula = lista->largo()/3;
     NodoPersona* persona = obtenerHumNebula(lista);
     eliminarHumaNebula(persona);
@@ -53,18 +56,24 @@ void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
             eliminar->persona->imprimirAmigos()+"\t";
     if(eliminar != NULL){
         eliminar->persona->padre->vivo = false;
+        elimEbony += 1;
+        totalElimEbony += 1;
         eliminar->persona->padre->eliminado->insertarAlFinal(texto);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
         datosEbony +=date +" "+time+ " Mate al humano "+ eliminar->persona->padre->imprimirAmigos()
                 +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
         eliminar->persona->esposa->vivo = false;
+        elimEbony += 1;
+        totalElimEbony += 1;
         eliminar->persona->esposa->eliminado->insertarAlFinal(texto);
         m_time = QTime::currentTime().toString();
         time = m_time.toStdString();
         datosEbony +=date +" "+time+ " Mate al humano "+ eliminar->persona->esposa->imprimirAmigos()
                 +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
         eliminar->persona->madre->vivo = false;
+        elimEbony += 1;
+        totalElimEbony += 1;
         eliminar->persona->madre->eliminado->insertarAlFinal(texto);
         m_time = QTime::currentTime().toString();
         time = m_time.toStdString();
@@ -74,6 +83,8 @@ void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
             for(int i = 0; i  < eliminar->persona->hijos->largo(); i++){
                 NodoPersona* temp = eliminar->persona->hijos->BuscarEnPos(i);
                 temp->persona->vivo = false;
+                elimEbony += 1;
+                totalElimEbony += 1;
                 temp->persona->eliminado->insertarAlFinal(texto);
                 QString m_time = QTime::currentTime().toString();
                 string time = m_time.toStdString();
@@ -88,6 +99,7 @@ void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
 
 void EliminarHumanos::EbonyMaw(ListaDoble* lista){
     datosEbony = "";
+    elimEbony += 0;
     NodoPersona* persona = obtenerHumEbony(lista);
     eliminarHumaEbony(persona);
 }
@@ -118,6 +130,8 @@ void EliminarHumanos::eliminarBlackDwarf(ListaDoble* eliminar, int veces, string
         int pos = int(QRandomGenerator::global()->bounded(0, eliminar->largo()-1));
         NodoPersona* temp = eliminar->BuscarEnPos(pos);
         temp->persona->vivo = false;
+        elimBlack += 1;
+        totalElimBlack += 1;
         temp->persona->eliminado->insertarAlFinal(texto);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
@@ -146,6 +160,7 @@ void EliminarHumanos::BlackDwarf(int veces , ListaDoble* mundo){
     int deportePractica = int(QRandomGenerator::global()->bounded(0, 163));
     string deporte = generarlistaNombres("").at(deportePractica);
     datosBlack = "";
+    elimBlack = 0;
     ListaDoble* eliminar = buscarHumBlack(veces,deporte,mundo);
     eliminarBlackDwarf(eliminar,veces, deporte);
 }
@@ -166,6 +181,8 @@ void EliminarHumanos::eliminarCorvus(Heap* eliminar,ListaDoble* mundo){
     for (int i = 0; i <= personasElim ; i++) {
         NodoPersona* temp = mundo->BuscarEnPos(eliminar->extractMaxCorvusGlaive());
         temp->persona->vivo = false;
+        elimCorvus += 1;
+        totalElimCorvus += 1;
         temp->persona->eliminado->insertarAlFinal(texto);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
@@ -177,6 +194,7 @@ void EliminarHumanos::eliminarCorvus(Heap* eliminar,ListaDoble* mundo){
 
 void EliminarHumanos::CorvusGlaive(ListaDoble* mundo){
     datosCorvus = "";
+    elimCorvus = 0;
     Heap* eliminar = crearListaCorvus( mundo);
     eliminarCorvus(eliminar, mundo);
 }
@@ -197,6 +215,8 @@ void EliminarHumanos::eliminarMidnight(Heap* eliminar,ListaDoble* mundo){
     for (int i = 0; i <= personasElim ; i++) {
         NodoPersona* temp = mundo->BuscarEnPos(eliminar->extractMaxMidnight());
         temp->persona->vivo = false;
+        elimMidnight += 1;
+        totalElimMidnight += 1;
         temp->persona->eliminado->insertarAlFinal(texto);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
@@ -207,6 +227,7 @@ void EliminarHumanos::eliminarMidnight(Heap* eliminar,ListaDoble* mundo){
 
 void EliminarHumanos::Midnight(ListaDoble* mundo){
     datosMidnight = "";
+    elimMidnight = 0;
     Heap* eliminar = crearListaMidnight( mundo);
     eliminarMidnight(eliminar, mundo);
 }

@@ -19,18 +19,28 @@ struct EliminarHumanos{
 
     string datosNebula = "";
     string datTotNebula = "";
+    int elimNebula = 0;
+    int totalElimNebula = 0;
 
     string datosEbony = "";
     string datTotEbony = "";
+    int elimEbony = 0;
+    int totalElimEbony = 0;
 
     string datosBlack = "";
     string datTotBlack = "";
+    int elimBlack = 0;
+    int totalElimBlack = 0;
 
     string datosCorvus = "";
     string datTotCorvus = "";
+    int elimCorvus = 0;
+    int totalElimCorvus = 0;
 
     string datosMidnight = "";
     string datTotMidnight = "";
+    int elimMidnight = 0;
+    int totalElimMidnight = 0;
 
     EliminarHumanos();
 
