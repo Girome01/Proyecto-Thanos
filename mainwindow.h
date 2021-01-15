@@ -1,6 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "persona.h"
+#include "archivo.h"
+#include "arbol.h"
+#include "listadoble.h"
+#include "eliminarhumanos.h"
+
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -12,8 +18,22 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    Arbol* arbol = new Arbol();
+    ListaDoble* mundo = new ListaDoble();
+    EliminarHumanos elimHumanos = EliminarHumanos();
+
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_btnMostrarArbol_clicked();
+
+    void on_btnEliminar_clicked();
+
+    void on_btnSalvar_clicked();
+
+    void on_btnCrearHumanos_clicked();
 
 private:
     Ui::MainWindow *ui;

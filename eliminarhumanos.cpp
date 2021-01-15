@@ -11,7 +11,7 @@ NodoPersona* EliminarHumanos::obtenerHumNebula(ListaDoble* lista){
 
 void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
     string texto = "Soy Nebula mate a esre humano por ser amigo de "+
-            eliminar->persona->imprimirAmigos();
+            eliminar->persona->imprimirAmigos()+"\t";
     if(maximoNebula > 0){
         if( eliminar->persona->amigos != NULL){
             for(int i = 0; i < eliminar->persona->amigos->largo();i++){
@@ -44,30 +44,31 @@ NodoPersona* EliminarHumanos::obtenerHumEbony(ListaDoble* lista){
 
 void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
     string texto = "Soy Eboony Maw Mate a este humano por ser familia de "+
-            eliminar->persona->imprimirAmigos();
+            eliminar->persona->imprimirAmigos()+"\t";
     if(eliminar != NULL){
         eliminar->persona->padre->vivo = false;
         eliminar->persona->padre->eliminado->insertarAlFinal(texto);
         datosEbony +="Mate al humano "+ eliminar->persona->padre->imprimirAmigos()
-                +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\n";
+                +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
         eliminar->persona->esposa->vivo = false;
         eliminar->persona->esposa->eliminado->insertarAlFinal(texto);
         datosEbony +="Mate al humano "+ eliminar->persona->esposa->imprimirAmigos()
-                +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\n";
+                +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
         eliminar->persona->madre->vivo = false;
         eliminar->persona->madre->eliminado->insertarAlFinal(texto);
         datosEbony +="Mate al humano "+ eliminar->persona->madre->imprimirAmigos()
-                +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\n";
+                +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
         if(eliminar->persona->hijos != NULL){
             for(int i = 0; i  < eliminar->persona->hijos->largo(); i++){
                 NodoPersona* temp = eliminar->persona->hijos->BuscarEnPos(i);
                 temp->persona->vivo = false;
                 temp->persona->eliminado->insertarAlFinal(texto);
                 datosEbony +="Mate al humano "+ temp->persona->imprimirAmigos()
-                        +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\n";
+                        +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
             }
         }
-        datTotEbony += datosEbony;
+        datosEbony += "\n";
+        datTotEbony += datosEbony+"\n";
     }
 }
 
@@ -95,7 +96,7 @@ void EliminarHumanos::eliminarBlackDwarf(ListaDoble* eliminar, int veces, string
     buff << veces;
     string _veces = buff.str();
     string texto = "Soy Black Dwarf mate a este humano por practicar"+
-            deporte+" "+_veces+" por semana";
+            deporte+" "+_veces+" por semana"+"\t";
     int elim = eliminar->largo()*0.5;
     for (int i = 0; i < elim; i++ ) {
         int pos = int(QRandomGenerator::global()->bounded(0, eliminar->largo()-1));
@@ -125,7 +126,7 @@ Heap* EliminarHumanos::crearListaCorvus(ListaDoble* mundo){
 }
 
 void EliminarHumanos::eliminarCorvus(Heap* eliminar,ListaDoble* mundo){
-    string texto = "Soy Corvus Glaive mate a este humano por tener muchos pecados";
+    string texto = "Soy Corvus Glaive mate a este humano por tener muchos pecados\t";
     int personasElim = eliminar->size * 0.05;
     for (int i = 0; i <= personasElim ; i++) {
         NodoPersona* temp = mundo->BuscarEnPos(eliminar->extractMaxCorvusGlaive());
@@ -152,7 +153,7 @@ Heap* EliminarHumanos::crearListaMidnight(ListaDoble* mundo){
 }
 
 void EliminarHumanos::eliminarMidnight(Heap* eliminar,ListaDoble* mundo){
-    string texto = "Soy Midnight mate a este humano por tener pocas acciones buenas";
+    string texto = "Soy Midnight mate a este humano por tener pocas acciones buenas\t";
     int personasElim = eliminar->size * 0.05;
     for (int i = 0; i <= personasElim ; i++) {
         NodoPersona* temp = mundo->BuscarEnPos(eliminar->extractMaxMidnight());

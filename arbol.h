@@ -25,6 +25,8 @@ struct NodoArbol{
 struct Arbol{
     NodoArbol* raiz;
     QList<int> posiciones = {};
+    string arbolS;
+
     Arbol();
 
     int obtenerPor(int largoLista);

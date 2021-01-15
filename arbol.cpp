@@ -91,9 +91,16 @@ void Arbol::print2DUtil(NodoArbol* root, int space){
 
     // Print current node after space
     // count
+    arbolS += "\n";
     cout<<endl;
-    for (int i = COUNT; i < space; i++)
+    for (int i = COUNT; i < space; i++){
+        arbolS += " ";
         cout<<" ";
+    }
+    stringstream buff;
+    buff << root->persona->persona->ID;
+    string id = buff.str();
+    arbolS += id+"\n";
     cout<<root->persona->persona->ID<<"\n";
 
     // Process left child

@@ -27,8 +27,8 @@
    <widget class="QLineEdit" name="entBuscar">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>330</y>
+      <x>10</x>
+      <y>520</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -37,9 +37,9 @@
    <widget class="QComboBox" name="cmbBuscarPor">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>290</y>
-      <width>131</width>
+      <x>10</x>
+      <y>480</y>
+      <width>221</width>
       <height>31</height>
      </rect>
     </property>
@@ -47,14 +47,174 @@
    <widget class="QPushButton" name="btnBuscar">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>310</y>
+      <x>150</x>
+      <y>520</y>
       <width>80</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Buscar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnMostrarArbol">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>260</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mostrar Arbol</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="txtArbol">
+    <property name="geometry">
+     <rect>
+      <x>445</x>
+      <y>10</y>
+      <width>291</width>
+      <height>231</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cmbEliminar">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>480</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Corvus Glaive</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Midnight</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Nebula</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ebony Maw</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Black Dwarf</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="entEliminar">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>520</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnEliminar">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>520</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Eliminar</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cmbSalvar">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>480</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Ant Man</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ironman</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Thor</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Spiderman</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="btnSalvar">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>520</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Salvar</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="entSalvar">
+    <property name="geometry">
+     <rect>
+      <x>522</x>
+      <y>520</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="entCantHumanos">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>340</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>10000</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnCrearHumanos">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>340</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Crear humanos</string>
     </property>
    </widget>
   </widget>

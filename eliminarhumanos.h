@@ -5,12 +5,16 @@ struct ListaDoble;
 #include "listadoble.h"
 #include "listadeportes.h"
 #include "heap.h"
+
+#include <QDate>
+#include <QTime>
 #include <cstdlib>
 #include <iostream>
 using namespace std;
 
 struct EliminarHumanos{
     int maximoNebula;
+    QTime time = QTime();
 
     string datosNebula = "";
     string datTotNebula = "";

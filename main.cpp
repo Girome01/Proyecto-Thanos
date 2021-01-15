@@ -2,10 +2,10 @@
 #include "personatest.h"
 #include "mainwindow.h"
 #include "heap.h"
-#include "enviarcorreo.h"
 
 #include <QApplication>
 
+#include <QDate>
 #include<iostream>
 #include<stdlib.h>
 #include<fstream>
@@ -14,7 +14,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;/*
+   /* MainWindow w;
     PersonaTest* personaT=new PersonaTest;
     personaT->pruebaPersona();
     //w.show();*/
@@ -47,8 +47,10 @@ int main(int argc, char *argv[])
         cout<<"Respuesta correcta"<<endl;
     }*/
 
-    EnviarCorreo* correo = new EnviarCorreo();
-    correo->enviar("Hola sirvio el enviar corre");
+    QString m_date = QDate::currentDate().toString();
+    string str = m_date.toStdString();
+    cout<<str<<endl;
+
 
     return a.exec();
 }
