@@ -10,7 +10,9 @@ NodoPersona* EliminarHumanos::obtenerHumNebula(ListaDoble* lista){
 }
 
 void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
-    string texto = "Soy Nebula mate a esre humano por ser amigo de "+
+    QString m_time = QTime::currentTime().toString();
+    string time = m_time.toStdString();
+    string texto = date+" "+time+" Soy Nebula mate a esre humano por ser amigo de "+
             eliminar->persona->imprimirAmigos()+"\t";
     if(maximoNebula > 0){
         if( eliminar->persona->amigos != NULL){
@@ -19,7 +21,9 @@ void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
                 if(matar->persona->vivo){
                     matar->persona->vivo = false;
                     matar->persona->eliminado->insertarAlFinal(texto);
-                    string mato = "Mate al humano "+matar->persona->imprimirAmigos();
+                    QString m_time = QTime::currentTime().toString();
+                    string time = m_time.toStdString();
+                    string mato = date +" "+ time+ " Mate al humano "+matar->persona->imprimirAmigos();
                     datosNebula += mato+"\n";
                     datTotNebula += mato+"\n";
                 }
@@ -43,27 +47,37 @@ NodoPersona* EliminarHumanos::obtenerHumEbony(ListaDoble* lista){
 }
 
 void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
-    string texto = "Soy Eboony Maw Mate a este humano por ser familia de "+
+    QString m_time = QTime::currentTime().toString();
+    string time = m_time.toStdString();
+    string texto = date +" "+time+ " Soy Eboony Maw Mate a este humano por ser familia de "+
             eliminar->persona->imprimirAmigos()+"\t";
     if(eliminar != NULL){
         eliminar->persona->padre->vivo = false;
         eliminar->persona->padre->eliminado->insertarAlFinal(texto);
-        datosEbony +="Mate al humano "+ eliminar->persona->padre->imprimirAmigos()
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        datosEbony +=date +" "+time+ " Mate al humano "+ eliminar->persona->padre->imprimirAmigos()
                 +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
         eliminar->persona->esposa->vivo = false;
         eliminar->persona->esposa->eliminado->insertarAlFinal(texto);
-        datosEbony +="Mate al humano "+ eliminar->persona->esposa->imprimirAmigos()
+        m_time = QTime::currentTime().toString();
+        time = m_time.toStdString();
+        datosEbony +=date +" "+time+ " Mate al humano "+ eliminar->persona->esposa->imprimirAmigos()
                 +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
         eliminar->persona->madre->vivo = false;
         eliminar->persona->madre->eliminado->insertarAlFinal(texto);
-        datosEbony +="Mate al humano "+ eliminar->persona->madre->imprimirAmigos()
+        m_time = QTime::currentTime().toString();
+        time = m_time.toStdString();
+        datosEbony +=date +" " +time+ " Mate al humano "+ eliminar->persona->madre->imprimirAmigos()
                 +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
         if(eliminar->persona->hijos != NULL){
             for(int i = 0; i  < eliminar->persona->hijos->largo(); i++){
                 NodoPersona* temp = eliminar->persona->hijos->BuscarEnPos(i);
                 temp->persona->vivo = false;
                 temp->persona->eliminado->insertarAlFinal(texto);
-                datosEbony +="Mate al humano "+ temp->persona->imprimirAmigos()
+                QString m_time = QTime::currentTime().toString();
+                string time = m_time.toStdString();
+                datosEbony +=date +" "+time+ " Mate al humano "+ temp->persona->imprimirAmigos()
                         +" por ser familia de "+eliminar->persona->imprimirAmigos()+"\t";
             }
         }
@@ -95,7 +109,9 @@ void EliminarHumanos::eliminarBlackDwarf(ListaDoble* eliminar, int veces, string
     stringstream buff;
     buff << veces;
     string _veces = buff.str();
-    string texto = "Soy Black Dwarf mate a este humano por practicar"+
+    QString m_time = QTime::currentTime().toString();
+    string time = m_time.toStdString();
+    string texto = date +" "+time+ " Soy Black Dwarf mate a este humano por practicar"+
             deporte+" "+_veces+" por semana"+"\t";
     int elim = eliminar->largo()*0.5;
     for (int i = 0; i < elim; i++ ) {
@@ -103,15 +119,32 @@ void EliminarHumanos::eliminarBlackDwarf(ListaDoble* eliminar, int veces, string
         NodoPersona* temp = eliminar->BuscarEnPos(pos);
         temp->persona->vivo = false;
         temp->persona->eliminado->insertarAlFinal(texto);
-        datosBlack += "Mate al humano "+temp->persona->imprimirAmigos()+"por practicar"+
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        datosBlack += date +" "+time+ " Mate al humano "+temp->persona->imprimirAmigos()+"por practicar"+
                 deporte+" "+_veces+" por semana"+"\n";
     }
     datTotBlack += datosBlack;
 
 }
 
-void EliminarHumanos::BlackDwarf(int veces /*, ListaDeportes* deportes*/, ListaDoble* mundo){
-    string deporte = "";
+vector<string>EliminarHumanos::generarlistaNombres(string texto){
+    std::vector<string> listaNombres;
+    std::string delimiter = "-";
+
+    size_t last = 0;
+    size_t next = 0;
+    while ((next = texto.find(delimiter, last)) != string::npos) {
+        //cout << texto.toStdString().substr(last, next-last) << endl;
+        listaNombres.push_back(texto.substr(last, next-last));
+        last = next + 1;
+    }
+    return listaNombres;
+}
+
+void EliminarHumanos::BlackDwarf(int veces , ListaDoble* mundo){
+    int deportePractica = int(QRandomGenerator::global()->bounded(0, 163));
+    string deporte = generarlistaNombres("").at(deportePractica);
     datosBlack = "";
     ListaDoble* eliminar = buscarHumBlack(veces,deporte,mundo);
     eliminarBlackDwarf(eliminar,veces, deporte);
@@ -126,13 +159,17 @@ Heap* EliminarHumanos::crearListaCorvus(ListaDoble* mundo){
 }
 
 void EliminarHumanos::eliminarCorvus(Heap* eliminar,ListaDoble* mundo){
-    string texto = "Soy Corvus Glaive mate a este humano por tener muchos pecados\t";
+    QString m_time = QTime::currentTime().toString();
+    string time = m_time.toStdString();
+    string texto =date +" "+time+ " Soy Corvus Glaive mate a este humano por tener muchos pecados\t";
     int personasElim = eliminar->size * 0.05;
     for (int i = 0; i <= personasElim ; i++) {
         NodoPersona* temp = mundo->BuscarEnPos(eliminar->extractMaxCorvusGlaive());
         temp->persona->vivo = false;
         temp->persona->eliminado->insertarAlFinal(texto);
-        datosCorvus += "Mate a este humano "+temp->persona->imprimirAmigos()+"\n";
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        datosCorvus += date +" "+time+ " Mate a este humano "+temp->persona->imprimirAmigos()+"\n";
     }
     datTotCorvus += datosCorvus;
 
@@ -153,13 +190,17 @@ Heap* EliminarHumanos::crearListaMidnight(ListaDoble* mundo){
 }
 
 void EliminarHumanos::eliminarMidnight(Heap* eliminar,ListaDoble* mundo){
-    string texto = "Soy Midnight mate a este humano por tener pocas acciones buenas\t";
+    QString m_time = QTime::currentTime().toString();
+    string time = m_time.toStdString();
+    string texto = date +" "+time+ " Soy Midnight mate a este humano por tener pocas acciones buenas\t";
     int personasElim = eliminar->size * 0.05;
     for (int i = 0; i <= personasElim ; i++) {
         NodoPersona* temp = mundo->BuscarEnPos(eliminar->extractMaxMidnight());
         temp->persona->vivo = false;
         temp->persona->eliminado->insertarAlFinal(texto);
-        datosMidnight += "Mate a este humano "+temp->persona->imprimirAmigos()+"\n";
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        datosMidnight += date +" "+time+ " Mate a este humano "+temp->persona->imprimirAmigos()+"\n";
     }
     datTotMidnight += datosMidnight;
 }

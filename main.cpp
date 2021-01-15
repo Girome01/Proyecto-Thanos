@@ -51,6 +51,9 @@ int main(int argc, char *argv[])
     string str = m_date.toStdString();
     cout<<str<<endl;
 
+    QString m_time = QTime::currentTime().toString();
+    string time = m_time.toStdString();
+    cout<< time << endl;
 
     return a.exec();
 }

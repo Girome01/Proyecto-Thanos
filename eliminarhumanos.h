@@ -14,7 +14,8 @@ using namespace std;
 
 struct EliminarHumanos{
     int maximoNebula;
-    QTime time = QTime();
+    QString m_date = QDate::currentDate().toString();
+    string date = m_date.toStdString();
 
     string datosNebula = "";
     string datTotNebula = "";
@@ -43,7 +44,7 @@ struct EliminarHumanos{
 
     ListaDoble* buscarHumBlack(int veces, string deporte, ListaDoble* mundo);
     void eliminarBlackDwarf(ListaDoble* eliminar, int veces, string deporte);
-    //Falta agregar uno funcion que obtenga un deporte random
+    vector<string>generarlistaNombres(string texto);
     void BlackDwarf(int veces /*, ListaDeportes* deportes*/, ListaDoble* mundo);
 
     Heap* crearListaCorvus(ListaDoble* mundo);
