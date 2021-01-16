@@ -6,6 +6,7 @@
 
 #include <QApplication>
 
+#include <QDate>
 #include<iostream>
 #include<stdlib.h>
 #include<fstream>
@@ -14,7 +15,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;/*
+   /* MainWindow w;
     PersonaTest* personaT=new PersonaTest;
     personaT->pruebaPersona();
     //w.show();*/
@@ -25,8 +26,6 @@ int main(int argc, char *argv[])
     cout<<"Num total "<<total<<endl;
     arbol->crearArray(total, 1350);
     arbol->imprimirArray();
-    */
-    /*
     Heap* P = new Heap();
     if(P->isEmpty()){
         cout<<"Respuesta correcta"<<endl;
@@ -46,7 +45,14 @@ int main(int argc, char *argv[])
         cout<<"Error con nuestra funcion isEmpty"<<endl;
     }else{
         cout<<"Respuesta correcta"<<endl;
-    }
-    */
+    }*/
+
+    QString m_date = QDate::currentDate().toString();
+    string str = m_date.toStdString();
+    cout<<str<<endl;
+
+    QString m_time = QTime::currentTime().toString();
+    string time = m_time.toStdString();
+    cout<< time << endl;
 
 }
