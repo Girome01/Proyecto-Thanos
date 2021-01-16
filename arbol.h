@@ -15,6 +15,11 @@ struct NodoArbol{
        NodoPersona* persona;
        NodoArbol* hijoizquierdo;
        NodoArbol* hijoderecho;
+       int cantRecorridoHormiga=0;
+       int marcaNodo;
+       bool hormiga=false;
+       bool detonarBomba=false;
+       bool telaranna=false;
 
        NodoArbol(NodoPersona* _persona){
             persona = _persona;
@@ -38,7 +43,7 @@ struct Arbol{
     void inOrden(NodoArbol* nodo);
     void print2DUtil(NodoArbol* root, int space);
     void print2D(NodoArbol *root);
-
+    int profundidad(NodoArbol *raiz);
 };
 
 #endif // ARBOL_H

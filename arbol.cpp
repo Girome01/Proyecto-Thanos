@@ -111,5 +111,18 @@ void Arbol::print2DUtil(NodoArbol* root, int space){
 void Arbol::print2D(NodoArbol *root){
     // Pass initial space count as 0
     print2DUtil(root, 0);
+  
+int Arbol::profundidad(NodoArbol *raiz){
+    if (raiz == NULL)
+           return 0;
+   else {
+       int alturaIzq = profundidad(raiz->hijoizquierdo);
+       int alturaDer = profundidad(raiz->hijoizquierdo);
+       if (alturaIzq >= alturaDer)
+            return alturaIzq + 1;
+       else
+            return alturaDer + 1;
+   }
+
 }
 
