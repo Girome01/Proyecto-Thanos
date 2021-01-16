@@ -2,7 +2,6 @@
 #include "personatest.h"
 #include "mainwindow.h"
 #include "heap.h"
-#include "enviarcorreo.h"
 
 #include <QApplication>
 
@@ -54,5 +53,18 @@ int main(int argc, char *argv[])
     QString m_time = QTime::currentTime().toString();
     string time = m_time.toStdString();
     cout<< time << endl;
+
+
+
+    string nombreArchivo="pls.txt";
+    string exe="D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe";
+    string q=" D:/Documents/ProyectoThanos/ProyectoThanos/";
+    q.append(nombreArchivo);
+    exe.append(q);
+    exe.append(" 0 1 ");
+    //system("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe D:/Documents/ProyectoThanos/ProyectoThanos/pls.txt 0 1 ");
+    system(exe.c_str());
+
+    return 1;
 
 }

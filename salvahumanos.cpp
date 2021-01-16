@@ -9,6 +9,7 @@ salvaHumanos::salvaHumanos(Arbol *arbol)
 
 void salvaHumanos::recorrerArbolHormigas(int cantidadHorm){ //Primera funcion de Antman
     for(int i=0; i<cantidadHorm;i++){ //Cantidad de hormigas que se desean crear, INPUT
+        recorridoHormiga+="Soy la hormiga "+to_string(i)+" y este fue mi recorrido: \n";
         NodoArbol *temp=arbolHumanidad->raiz; //Raiz
         while(temp!=NULL){
             int indice=int(QRandomGenerator::global()->bounded(0, 2)); //Un random de 0 a 1
@@ -21,6 +22,8 @@ void salvaHumanos::recorrerArbolHormigas(int cantidadHorm){ //Primera funcion de
                 temp->hormiga=true; //Contiene una feromona
                 temp=temp->hijoderecho; //Sino, por la derecha
             }
+            recorridoHormiga+=to_string(temp->marcaNodo)+"-";
+
         }
     }
 }
@@ -43,7 +46,9 @@ NodoArbol * salvaHumanos::mejorCaminoAntMan(){ //Tercera funcion
 
 void salvaHumanos::salvarAntman(){ //Segunda funcion
     NodoArbol *destino=mejorCaminoAntMan();
-    NodoPersona *inicio=mejorCaminoAntMan()->persona;
+    NodoArbol *inicioArbol=mejorCaminoAntMan();
+    ramasSeleccionadas+="Las ramas seleccionadas son: "+to_string(inicioArbol->marcaNodo)+" y "+to_string(destino->marcaNodo);
+    NodoPersona *inicio=inicioArbol->persona;
     if(destino!=NULL && inicio!=NULL){
         while(inicio->persona->ID!=destino->persona->persona->ID){
                 if(!inicio->persona->vivo){

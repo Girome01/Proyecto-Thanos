@@ -126,3 +126,19 @@ int Arbol::profundidad(NodoArbol *raiz){
 
 }
 
+void Arbol::encontrarNiveles(NodoArbol *nodoA, int clevel,int nivelSalvado, int nivelMarcado){
+    if (clevel == nivelSalvado) {
+      nodoA->marcaNodo=nivelMarcado;
+    }else {
+      if (nodoA->hijoizquierdo != NULL)
+        encontrarNiveles(nodoA->hijoizquierdo, clevel + 1, nivelSalvado, nivelMarcado + 1);
+      }if (nodoA->hijoderecho != NULL)
+        encontrarNiveles(nodoA->hijoderecho, clevel + 1, nivelSalvado,nivelMarcado + 1 );
+ }
+
+void Arbol::marcarNiveles(){
+    for(int i=0;i<profundidad(raiz);i++){
+        encontrarNiveles(raiz, 0, i, 1);
+    }
+}
+

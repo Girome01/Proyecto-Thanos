@@ -44,6 +44,8 @@ struct Arbol{
     void print2DUtil(NodoArbol* root, int space);
     void print2D(NodoArbol *root);
     int profundidad(NodoArbol *raiz);
+    void encontrarNiveles (NodoArbol *nodoA, int clevel,int nivelSalvado, int nivelMarcado);
+    void marcarNiveles();
 };
 
 #endif // ARBOL_H

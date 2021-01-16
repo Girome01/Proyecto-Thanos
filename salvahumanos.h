@@ -11,6 +11,16 @@ struct salvaHumanos{
     ListaSalvaHumanos *listaHumanidad;
     int cantidadTelarannas;
 
+    //ANTMAN
+    string recorridoHormiga="";
+    string ramasSeleccionadas="";
+    string rangoSeleccionado="";
+    string datosAntman = "";
+    string datTotAntman = "";
+    int salvAntman = 0;
+    int totalAntman = 0;
+
+
     salvaHumanos(Arbol *arbol);
 
     void recorrerArbolHormigas(int cantidadHorm);
