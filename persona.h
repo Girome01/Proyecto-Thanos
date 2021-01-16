@@ -11,6 +11,7 @@ struct Randomize;
 #include "listasimple.h"
 #include "randomize.h"
 #include "listadeportes.h"
+#include "listaelimsalv.h"
 
 #include <sstream>
 #include <QList>
@@ -45,6 +46,9 @@ struct Persona{
     Persona* padre;
     Persona* madre;
     Randomize* random;
+
+    ListaElimSalv* eliminado;
+    ListaElimSalv* revivido;
 
     Persona();
 

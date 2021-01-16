@@ -3,6 +3,7 @@
 
 struct ListaDoble;
 #include "listadoble.h"
+#define COUNT 10
 
 #include<iostream>
 #include<stdlib.h>
@@ -29,6 +30,8 @@ struct NodoArbol{
 struct Arbol{
     NodoArbol* raiz;
     QList<int> posiciones = {};
+    string arbolS;
+
     Arbol();
 
     int obtenerPor(int largoLista);
@@ -38,6 +41,8 @@ struct Arbol{
     QList<int> listaMenores(QList<int> _posiciones, int pos);
     QList<int> listaMayores(QList<int> _posiciones, int pos);
     void inOrden(NodoArbol* nodo);
+    void print2DUtil(NodoArbol* root, int space);
+    void print2D(NodoArbol *root);
     int profundidad(NodoArbol *raiz);
 };
 

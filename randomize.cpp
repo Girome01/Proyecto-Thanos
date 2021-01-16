@@ -1,12 +1,12 @@
 #include "randomize.h"
-
+#include "persona.h"
 Randomize::Randomize()
 {
 
 }
 
 string Randomize::generarNombresM(vector<string> listaNombresM){
-    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    int indice=int(QRandomGenerator::global()->bounded(0, 10)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
     for (int i=0; i<int(listaNombresM.size());i++){
         if(i==indice){
             string nombre=listaNombresM.at(i); //VECTOR
@@ -17,7 +17,7 @@ string Randomize::generarNombresM(vector<string> listaNombresM){
 }
 
 string Randomize::generarNombresF(vector<string> listaNombresF){
-    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    int indice=int(QRandomGenerator::global()->bounded(0, 10)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
     for (int i=0; i<int(listaNombresF.size());i++){
         if(i==indice){
             string nombre=listaNombresF.at(i); //VECTOR
@@ -28,7 +28,7 @@ string Randomize::generarNombresF(vector<string> listaNombresF){
 }
 
 string Randomize::generarApellidos(vector<string> listaApellidos){
-    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    int indice=int(QRandomGenerator::global()->bounded(0, 25)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
     for (int i=0; i<int(listaApellidos.size()); i++){
         if(i==indice){
             string nombre=listaApellidos.at(i); //VECTOR
@@ -93,7 +93,7 @@ string Randomize::generarContinente(){
 }
 
 string Randomize::generarPais(vector<string> listaPaises){
-    int indice=int(QRandomGenerator::global()->bounded(0, 4)); //CAMBIAR POR 100 CUANDO YA ESTEN LOS 100
+    int indice=int(QRandomGenerator::global()->bounded(0, 194)); //CAMBIAR POR 100 CUANDO YA ESTEN LOS 100
     for (int i=0; i<=int(listaPaises.size()); i++){
         if(i==indice){
             string nombreP=listaPaises.at(i); //VECTOR
@@ -113,17 +113,17 @@ void Randomize::generarPecados(ListaPecVir *listapecvir){
 }
 
 bool Randomize::esHijoPosible(Persona *hijo, Persona *padre){
-      if(2021-std::stoi(padre->nacAno)>=20 && 2021-std::stoi(padre->nacAno)<=24
-         && 2021-std::stoi(hijo->nacAno)<=4){
+      if(2020-std::stoi(padre->nacAno)>=20 && 2020-std::stoi(padre->nacAno)<=24
+         && 2020-std::stoi(hijo->nacAno)<=4){
           return true;
-      }else if(2021-std::stoi(padre->nacAno)>=25 && 2021-std::stoi(padre->nacAno)<=34
-         && 2021-std::stoi(hijo->nacAno)<=14){
+      }else if(2020-std::stoi(padre->nacAno)>=25 && 2020-std::stoi(padre->nacAno)<=34
+         && 2020-std::stoi(hijo->nacAno)<=14){
           return true;
-      }else if(2021-std::stoi(padre->nacAno)>=35 && 2021-std::stoi(padre->nacAno)<=64
-         && 2021-std::stoi(hijo->nacAno)>=15 && 2021-std::stoi(hijo->nacAno)<=34 ){
+      }else if(2020-std::stoi(padre->nacAno)>=35 && 2020-std::stoi(padre->nacAno)<=64
+         && 2020-std::stoi(hijo->nacAno)>=15 && 2020-std::stoi(hijo->nacAno)<=34 ){
           return true;
-      }else if(2021-std::stoi(padre->nacAno)<=65
-         && 2021-std::stoi(hijo->nacAno)>=25 && 2021-std::stoi(hijo->nacAno)<=64 ){
+      }else if(2020-std::stoi(padre->nacAno)<=65
+         && 2020-std::stoi(hijo->nacAno)>=25 && 2020-std::stoi(hijo->nacAno)<=64 ){
          return true;
       }else{
           return false;
@@ -166,12 +166,14 @@ string Randomize::aleatorioMes(){
 }
 
 int Randomize::aletorioAno(){
+
     int ano=int(QRandomGenerator::global()->bounded(1900,2021));
+    //`int edad = 2021-ano;
     return ano;
 }
 
 bool Randomize::aleatorioGenero(){
-    std::uniform_int_distribution<int> genero1(1,2);
+     std::uniform_int_distribution<int> genero1(1,2);
     int genero= genero1(*QRandomGenerator::global());
     if(genero==1){
         cout << "El genero de la persona es masculino:" << genero;
@@ -284,4 +286,79 @@ void Randomize::agregarAmigos(ListaDoble *personas,  Persona *personaActual){ //
     }
 }
 
+string Randomize::generarProfesion(vector<string> listaProfesion){
+    int indice=int(QRandomGenerator::global()->bounded(0, 90));
+    for (int i=0; i<int(listaProfesion.size());i++){
+        if(i==indice){
+            string profesion=listaProfesion.at(i);
+            return profesion;
+        }
+    }
+    return 0;
+}
+
+string Randomize::generarCreencia(vector<string> listaCreencia){
+    int indice=int(QRandomGenerator::global()->bounded(0, 16));
+    for (int i=0; i<int(listaCreencia.size());i++){
+        if(i==indice){
+            string nombre=listaCreencia.at(i);
+            return nombre;
+        }
+    }
+    return 0;
+}
+/*
+string Randomize::generarPaisesVisitados(vector<string> listaPaisesVisitados){
+    int cantPaisesVisitados=int(QRandomGenerator::global()->bounded(0, 30));
+    for(int i = 0; i <=){
+        for (int i=0; i<=int(listaPaisesVisitados.size()); i++){
+            int PaisVisitado=int(QRandomGenerator::global()->bounded(0, 194));
+            if(i==PaisVisitado){
+                string visitado=listaPaisesVisitados.at(i); //VECTOR
+                return visitado;
+            }
+        }
+        return 0;
+    }
+    return 0;
+
+}
+
+                std::vector<string> listaApellidos;
+                listaApellidos=generarlistaNombres(texto2);.
+
+*/
+
+string Randomize::generarPaisesVisitados(vector<string> listaPaisesVisitados){
+    int indice = int(QRandomGenerator::global()->bounded(0, 30));
+    if(indice == 0){
+        ListaSimple().insertarAlFinal("No ha visitado ningún país");
+    }//if
+    else{
+        for ( int j=0; j <= indice; j++ ){
+            int visitado= int(QRandomGenerator::global()->bounded(0, 194));
+            string visi=listaPaisesVisitados.at(visitado);
+            ListaSimple().insertarAlFinal(visi);
+        }//for
+    }//else
+    return 0;
+}//generarPaisesVisiatdos
+
+string Randomize::generarDeportes(vector<string> listaDeportes){
+    int indice = int(QRandomGenerator::global()->bounded(0, 7));
+    if(indice == 0){
+        ListaDeportes().insertarAlFinal(indice,"No practica ningún deporte en la semana");
+    }//if
+    else{
+        for (int i=0; i<=indice;i++){
+            int deportePractica = int(QRandomGenerator::global()->bounded(0, 163));
+            int vecesSemana = int(QRandomGenerator::global()->bounded(1,7));
+            string deporte=listaDeportes.at(deportePractica);
+            ListaDeportes().insertarAlFinal(vecesSemana,deporte);
+            return deporte;
+
+        }//for
+    }//else
+    return 0;
+}//generarDeportes
 

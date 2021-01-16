@@ -9,7 +9,7 @@ using namespace std;
 struct Archivo{
     Archivo();
 
-    //QT ES UNA MIERDA 3.0
+    //QT ES UNA MIERDA 4.0
     //Hi :)
     //TKM GIL
     //tkm gil
