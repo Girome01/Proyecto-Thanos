@@ -54,8 +54,6 @@ int main(int argc, char *argv[])
     string time = m_time.toStdString();
     cout<< time << endl;
 
-
-
     string nombreArchivo="pls.txt";
     string exe="D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe";
     string q=" D:/Documents/ProyectoThanos/ProyectoThanos/";
