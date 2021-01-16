@@ -31,6 +31,7 @@ struct Arbol{
     NodoArbol* raiz;
     QList<int> posiciones = {};
     string arbolS;
+    int tempNumNivel=0;
 
     Arbol();
 
@@ -44,6 +45,8 @@ struct Arbol{
     void print2DUtil(NodoArbol* root, int space);
     void print2D(NodoArbol *root);
     int profundidad(NodoArbol *raiz);
+    void encontrarNiveles (NodoArbol *nodoA, int clevel,int nivelSalvado);
+    void marcarNiveles();
 };
 
 #endif // ARBOL_H

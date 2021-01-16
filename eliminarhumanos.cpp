@@ -12,7 +12,7 @@ NodoPersona* EliminarHumanos::obtenerHumNebula(ListaDoble* lista){
 void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
     QString m_time = QTime::currentTime().toString();
     string time = m_time.toStdString();
-    string texto = date+" "+time+" Soy Nebula mate a esre humano por ser amigo de "+
+    string texto = date+" "+time+" Soy Nebula mate a este humano por ser amigo de "+
             eliminar->persona->imprimirAmigos()+"\t";
     if(maximoNebula > 0){
         if( eliminar->persona->amigos != NULL){

@@ -111,7 +111,8 @@ void Arbol::print2DUtil(NodoArbol* root, int space){
 void Arbol::print2D(NodoArbol *root){
     // Pass initial space count as 0
     print2DUtil(root, 0);
-  
+}
+
 int Arbol::profundidad(NodoArbol *raiz){
     if (raiz == NULL)
            return 0;
@@ -124,5 +125,22 @@ int Arbol::profundidad(NodoArbol *raiz){
             return alturaDer + 1;
    }
 
+}
+
+void Arbol::encontrarNiveles(NodoArbol *nodoA, int clevel,int nivelEscogido){
+    if (clevel == nivelEscogido) {
+      tempNumNivel++;
+      nodoA->marcaNodo=tempNumNivel;
+    }else {
+      if (nodoA->hijoizquierdo != NULL)
+        encontrarNiveles(nodoA->hijoizquierdo, clevel + 1, nivelEscogido);
+      }if (nodoA->hijoderecho != NULL)
+        encontrarNiveles(nodoA->hijoderecho, clevel + 1, nivelEscogido);
+ }
+
+void Arbol::marcarNiveles(){
+    for(int i=0;i<profundidad(raiz);i++){
+        encontrarNiveles(raiz, 0, i);
+    }
 }
 
