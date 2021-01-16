@@ -28,7 +28,6 @@ SOURCES += \
     listasimple.cpp \
     main.cpp \
     mainwindow.cpp \
-    mimefile.cpp \
     persona.cpp \
     personatest.cpp \
     randomize.cpp \
