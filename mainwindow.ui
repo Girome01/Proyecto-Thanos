@@ -33,6 +33,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
    </widget>
    <widget class="QComboBox" name="cmbBuscarPor">
     <property name="geometry">
@@ -43,6 +48,36 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>Humano Por ID</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Humanos Vivos,Salvados,Eliminados</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Familia Por ID</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amigos por ID</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Humanos por Deporte</string>
+     </property>
+    </item>
    </widget>
    <widget class="QPushButton" name="btnBuscar">
     <property name="geometry">
@@ -53,6 +88,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Buscar</string>
     </property>
@@ -60,11 +100,16 @@
    <widget class="QPushButton" name="btnMostrarArbol">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>610</x>
       <y>260</y>
-      <width>91</width>
+      <width>121</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Mostrar Arbol</string>
@@ -84,10 +129,15 @@
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>480</y>
+      <y>440</y>
       <width>211</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <item>
      <property name="text">
@@ -114,25 +164,40 @@
       <string>Black Dwarf</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Thanos</string>
+     </property>
+    </item>
    </widget>
-   <widget class="QLineEdit" name="entEliminar">
+   <widget class="QLineEdit" name="entEliminarFecha">
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>520</y>
+      <y>480</y>
       <width>121</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QPushButton" name="btnEliminar">
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>520</y>
+      <y>500</y>
       <width>81</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Eliminar</string>
@@ -146,6 +211,11 @@
       <width>191</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <item>
      <property name="text">
@@ -177,6 +247,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Salvar</string>
     </property>
@@ -190,15 +265,25 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
    </widget>
    <widget class="QLineEdit" name="entCantHumanos">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>340</y>
+      <y>350</y>
       <width>131</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>10000</string>
@@ -208,13 +293,181 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>340</y>
-      <width>91</width>
+      <y>350</y>
+      <width>111</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Crear humanos</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="entElimNivel">
+    <property name="geometry">
+     <rect>
+      <x>262</x>
+      <y>520</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cmbEnviarCorreo">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>350</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>Enviar Eliminar Humanos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Enviar Salvar Humanos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Enviar Todo la Humanidad</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="btnEnviarCorreo">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>390</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Enviar Correo</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblCrearhumanos">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>292</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Crear Humanos</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblBuscarHumanos">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>432</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Buscar Humanos</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblElimHumanos">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>392</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Eliminar Humanos</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblSalvarHumanos">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>430</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Salvar Humanos</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblEnviarCorreo">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>312</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Enviar correo</string>
     </property>
    </widget>
   </widget>

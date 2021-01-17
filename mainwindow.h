@@ -35,6 +35,10 @@ private slots:
 
     void on_btnCrearHumanos_clicked();
 
+    void on_btnEnviarCorreo_clicked();
+
+    void on_btnBuscar_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
