@@ -16,13 +16,13 @@ string ConsultaMundo::consultaHumanoID(int idConsultaHumano, NodoArbol *arbol){
     arbol = arbolPersonas->raiz;
     
     while (arbol != NULL) {
-        if (arbol->persona->persona->ID==idConsultaHumano) { //si el idConsultaHumano es igual al elemento
+        if (arbol->persona->persona->ID == idConsultaHumano) { //si el idConsultaHumano es igual al elemento
             //aqui se deberia imprimir toda la informacion de la persona consultada
-            cout<< "La persona que se intento buscar se encuentra entre las personas creadas en el arbol"<<endl<<endl;
+            /*cout<< "La persona que se intento buscar se encuentra entre las personas creadas en el arbol"<<endl<<endl;
             cout<<arbol->persona->persona->nombre<<" "<<arbol->persona->persona->apellido<<"   "<<arbol->persona->persona->ID<<" \n"<< arbol->persona->persona->continenteVive<<"  "<<arbol->persona->persona->nacDia<<"/"<<arbol->persona->persona->nacMes<<"/"<<arbol->persona->persona->nacAno<< "   " <<arbol->persona->persona->rangoEtario<< "   "<<arbol->persona->persona->creencia <<endl<< "Profesion: "<< arbol->persona->persona->profesion << endl<< "Vive en  "<<arbol->persona->persona->paisVive<<endl<<arbol->persona->persona->estadoMarital<<endl<<arbol->persona->persona->pecados->imprimir()<<endl;
-            cout<<endl;
-            estaIdArbol=true;
-            break;
+            cout<<endl;*/
+            estaIdArbol = true;
+            return arbol->persona->persona->imprimir(); //Retorna la info de la persona
             
         }
         else if (arbol->persona->persona->ID < idConsultaHumano) { //se llama recursivamente a la funcion
@@ -39,13 +39,13 @@ string ConsultaMundo::consultaHumanoID(int idConsultaHumano, NodoArbol *arbol){
 
          while (tempPrueba != NULL) {
              if (tempPrueba->persona->ID == idConsultaHumano) {
-                 cout<<endl<<"//////////////////////////////////////";
+                 /*cout<<endl<<"//////////////////////////////////////";
                  cout<< "La persona que se intento buscar se encuentra entre las personas creadas en lista"<<endl<<endl;
                  //cout<<endl<< endl << "Persona #" << numeroPersona <<endl;
                  cout<<tempPrueba->persona->nombre<<" "<<tempPrueba->persona->apellido<<"   "<<tempPrueba->persona->ID<<" \n"<<tempPrueba->persona->continenteVive<<"  "<<tempPrueba->persona->nacDia<<"/"<<tempPrueba->persona->nacMes<<"/"<<tempPrueba->persona->nacAno<< "   " <<tempPrueba->persona->rangoEtario<< "   "<<tempPrueba->persona->creencia <<endl<< "Profesion: "<< tempPrueba->persona->profesion << endl<< "Vive en  "<<tempPrueba->persona->paisVive<<endl<<tempPrueba->persona->estadoMarital<<endl<<tempPrueba->persona->pecados->imprimir()<<endl;
-                 cout<<endl;
+                 cout<<endl;*/
                  estaIdLista=true;
-                 break;
+                 return tempPrueba->persona->imprimir();//Retorna la info de la persona
  
              }
 
@@ -53,11 +53,10 @@ string ConsultaMundo::consultaHumanoID(int idConsultaHumano, NodoArbol *arbol){
          }
      }
      else if (estaIdArbol == false && estaIdLista == false) {
-         cout << "La persona que intenta buscar no esta creada ni en el arbol ni en la lista";
+        //cout << "La persona que intenta buscar no esta creada ni en el arbol ni en la lista";
+        return "No se encuentra la persona buscada";
      }
-       
-        
-    return 0;
+     return "";
 }//fin de consultaHumanoID
 
 string ConsultaMundo::consultaFamiliaID(int ConsultaFamiliaId, NodoArbol *arbol){
@@ -69,13 +68,13 @@ string ConsultaMundo::consultaFamiliaID(int ConsultaFamiliaId, NodoArbol *arbol)
     while (arbol != NULL) {
         if (arbol->persona->persona->ID==ConsultaFamiliaId) { //si el idConsultaHumano es igual al elemento
             //aqui se deberia imprimir toda la informacion de la familia de persona consultada
-            cout<< "La persona que se intento buscar se encuentra entre las personas creadas en el arbol"<<endl<<endl;
+            /*cout<< "La persona que se intento buscar se encuentra entre las personas creadas en el arbol"<<endl<<endl;
             cout << arbol->persona->persona->esposa->nombre;
             cout << arbol->persona->persona->hijos->imprimir();
-            cout<<endl;
+            cout<<endl;*/
             estaIdArbol=true;
-            return arbol->persona->persona->esposa->nombre;
-            return arbol->persona->persona->hijos->imprimir();
+            return arbol->persona->persona->esposa->imprimir()+"\n"+
+                    arbol->persona->persona->hijos->imprimir();
             
             break;
             
@@ -97,11 +96,12 @@ string ConsultaMundo::consultaFamiliaID(int ConsultaFamiliaId, NodoArbol *arbol)
                  //aqui se deberia imprimir toda la informacion de la familia de persona consultada
                  cout<<endl<<"//////////////////////////////////////";
                  cout<< "La persona que se intento buscar se encuentra entre las personas creadas en lista"<<endl<<endl;
-                 cout << tempPrueba->persona->esposa->nombre;
+                 cout << tempPrueba->persona->esposa->imprimir();
                  cout << tempPrueba->persona->hijos->imprimir();
                  cout << endl;
                  estaIdLista = true;
-                 break;
+                 return tempPrueba->persona->esposa->imprimir()+"\n"+
+                         tempPrueba->persona->hijos->imprimir();
  
              }
 
@@ -110,10 +110,11 @@ string ConsultaMundo::consultaFamiliaID(int ConsultaFamiliaId, NodoArbol *arbol)
      }
     
      else if (estaIdArbol == false && estaIdLista == false) {
-         cout << "La persona que intenta buscar no esta creada ni en el arbol ni en la lista";
+         //cout << "La persona que intenta buscar no esta creada ni en el arbol ni en la lista";
+         return "La familia buscada no se encuentra en el mundo";
      }
 
-    return 0;
+    return "";
 }//fin de consultaFailiaID
 
 string ConsultaMundo::consultaAmigosID(int consultaAmigosId, NodoArbol *arbol){
@@ -125,12 +126,11 @@ string ConsultaMundo::consultaAmigosID(int consultaAmigosId, NodoArbol *arbol){
     while (arbol != NULL) { //falta obtener el dato del arbol
         if (arbol->persona->persona->ID==consultaAmigosId) { //si el idConsultaHumano es igual al elemento
             //aqui se deberia imprimir todos los amigos de la persona consultada
-            cout<< "La persona que se intento buscar se encuentra entre las personas creadas en el arbol"<<endl<<endl;
+            /*cout<< "La persona que se intento buscar se encuentra entre las personas creadas en el arbol"<<endl<<endl;
             cout << arbol->persona->persona->amigos->imprimirAmigos(); 
-            cout<<endl;
+            cout<<endl;*/
             estaIdArbol=true;
-            
-            break;
+            return arbol->persona->persona->amigos->imprimirAmigos();
             
         }
         else if (arbol->persona->persona->ID < consultaAmigosId) { // si el elemento es mayor que la raiz se llama recursivamente a la funcion llamando al hijo derecho
@@ -148,12 +148,12 @@ string ConsultaMundo::consultaAmigosID(int consultaAmigosId, NodoArbol *arbol){
          while (tempPrueba != NULL) {
              if (tempPrueba->persona->ID == consultaAmigosId) {
                  //aqui se deberia imprimir todos los amigos de la persona consultada
-                 cout<<endl<<"//////////////////////////////////////";
+                 /*cout<<endl<<"//////////////////////////////////////";
                  cout<< "La persona que se intento buscar se encuentra entre las personas creadas en lista"<<endl<<endl;
                  cout << tempPrueba->persona->amigos->imprimirAmigos();
-                 cout << endl;
+                 cout << endl;*/
                  estaIdLista=true;
-                 break;
+                 return  tempPrueba->persona->amigos->imprimirAmigos();
  
              }
              
@@ -167,15 +167,17 @@ string ConsultaMundo::consultaAmigosID(int consultaAmigosId, NodoArbol *arbol){
      }
      else if (estaIdArbol == false && estaIdLista == false) {
          cout << "La persona que intenta buscar no esta creada ni en el arbol ni en la lista";
+        return "No se encontro la persona buscada";
      }
     
-    return 0;
+    return "";
 }//consultaAmigosID
 
 string ConsultaMundo::consultaDeportes(string deporteConsultado){
     
     bool estaIdArbol=false;
     bool estaIdLista = false;
+    string total = "";
     /*
     arbol = arbolPersonas->raiz;
     
@@ -210,11 +212,12 @@ string ConsultaMundo::consultaDeportes(string deporteConsultado){
              NodoDeporte *tempDeporte = tempPrueba->persona->deportes->primerNodo;
              while (tempDeporte != NULL) {
                  if (tempDeporte->nombre==deporteConsultado) {
-                     cout<<endl<<"//////////////////////////////////////";
+                     /*cout<<endl<<"//////////////////////////////////////";
                      cout<< "La persona "<< tempPrueba->persona->nombre <<" "<<tempPrueba->persona->apellido<<" practica el deporte "<<deporteConsultado<<endl<<endl;
                      cout<<tempPrueba->persona->nombre<<" "<<tempPrueba->persona->apellido<<"   "<<tempPrueba->persona->ID<<" \n"<<tempPrueba->persona->continenteVive<<"  "<<tempPrueba->persona->nacDia<<"/"<<tempPrueba->persona->nacMes<<"/"<<tempPrueba->persona->nacAno<< "   " <<tempPrueba->persona->rangoEtario<< "   "<<tempPrueba->persona->creencia <<endl<< "Profesion: "<< tempPrueba->persona->profesion << endl<< "Vive en  "<<tempPrueba->persona->paisVive<<endl<<tempPrueba->persona->estadoMarital<<endl<<tempPrueba->persona->pecados->imprimir()<<endl;
-                     cout<<endl;
+                     cout<<endl;*/
                      estaIdLista=true;
+                     total += tempPrueba->persona->imprimir();
                      break;
                  }                 
                  
@@ -227,10 +230,11 @@ string ConsultaMundo::consultaDeportes(string deporteConsultado){
      }
      else if (estaIdArbol == false && estaIdLista == false) {
          cout << "Ninguna de las personas creadas practica el deporte que intento buscar";
+         return "Ninguna persona encontrada que practique ese deporte";
      }
     
 
-    return 0;
+    return total;
 
 
 }//fin consultaDeportes

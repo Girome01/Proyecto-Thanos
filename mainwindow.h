@@ -39,6 +39,10 @@ private slots:
 
     void on_btnBuscar_clicked();
 
+    void on_btnPecar_clicked();
+
+    void on_btnBuenasAcciones_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

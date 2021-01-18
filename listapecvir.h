@@ -2,6 +2,7 @@
 #define LIOSTAPECVIR_H
 
 #include <sstream>
+#include <QRandomGenerator>
 
 #include <cstdlib>
 #include <iostream>
@@ -28,7 +29,7 @@ struct ListaPecVir {
     void insertarAlInicio (int cantidad, string nombre);
     void insertarAlFinal(int cantidad, string nombre);
     int cantidadPecVir();
-    bool modificarCantidad(int dato, string nombre);
+    void modificarCantidad();
     int total();
     string imprimir();
 

@@ -118,6 +118,7 @@ void MainWindow::on_btnSalvar_clicked(){
 }
 
 void MainWindow::on_btnCrearHumanos_clicked(){
+    int cantHumanos = ui->entCantHumanos->text().toInt();
 
 }
 
@@ -146,19 +147,10 @@ void MainWindow::on_btnBuscar_clicked(){
     }
 }
 
+void MainWindow::on_btnPecar_clicked(){
+    mundo->hacerPecar();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void MainWindow::on_btnBuenasAcciones_clicked(){
+    mundo->hacerAccionesBuenas();
+}
