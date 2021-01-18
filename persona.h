@@ -21,6 +21,7 @@ using namespace std;
 
 struct Persona{
     int ID; //DONE
+    int key;
     bool vivo=true; // True si esta vivo false si esta muerto || DONE
     string nombre; //DONE
     string apellido; //DONE

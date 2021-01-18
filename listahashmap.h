@@ -4,6 +4,7 @@
 #include "persona.h"
 #include <cstdlib>
 #include <iostream>
+#include "QDate"
 using namespace std;
 
 struct NodoHashMap {
@@ -18,6 +19,16 @@ struct NodoHashMap {
 
 
 struct ListaHashMap {
+
+    QString m_date = QDate::currentDate().toString();
+    string date = m_date.toStdString();
+
+    string datosThanos = "";
+    string datTotThanos= "";
+    int elimThanos = 0;
+    int totalElimThanos = 0;
+
+
     NodoHashMap *primerNodo, *ultimoNodo;
 
     ListaHashMap();

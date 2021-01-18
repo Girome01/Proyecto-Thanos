@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include "persona.h"
+#include "QDate"
 #include "listahashmap.h"
 
 struct HashMap{
@@ -11,11 +12,6 @@ struct HashMap{
     /*Se genera una matriz de 122 (filas -) y 11 (columnas |), esto con la idea de
      * que los annos van del 1900 al 2021, y existe una fila y columna extra con los annos
      * y los numeros del 1 al 10 */
-
-    string datosThanos = "";
-    string datTotThanos= "";
-    int elimThanos = 0;
-    int totalElimThanos = 0;
 
   HashMap(ListaDoble *poblacion);
 

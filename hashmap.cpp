@@ -46,13 +46,13 @@ int HashMap::funcionHash(Persona *persona){
         key--;
     }
 
-    if(persona->paisVive=="Costa Rica"){ //6
+    if(persona->paisVive=="Costa Rica: San José"){ //6
         key++;
     }else{
         key--;
     }
 
-    if(persona->profesion=="Ingeniero"){ //7
+    if(persona->profesion=="Ingeniero(a)"){ //7
         key++;
     }else{
         key--;
@@ -103,6 +103,7 @@ void HashMap::generarNum(){
 
 void HashMap::insertarElemento(Persona *persona){
     int key=funcionHash(persona);
+    persona->key=key;
     int filas=(sizeof (hashtable)/sizeof (hashtable[0]));
     int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
     for(int i=0; i<filas; i++){
