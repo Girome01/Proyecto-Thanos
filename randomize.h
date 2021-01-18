@@ -26,14 +26,15 @@ struct Randomize{
     bool aleatorioGenero();
     int edad();
     string estadoMarital();
+    void asignarPareja(ListaDoble *personas);
     string generarRangoEtario(int anno);
     bool comprobarExistencia(Persona *amigo, Persona *personaActual);
     bool comprobarAmigos(Persona *amigo, Persona *personaActual);
     void agregarAmigos(ListaDoble *personas, Persona *personaActual);
     string generarProfesion(vector<string> listaProfesion);
     string generarCreencia(vector<string> listaCreencia);
-    string generarPaisesVisitados(vector<string> listaPaisesVisitados);
-    string generarDeportes(vector<string> listaDeportes);
+    void generarPaisesVisitados(vector<string> listaPaisesVisitados, ListaSimple *paises);
+    void generarDeportes(vector<string> listaDeportes, ListaDeportes *listadeportes);
 };
 
 

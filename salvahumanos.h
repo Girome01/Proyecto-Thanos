@@ -57,9 +57,12 @@ struct salvaHumanos{
     void salvarAntman();
     void generarListaHumanidad(NodoArbol *nodo);
     void detonarBomba();
+    void salvarEsposasPadres(NodoPersona *nodoPersona, string time);
     void salvarHijos(NodoPersona *primerNodo);
     void salvarIronman();
     void encontrarNiveles(NodoArbol *nodoA, int clevel,int nivelSalvado, Cola *colaNivel);
+    void salvarAmigosDeEsposaPadres(Persona *nodoPersona, string time);
+    void salvarAmigosDeHijos(NodoPersona *nodoPersona, string time);
     void salvarThor();
     void recorrerArbolAranna();
     void recorrerTeleranna(NodoArbol *nodo);

@@ -13,10 +13,11 @@ using namespace std;
 
 struct PersonaTest{
     Archivo archivito;
+    ListaDoble *personas;
     PersonaTest();
 
     vector<string> generarlistaNombres(string urlArchivo);
-    void pruebaPersona();
+    void crearPersona(int cantidad);
 
 };
 

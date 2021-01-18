@@ -101,6 +101,38 @@ void salvaHumanos::detonarBomba(){ //Segunda funcion de IronMan
     }
 }
 
+void salvaHumanos::salvarEsposasPadres(NodoPersona *nodoPersona, string time){
+    if(nodoPersona->persona->esposa!=NULL){
+        if(!nodoPersona->persona->esposa){
+            nodoPersona->persona->esposa->vivo=true;
+            datosIronman+=date +" "+time+" Soy Ironman y salvé a esta persona: "+nodoPersona->persona->esposa->imprimir()+"\n";
+            nodoPersona->persona->esposa->revivido->insertarAlFinal(datosIronman);
+            salvdatosIronman++;
+            totalIronman++;
+        }
+    }
+
+    if(nodoPersona->persona->padre!=NULL){
+        if(!nodoPersona->persona->padre){
+            nodoPersona->persona->padre->vivo=true;
+            datosIronman+=date +" "+time+" Soy Ironman y salvé a esta persona: "+nodoPersona->persona->padre->imprimir()+"\n";
+            nodoPersona->persona->padre->revivido->insertarAlFinal(datosIronman);
+            salvdatosIronman++;
+            totalIronman++;
+        }
+    }
+
+    if(nodoPersona->persona->madre!=NULL){
+        if(!nodoPersona->persona->madre){
+            nodoPersona->persona->madre->vivo=true;
+            datosIronman+=date +" "+time+" Soy Ironman y salvé a esta persona: "+nodoPersona->persona->madre->imprimir()+"\n";
+            nodoPersona->persona->madre->revivido->insertarAlFinal(datosIronman);
+            salvdatosIronman++;
+            totalIronman++;
+        }
+    }
+}
+
 void salvaHumanos::salvarHijos(NodoPersona *primerNodo){ //Cuarta funcion de IronMan
     NodoPersona *temp=primerNodo;
     QString m_time = QTime::currentTime().toString();
@@ -112,16 +144,18 @@ void salvaHumanos::salvarHijos(NodoPersona *primerNodo){ //Cuarta funcion de Iro
             temp->persona->revivido->insertarAlFinal(datosIronman);
             salvdatosIronman++;
             totalIronman++;
-            NodoPersona *temp2=temp->persona->hijos->primerNodo;
-            while(temp2!=NULL){
-                if(!temp2->persona->vivo){
+            salvarEsposasPadres(temp,time);
+           for(int i=0;i<temp->persona->hijos->largo();i++){
+               NodoPersona* temp2 = temp->persona->hijos->BuscarEnPos(i);
+               if(!temp2->persona->vivo){
                     temp2->persona->vivo=true;
                     datosIronman+=date +" "+time+" Soy Ironman y salvé a esta persona: "+temp->persona->imprimir()+"\n";
                     temp2->persona->revivido->insertarAlFinal(datosIronman);
                     salvdatosIronman++;
                     totalIronman++;
+                    salvarEsposasPadres(temp2,time);
                 }
-                temp2=temp->siguiente;
+
             }
         }
         temp=temp->siguiente;
@@ -154,6 +188,37 @@ void salvaHumanos::encontrarNiveles(NodoArbol *nodoA, int clevel,int nivelSalvad
         encontrarNiveles(nodoA->hijoderecho, clevel + 1, nivelSalvado, colaNivel);
  }
 
+void salvaHumanos::salvarAmigosDeEsposaPadres(Persona *persona, string time){
+    Persona *temp=persona;
+    for(int i=0;i<temp->amigos->largo();i++){
+        NodoPersona* temp2 = temp->amigos->BuscarEnPos(i);
+        if(!temp2->persona->vivo){
+             temp2->persona->vivo=true;
+             salvdatosThor++;
+             totalThor++;
+             datosThor+=date +" "+time+" Soy Thor y salvé a esta persona: "+temp2->persona->imprimir()+"\n";
+             temp2->persona->revivido->insertarAlFinal(datosThor);
+       }
+    }
+}
+
+void salvaHumanos::salvarAmigosDeHijos(NodoPersona *nodoPersona, string time){
+    NodoPersona *temp=nodoPersona->persona->hijos->primerNodo;
+    while(temp!=NULL){
+        for(int i=0;i<temp->persona->amigos->largo();i++){
+            NodoPersona* temp2 = temp->persona->amigos->BuscarEnPos(i);
+            if(!temp2->persona->vivo){
+                 temp2->persona->vivo=true;
+                 salvdatosThor++;
+                 totalThor++;
+                 datosThor+=date +" "+time+" Soy Thor y salvé a esta persona: "+temp2->persona->imprimir()+"\n";
+                 temp2->persona->revivido->insertarAlFinal(datosThor);
+            }
+        }
+        temp=temp->siguiente;
+    }
+}
+
 void salvaHumanos::salvarThor(){ //Primera funcion de Thor
     int nivel=int(QRandomGenerator::global()->bounded(1,arbolHumanidad->profundidad(arbolHumanidad->raiz))); //Profundidad del arbol para saber que tan lejos puede ir el random
     encontrarNiveles(arbolHumanidad->raiz, 0, nivel, colaNivel); //Encontrar los nodos con ese nivel y guardarlos en una cola
@@ -164,18 +229,17 @@ void salvaHumanos::salvarThor(){ //Primera funcion de Thor
     string time = m_time.toStdString();
     while(temp!=NULL){
         nivelesSeleccionados+=to_string(temp->nodo->marcaNodo)+"-";
-        NodoPersona *temp2=temp->nodo->persona;
-        while(temp2->persona->ID!=temp->nodo->hijoderecho->persona->persona->ID){
-            //*********COMO DETENER EL RECORRIDO?????????***************************
-            if(!temp->nodo->persona->persona->vivo){
-                temp->nodo->persona->persona->vivo=true;
-                salvdatosThor++;
-                totalThor++;
-                datosThor+=date +" "+time+" Soy Thor y salvé a esta persona: "+temp->nodo->persona->persona->imprimir()+"\n";
-                temp->nodo->persona->persona->revivido->insertarAlFinal(datosThor);
+        if(!temp->nodo->persona->persona->vivo){
+            temp->nodo->persona->persona->vivo=true;
+            salvdatosThor++;
+            totalThor++;
+            datosThor+=date +" "+time+" Soy Thor y salvé a esta persona: "+temp->nodo->persona->persona->imprimir()+"\n";
+            temp->nodo->persona->persona->revivido->insertarAlFinal(datosThor);
+            salvarAmigosDeEsposaPadres(temp->nodo->persona->persona->esposa,time);
+            salvarAmigosDeEsposaPadres(temp->nodo->persona->persona->madre,time);
+            salvarAmigosDeEsposaPadres(temp->nodo->persona->persona->padre,time);
+            salvarAmigosDeHijos(temp->nodo->persona,time);
             }
-            temp2=temp2->siguiente;
-        }
         temp=temp->siguiente;
     }
     datTotdatosThor+=nivelesSeleccionados+"\n"+datosThor+"\n"+"GRACIAS AL TRABAJO DE THOR FUERON SALVADAS EN ESTA OCASION: "+to_string(salvdatosThor)+" PERSONAS Y EN TOTAL: "+to_string(totalThor);

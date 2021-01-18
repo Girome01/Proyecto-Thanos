@@ -30,8 +30,17 @@ void ListaHashMap::matarPersonas(ListaDoble *personas){
     NodoHashMap *temp=primerNodo;
     while(temp!=NULL){
         Persona *matar=encontrarPorID(personas, temp->key);
-        matar->vivo=false;
+        if(matar->vivo){
+            matar->vivo=false;
+            QString m_time = QTime::currentTime().toString();
+            string time = m_time.toStdString();
+            elimThanos++;
+            totalElimThanos++;
+            datosThanos += date+" "+time+" Soy Thanos mate a este humano por ser parte de la key: "+
+            to_string(temp->key)+"y el anno: "+matar->nacAno+": "+matar->imprimir()+"\n";
+        }
     }
+    datTotThanos+=datosThanos+"Thanos ha matado: "+to_string(elimThanos)+" personas y en total: "+to_string(totalElimThanos)+"\n";
 }
 
 void ListaHashMap::insertarAlFinal (int _key){

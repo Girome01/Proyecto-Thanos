@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include "persona.h"
+#include "QDate"
 #include "listahashmap.h"
 
 struct HashMap{
