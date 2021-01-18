@@ -17,8 +17,6 @@ vector<string> PersonaTest::generarlistaNombres(string texto){
         last = next + 1;
     }
     return listaNombres;
-
-
 }
 
 void PersonaTest::crearPersona(int cantidad){
@@ -132,15 +130,19 @@ void PersonaTest::crearPersona(int cantidad){
         }
 
         NodoPersona *tmp=personas->primerNodo;
-        int contador=0;
         while(tmp!=NULL){
             tmp->persona->random->agregarHijos(personas,tmp->persona);
             tmp->persona->random->agregarAmigos(personas,tmp->persona);
-            contador++;
-            cout<<tmp->persona->nombre<<" "<<tmp->persona->apellido<<" "<<tmp->persona->ID<<" "<<tmp->persona->continenteVive<<" "<<tmp->persona->nacDia<<"/"<<tmp->persona->nacMes<<"/"<<tmp->persona->nacAno<<" "<<tmp->persona->rangoEtario<<endl<<tmp->persona->paisVive<<endl<<tmp->persona->estadoMarital<<endl<<tmp->persona->pecados->imprimir()<<"*****"<<tmp->persona->hijos->imprimir()<<endl;
+            //cout<<tmp->persona->nombre<<" "<<tmp->persona->apellido<<" "<<tmp->persona->ID<<" "<<tmp->persona->continenteVive<<" "<<tmp->persona->nacDia<<"/"<<tmp->persona->nacMes<<"/"<<tmp->persona->nacAno<<" "<<tmp->persona->rangoEtario<<endl<<tmp->persona->paisVive<<endl<<tmp->persona->estadoMarital<<endl<<tmp->persona->pecados->imprimir()<<"*****"<<tmp->persona->amigos->imprimir()<<endl;
             tmp=tmp->siguiente;
        }
-
+        tmp=personas->primerNodo;
+        while(tmp!=NULL){
+            //tmp->persona->random->agregarHijos(personas,tmp->persona);
+            //tmp->persona->random->agregarAmigos(personas,tmp->persona);
+            cout<<tmp->persona->nombre<<" "<<tmp->persona->apellido<<" "<<tmp->persona->ID<<" "<<tmp->persona->continenteVive<<" "<<tmp->persona->nacDia<<"/"<<tmp->persona->nacMes<<"/"<<tmp->persona->nacAno<<" "<<tmp->persona->rangoEtario<<endl<<tmp->persona->paisVive<<endl<<tmp->persona->estadoMarital<<endl<<tmp->persona->pecados->imprimir()<<"*****"<<tmp->persona->amigos->imprimir()<<endl;
+            tmp=tmp->siguiente;
+       }
 
 
 }
