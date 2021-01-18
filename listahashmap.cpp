@@ -38,6 +38,7 @@ void ListaHashMap::matarPersonas(ListaDoble *personas){
             totalElimThanos++;
             datosThanos += date+" "+time+" Soy Thanos mate a este humano por ser parte de la key: "+
             to_string(temp->key)+"y el anno: "+matar->nacAno+": "+matar->imprimir()+"\n";
+            matar->eliminado->insertarAlFinal(datosThanos);
         }
     }
     datTotThanos+=datosThanos+"Thanos ha matado: "+to_string(elimThanos)+" personas y en total: "+to_string(totalElimThanos)+"\n";
