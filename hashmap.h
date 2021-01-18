@@ -12,6 +12,11 @@ struct HashMap{
      * que los annos van del 1900 al 2021, y existe una fila y columna extra con los annos
      * y los numeros del 1 al 10 */
 
+    string datosThanos = "";
+    string datTotThanos= "";
+    int elimThanos = 0;
+    int totalElimThanos = 0;
+
   HashMap(ListaDoble *poblacion);
 
   void generarHashMap();
