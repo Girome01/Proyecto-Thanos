@@ -240,58 +240,60 @@ string ConsultaMundo::consultaDeportes(string deporteConsultado){
 }//fin consultaDeportes
 
 string ConsultaMundo::humanosVivos(){
-    
-    NodoDato *temp = elimSal->primerNodo;
-    
-    if (elimSal->isEmpty()) {
-        //no hay ninguna persona viva
-        ListaElimSalv().insertarAlFinal("No hay personas vivas");
-        cout<<"No hay persona vivas"<<endl;
-    }
-    else {
-        cout<<"------------------------Lista de persona vivas-------------------"<<endl;
-        while (temp != NULL) {
-            cout<<temp->datos<<endl;
-            temp=temp->siguiente;
+
+    NodoPersona* temp = listaDoble->primerNodo;
+    ListaDoble* listaTemp = new ListaDoble();
+
+    while(temp != NULL){
+        if(temp->persona->vivo){
+            listaTemp->insertionSort(temp->persona);
         }
-        //ListaElimSalv().imrpimir();
+        temp = temp->siguiente;
     }
-    return 0;
+
+    return listaTemp->imprimir();
 
 }//fin de humanos Vivos
 
 string ConsultaMundo::humanosSalvados(){
-    NodoDato *temp= elimSal->primerNodo;
-    if (elimSal->isEmpty()) {
-        //no ha salvado a ninguna persona
-        ListaElimSalv().insertarAlFinal("No hay personas salvadas");
-    }
-    else {
-        cout<<"------------------------Lista de persona salvadas-------------------"<<endl;
-        while (temp != NULL) {
-            cout<<temp->datos<<endl;
-            temp=temp->siguiente;
+
+    NodoPersona* temp = listaDoble->primerNodo;
+    ListaDoble* listaTemp = new ListaDoble();
+
+    while(temp != NULL){
+        if(temp->persona->vivo && !temp->persona->revivido->isEmpty()){
+            listaTemp->insertionSort(temp->persona);
         }
-        //ListaElimSalv().imrpimir();
+        temp = temp->siguiente;
     }
-    return 0;
+
+    return listaTemp->imprimir();
 
 }//fin de HumanosSalvados
 
 string ConsultaMundo::humanosEliminados(){
-    NodoDato *temp= elimSal->primerNodo;
-    if (elimSal->isEmpty()) {
-        //no ha eliminado a ninguna persona
-        ListaElimSalv().insertarAlFinal("No hay personas eliminadas");
-    }
-    else {
-        cout<<"------------------------Lista de persona eliminadas-------------------"<<endl;
-        while (temp != NULL) {
-            cout<<temp->datos<<endl;
-            temp=temp->siguiente;
+
+    NodoPersona* temp = listaDoble->primerNodo;
+    ListaDoble* listaTemp = new ListaDoble();
+
+    while(temp != NULL){
+        if( !temp->persona->vivo){
+            listaTemp->insertionSort(temp->persona);
         }
-        ListaElimSalv().imrpimir();
+        temp = temp->siguiente;
     }
-    return 0;
+
+    return listaTemp->imprimir();
 
 }//fin de humanosElimidados
+
+string ConsultaMundo::humanosViviosSalvadosEliminados(){
+    return "Humanos vivos\n"+humanosVivos()+
+            "\nHumanos salvados\n"+humanosSalvados()+
+            "\nHumanos eliminados\n"+humanosEliminados();
+}
+
+void ConsultaMundo::setArbolMundo(Arbol* _arbol, ListaDoble* _mundo){
+    this->arbol = _arbol;
+    this->listaDoble = _mundo;
+}

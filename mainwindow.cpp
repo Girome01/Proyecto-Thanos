@@ -134,16 +134,36 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
 }
 
 void MainWindow::on_btnBuscar_clicked(){
+    consultas->setArbolMundo(arbol,mundo);
     if(ui->cmbBuscarPor->currentText() == QVariant("Humano Por ID").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        int buscar = ui->entBuscar->text().toInt();
+        string consulta = consultas->consultaHumanoID(buscar,arbol->raiz);
+        QString qstr = QString::fromStdString(consulta);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Familia Por ID").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        int buscar = ui->entBuscar->text().toInt();
+        string consulta = consultas->consultaFamiliaID(buscar,arbol->raiz);
+        QString qstr = QString::fromStdString(consulta);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Amigos por ID").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        int buscar = ui->entBuscar->text().toInt();
+        string consulta = consultas->consultaAmigosID(buscar,arbol->raiz);
+        QString qstr = QString::fromStdString(consulta);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Humanos por Deporte").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        QString buscar = ui->entBuscar->text();
+        string consulta = consultas->consultaDeportes(buscar.toStdString());
+        QString qstr = QString::fromStdString(consulta);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Humanos Vivos,Salvados,Eliminados").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        string consulta = consultas->humanosViviosSalvadosEliminados();
+        QString m_date = QDate::currentDate().toString();
+        string date = m_date.toStdString();
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        string nombre = "Humanos Eliminados, vivos y salvados "+date+" | "+time;
+        archivo->escribir(consulta,nombre);
+        //Falta agregar que se envie por coprreo
     }
 }
 
