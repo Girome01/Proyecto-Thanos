@@ -28,7 +28,7 @@ int HashMap::funcionHash(Persona *persona){
         key--;
     }
 
-    if(persona->hijos->largo()>=2){ //3
+    if(persona->hijos->largo()>=4){ //3
         key++;
     }else{
         key--;
@@ -82,7 +82,6 @@ int HashMap::funcionHash(Persona *persona){
         return key;
     }
 }
-
 
 void HashMap::generarAnnos(){
     int anno=1899;
@@ -154,6 +153,3 @@ void HashMap::eliminarPersonasNivelAnno(int _keyA, int _keyN){
     }
 }
 
-void HashMap::imprimirHM(){
-    //Pendiente, mostrar la info de los villanos, pero con la info de Thanos
-}
