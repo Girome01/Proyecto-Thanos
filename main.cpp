@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     }else{
         cout<<"Respuesta correcta"<<endl;
     }*/
-
+    /*
     QString m_date = QDate::currentDate().toString();
     string str = m_date.toStdString();
     cout<<str<<endl;
@@ -62,6 +62,9 @@ int main(int argc, char *argv[])
     exe.append(" 0 1 ");
     //system("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe D:/Documents/ProyectoThanos/ProyectoThanos/pls.txt 0 1 ");
     system(exe.c_str());
+    */
+    PersonaTest *persona=new PersonaTest();
+    persona->crearPersona(100);
 
     return 1;
 
