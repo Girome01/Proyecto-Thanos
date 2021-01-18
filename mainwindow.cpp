@@ -63,7 +63,7 @@ void MainWindow::on_btnEliminar_clicked(){
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbEliminar->currentText() == QVariant("Black Dwarf").toString()){
-        int veces = ui->entEliminar->text().toInt();
+        int veces = ui->entEliminarFecha->text().toInt();
         elimHumanos.BlackDwarf(veces, mundo);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
@@ -73,8 +73,32 @@ void MainWindow::on_btnEliminar_clicked(){
         string txt = date+" | "+time+"-> Soy Black Dwarf mate a "+elim;
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->setText(qstr);
+    }else if(ui->cmbEliminar->currentText() == QVariant("Thanos").toString()){
+
+        if( ui->entEliminarFecha->text() != "" && ui->entElimNivel->text() != ""){
+            int fecha = ui->entEliminarFecha->text().toInt();
+            int nivel = ui->entElimNivel->text().toInt();
+            // Eliminar con fecha y nivel de thanos
+        }else if(ui->entEliminarFecha->text() != ""){
+            int fecha = ui->entEliminarFecha->text().toInt();
+            //Eliminar thanos solo de fecha
+        }else if(ui->entElimNivel->text() != ""){
+            int nivel = ui->entElimNivel->text().toInt();
+            //Eliminar thanos por nivel
+        }
+
+
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        stringstream buff;
+        buff << elimHumanos.elimBlack;
+        string elim = buff.str();
+        string txt = date+" | "+time+"-> Soy Thanos mate a "+elim;
+        QString qstr = QString::fromStdString(txt);
+        ui->txtmostrarDatos->setText(qstr);
     }
-    ui->entEliminar->setText("");
+    ui->entEliminarFecha->setText("");
+    ui->entElimNivel->setText("");
 }
 
 
@@ -94,5 +118,39 @@ void MainWindow::on_btnSalvar_clicked(){
 }
 
 void MainWindow::on_btnCrearHumanos_clicked(){
+    int cantHumanos = ui->entCantHumanos->text().toInt();
 
+}
+
+void MainWindow::on_btnEnviarCorreo_clicked(){
+    if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Eliminar Humanos").toString()){
+
+    }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Salvar Humanos").toString()){
+
+    }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Todo la Humanidad").toString()){
+
+    }
+
+}
+
+void MainWindow::on_btnBuscar_clicked(){
+    if(ui->cmbBuscarPor->currentText() == QVariant("Humano Por ID").toString()){
+        //Consultar si hacerlo un txt o imprimir en pantalla
+    }else if(ui->cmbBuscarPor->currentText() == QVariant("Familia Por ID").toString()){
+        //Consultar si hacerlo un txt o imprimir en pantalla
+    }else if(ui->cmbBuscarPor->currentText() == QVariant("Amigos por ID").toString()){
+        //Consultar si hacerlo un txt o imprimir en pantalla
+    }else if(ui->cmbBuscarPor->currentText() == QVariant("Humanos por Deporte").toString()){
+        //Consultar si hacerlo un txt o imprimir en pantalla
+    }else if(ui->cmbBuscarPor->currentText() == QVariant("Humanos Vivos,Salvados,Eliminados").toString()){
+        //Consultar si hacerlo un txt o imprimir en pantalla
+    }
+}
+
+void MainWindow::on_btnPecar_clicked(){
+    mundo->hacerPecar();
+}
+
+void MainWindow::on_btnBuenasAcciones_clicked(){
+    mundo->hacerAccionesBuenas();
 }

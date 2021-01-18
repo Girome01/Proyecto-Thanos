@@ -16,6 +16,7 @@ SOURCES += \
     arbol.cpp \
     archivo.cpp \
     cola.cpp \
+    consultamundo.cpp \
     hashmap.cpp \
     eliminarhumanos.cpp \
     heap.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     arbol.h \
     archivo.h \
     cola.h \
+    consultamundo.h \
     hashmap.h \
     eliminarhumanos.h \
     heap.h \
