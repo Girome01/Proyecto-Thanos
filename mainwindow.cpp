@@ -103,9 +103,22 @@ void MainWindow::on_btnEliminar_clicked(){
 
 
 void MainWindow::on_btnSalvar_clicked(){
+    QString m_date = QDate::currentDate().toString();
+    string date = m_date.toStdString();
     if(ui->cmbSalvar->currentText() == QVariant("Ant Man").toString()){
         int veces = ui->entSalvar->text().toInt();
+        //Cambiar esto
+        salvarHum->recorrerArbolHormigas(veces);
+        salvarHum->salvarAntman();
 
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        stringstream buff;
+        buff << salvarHum->datosAntman;
+        string salvar = buff.str();
+        string txt = date+" | "+time+"-> Soy Ant Man salve a "+salvar;
+        QString qstr = QString::fromStdString(txt);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbSalvar->currentText() == QVariant("Ironman").toString()){
 
     }else if(ui->cmbSalvar->currentText() == QVariant("Thor").toString()){
@@ -120,6 +133,10 @@ void MainWindow::on_btnSalvar_clicked(){
 void MainWindow::on_btnCrearHumanos_clicked(){
     int cantHumanos = ui->entCantHumanos->text().toInt();
 
+    arbol->construirARBOL(mundo);
+    thanos = new HashMap(mundo);
+    thanos->crearHashmap(mundo);
+    this->salvarHum = new salvaHumanos(arbol);
 }
 
 void MainWindow::on_btnEnviarCorreo_clicked(){

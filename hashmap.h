@@ -15,15 +15,16 @@ struct HashMap{
 
   HashMap(ListaDoble *poblacion);
 
-  void generarHashMap();
-  void generarAnnos();
-  void generarNum();
+  void generarHashMap(); //1
+  void generarAnnos(); //2
+  void generarNum(); //3
   int funcionHash(Persona *persona);
-  void insertarElemento(Persona *persona);
+  void insertarElemento(Persona *persona); // Hacer una funcion para crear
   void eliminarPersonasAnno(int _key);
   void eliminarPersonasNivel(int _key);
   void eliminarPersonasNivelAnno(int _keyA, int keyN);
   void imprimirHM();
+  void crearHashmap(ListaDoble* mundo);
 };
 
 #endif // HASHMAP_H

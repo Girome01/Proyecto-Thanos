@@ -153,3 +153,14 @@ void HashMap::eliminarPersonasNivelAnno(int _keyA, int _keyN){
     }
 }
 
+void HashMap::crearHashmap(ListaDoble* mundo){
+    generarHashMap();
+    generarAnnos();
+    generarNum();
+    NodoPersona* temp = mundo->primerNodo;
+    while(temp != NULL){
+        insertarElemento(temp->persona);
+        temp = temp->siguiente;
+    }
+}
+

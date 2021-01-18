@@ -7,6 +7,8 @@
 #include "listadoble.h"
 #include "eliminarhumanos.h"
 #include "consultamundo.h"
+#include "salvahumanos.h"
+#include "hashmap.h"
 
 #include <QDate>
 #include <QTime>
@@ -26,6 +28,8 @@ public:
     EliminarHumanos elimHumanos = EliminarHumanos();
     ConsultaMundo* consultas = new ConsultaMundo();
     Archivo* archivo = new Archivo();
+    salvaHumanos* salvarHum;
+    HashMap* thanos;
 
 
     MainWindow(QWidget *parent = nullptr);
