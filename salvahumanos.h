@@ -54,7 +54,7 @@ struct salvaHumanos{
 
     void recorrerArbolHormigas(int cantidadHorm);
     NodoArbol * mejorCaminoAntMan();
-    void salvarAntman();
+    void salvarAntman(int cantidadHormigas);
     void generarListaHumanidad(NodoArbol *nodo);
     void detonarBomba();
     void salvarEsposasPadres(NodoPersona *nodoPersona, string time);
