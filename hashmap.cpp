@@ -116,6 +116,8 @@ void HashMap::insertarElemento(Persona *persona){
 }
 
 void HashMap::eliminarPersonasAnno(int key){
+    datThanos = "";
+    elimThanos = 0;
     int filas=(sizeof (hashtable)/sizeof (hashtable[0]));
     int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
     int filaEsp=0;
@@ -125,10 +127,16 @@ void HashMap::eliminarPersonasAnno(int key){
     }
    for(int j=0; j<columnas; j++){
             hashtable[filaEsp][j].matarPersonas(personas);
+            elimThanos += hashtable[filaEsp][j].elimThanos;
+            datThanos += hashtable[filaEsp][j].datosThanos;
    }
+   datThanosTot += datThanos;
+   elimThanosTotal += elimThanos;
 }
 
 void HashMap::eliminarPersonasNivel(int key){
+    datThanos = "";
+    elimThanos = 0;
     int filas=(sizeof (hashtable)/sizeof (hashtable[0]));
     int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
     int colEsp=0;
@@ -138,19 +146,29 @@ void HashMap::eliminarPersonasNivel(int key){
     }
     for(int i=0; i<filas; i++){//Se recorre la matriz
             hashtable[i][colEsp].matarPersonas(personas);
+            elimThanos += hashtable[i][colEsp].elimThanos;
+            datThanos += hashtable[i][colEsp].datosThanos;
    }
+    datThanosTot += datThanos;
+    elimThanosTotal += elimThanos;
 }
 
 void HashMap::eliminarPersonasNivelAnno(int _keyA, int _keyN){
+    datThanos = "";
+    elimThanos = 0;
     int filas=(sizeof (hashtable)/sizeof (hashtable[0]));
     int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
     for(int i=0; i<filas; i++){
         for(int j=0; j<columnas; j++){ //Se recorre la matriz
             if(hashtable[i][0].primerNodo->key==_keyA && hashtable[0][j].primerNodo->key==_keyN){
                 hashtable[i][j].matarPersonas(personas);
+                elimThanos += hashtable[i][j].elimThanos;
+                datThanos += hashtable[i][j].datosThanos;
             }
         }
     }
+    datThanosTot += datThanos;
+    elimThanosTotal += elimThanos;
 }
 
 void HashMap::crearHashmap(ListaDoble* mundo){

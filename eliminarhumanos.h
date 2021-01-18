@@ -65,6 +65,8 @@ struct EliminarHumanos{
     void eliminarMidnight(Heap* eliminar,ListaDoble* mundo);
     void Midnight(ListaDoble* mundo);
 
+    string eliminarHumanos();
+
 };
 
 #endif // ELIMINARHUMANOS_H

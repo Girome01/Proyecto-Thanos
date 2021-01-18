@@ -67,6 +67,8 @@ struct salvaHumanos{
     void recorrerArbolAranna();
     void recorrerTeleranna(NodoArbol *nodo);
     void salvarSpiderman(NodoPersona *nodo);
+
+    string salvarHumanos();
 };
 
 #endif // SALVAHUMANOS_H

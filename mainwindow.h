@@ -29,7 +29,7 @@ public:
     ConsultaMundo* consultas = new ConsultaMundo();
     Archivo* archivo = new Archivo();
     salvaHumanos* salvarHum;
-    HashMap* thanos;
+    HashMap* thanos = new HashMap(mundo);;
 
 
     MainWindow(QWidget *parent = nullptr);

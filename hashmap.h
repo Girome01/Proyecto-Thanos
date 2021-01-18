@@ -15,6 +15,11 @@ struct HashMap{
 
   HashMap(ListaDoble *poblacion);
 
+  int elimThanos = 0;
+  int elimThanosTotal = 0;
+  string datThanos = "";
+  string datThanosTot = "";
+
   void generarHashMap(); //1
   void generarAnnos(); //2
   void generarNum(); //3
