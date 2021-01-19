@@ -14,7 +14,7 @@ using namespace std;
 struct PersonaTest{
     Archivo archivito;
     ListaDoble *personas;
-    PersonaTest();
+    PersonaTest(ListaDoble *mundo);
 
     vector<string> generarlistaNombres(string urlArchivo);
     void crearPersona(int cantidad);

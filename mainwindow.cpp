@@ -160,7 +160,7 @@ void MainWindow::on_btnSalvar_clicked(){
 
 void MainWindow::on_btnCrearHumanos_clicked(){
     int cantHumanos = ui->entCantHumanos->text().toInt();
-
+    personaTest->crearPersona(cantHumanos);
     arbol->construirARBOL(mundo);
     thanos->crearHashmap(mundo);
     this->salvarHum = new salvaHumanos(arbol);
@@ -175,7 +175,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string time = m_time.toStdString();
         string nombre = "Humanos eliminados "+date+" | "+time;
         archivo->escribir(eliminados,nombre);
-        //Falta agregar enviar correo
+        archivo->enviarCorreo(nombre);
     }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Salvar Humanos").toString()){
         string salvados = salvarHum->salvarHumanos();
         QString m_date = QDate::currentDate().toString();
@@ -184,7 +184,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string time = m_time.toStdString();
         string nombre = "Humanos Salvados "+date+" | "+time;
         archivo->escribir(salvados,nombre);
-        //Falta enviar correo
+        archivo->enviarCorreo(nombre);
     }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Todo la Humanidad").toString()){
         string humanidad = mundo->imprimir();
         QString m_date = QDate::currentDate().toString();
@@ -193,7 +193,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string time = m_time.toStdString();
         string nombre = "Humanos "+date+" | "+time;
         archivo->escribir(humanidad,nombre);
-        //Falta agregar enviar correo
+        archivo->enviarCorreo(nombre);
     }
 
 }
@@ -228,7 +228,7 @@ void MainWindow::on_btnBuscar_clicked(){
         string time = m_time.toStdString();
         string nombre = "Humanos Eliminados, vivos y salvados "+date+" | "+time;
         archivo->escribir(consulta,nombre);
-        //Falta agregar que se envie por coprreo
+        archivo->enviarCorreo(nombre);
     }
 }
 
