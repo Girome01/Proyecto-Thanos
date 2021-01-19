@@ -1,41 +1,41 @@
 #include "randomize.h"
-
+#include "persona.h"
 Randomize::Randomize()
 {
 
 }
 
 string Randomize::generarNombresM(vector<string> listaNombresM){
-    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    int indice=int(QRandomGenerator::global()->bounded(0, 221)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
     for (int i=0; i<int(listaNombresM.size());i++){
         if(i==indice){
             string nombre=listaNombresM.at(i); //VECTOR
             return nombre;
         }
     }
-    return 0;
+    return NULL;
 }
 
 string Randomize::generarNombresF(vector<string> listaNombresF){
-    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    int indice=int(QRandomGenerator::global()->bounded(0, 115)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
     for (int i=0; i<int(listaNombresF.size());i++){
         if(i==indice){
             string nombre=listaNombresF.at(i); //VECTOR
             return nombre;
         }
     }
-    return 0;
+    return NULL;
 }
 
 string Randomize::generarApellidos(vector<string> listaApellidos){
-    int indice=int(QRandomGenerator::global()->bounded(0, 6)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
+    int indice=int(QRandomGenerator::global()->bounded(0, 193)); //CAMBIAR POR 500 CUANDO YA ESTEN LOS 500
     for (int i=0; i<int(listaApellidos.size()); i++){
         if(i==indice){
             string nombre=listaApellidos.at(i); //VECTOR
             return nombre;
         }
     }
-    return 0;
+    return NULL;
 }
 
 bool Randomize::estaID(ListaDoble *personas, int id){
@@ -54,12 +54,12 @@ int Randomize::generarId(ListaDoble *personas){
     if(!personas->isEmpty()){
         NodoPersona * tmp = personas->primerNodo;
         while (tmp != NULL && !estaID(personas, id)){
-                if(estaID(personas, id)){
-                    Randomize::generarId(personas);
-                }
-                tmp->persona->ID=id;
+            if(estaID(personas, id)){
+                Randomize::generarId(personas);
+            }
+            tmp->persona->ID=id;
 
-                tmp=tmp->siguiente;
+            tmp=tmp->siguiente;
         }
     }
     return id;
@@ -93,7 +93,7 @@ string Randomize::generarContinente(){
 }
 
 string Randomize::generarPais(vector<string> listaPaises){
-    int indice=int(QRandomGenerator::global()->bounded(0, 4)); //CAMBIAR POR 100 CUANDO YA ESTEN LOS 100
+    int indice=int(QRandomGenerator::global()->bounded(0, 192));
     for (int i=0; i<=int(listaPaises.size()); i++){
         if(i==indice){
             string nombreP=listaPaises.at(i); //VECTOR
@@ -113,44 +113,84 @@ void Randomize::generarPecados(ListaPecVir *listapecvir){
 }
 
 bool Randomize::esHijoPosible(Persona *hijo, Persona *padre){
-      if(2021-std::stoi(padre->nacAno)>=20 && 2021-std::stoi(padre->nacAno)<=24
-         && 2021-std::stoi(hijo->nacAno)<=4){
-          return true;
-      }else if(2021-std::stoi(padre->nacAno)>=25 && 2021-std::stoi(padre->nacAno)<=34
-         && 2021-std::stoi(hijo->nacAno)<=14){
-          return true;
-      }else if(2021-std::stoi(padre->nacAno)>=35 && 2021-std::stoi(padre->nacAno)<=64
-         && 2021-std::stoi(hijo->nacAno)>=15 && 2021-std::stoi(hijo->nacAno)<=34 ){
-          return true;
-      }else if(2021-std::stoi(padre->nacAno)<=65
-         && 2021-std::stoi(hijo->nacAno)>=25 && 2021-std::stoi(hijo->nacAno)<=64 ){
-         return true;
-      }else{
-          return false;
-      }
+    if(padre!=NULL){
+        if(2021-std::stoi(padre->nacAno)>=20 && 2021-std::stoi(padre->nacAno)<=24
+             && 2021-std::stoi(hijo->nacAno)<=4){
+              return true;
+          }else if(2021-std::stoi(padre->nacAno)>=25 && 2021-std::stoi(padre->nacAno)<=34
+             && 2021-std::stoi(hijo->nacAno)<=14){
+              return true;
+          }else if(2021-std::stoi(padre->nacAno)>=35 && 2021-std::stoi(padre->nacAno)<=64
+             && 2021-std::stoi(hijo->nacAno)>=15 && 2021-std::stoi(hijo->nacAno)<=34 ){
+              return true;
+          }else if(2021-std::stoi(padre->nacAno)<=65
+             && 2021-std::stoi(hijo->nacAno)>=25 && 2021-std::stoi(hijo->nacAno)<=64 ){
+             return true;
+          }else{
+              return false;
+          }
+    }
+    return false;
+}
+
+bool Randomize::validarPadres(Persona *hijo, Persona *padre){
+    if(padre!=NULL){
+        if(hijo->apellido==padre->apellido){
+            if(hijo->paisVive==padre->paisVive){
+                if(esHijoPosible(hijo,padre)){
+                    if(!hijo->esHijo){
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
 }
 
 void Randomize::agregarHijos(ListaDoble *personas, Persona *padre){
-    int indice=int(QRandomGenerator::global()->bounded(0, 5));;
-    int contador=0;
+    int cantidadHijos=int(QRandomGenerator::global()->bounded(0, 5));;
     NodoPersona * tmp = personas->primerNodo;
-    while (tmp != NULL){
-        if(tmp->persona->apellido == padre->apellido){
-            if(esHijoPosible(tmp->persona, padre)){
-                    if(tmp->persona->paisVive==padre->paisVive || tmp->persona->paisVive==padre->esposa->paisVive){
-                         if(!tmp->persona->esHijo){
-                            if(contador<=indice){
-                                padre->hijos->insertarAlInicio(tmp->persona);
-                                padre->esposa->hijos->insertarAlInicio(tmp->persona);
+    for(int i=0; i<cantidadHijos;i++){
+        while(tmp!=NULL){
+                if(tmp->persona->ID!=padre->ID){
+                    if(validarPadres(tmp->persona, padre)){
+                        if(padre->hijos->largo()<cantidadHijos){
+                            tmp->persona->esHijo=true;
+                            tmp->persona->padre=padre;
+                            padre->hijos->insertarAlInicio(tmp->persona);
+                            if(padre->esposa!=NULL){
+                                if(tmp->persona->ID!=padre->esposa->ID){
                                 tmp->persona->esHijo=true;
-                                contador++;
+                                tmp->persona->madre=padre->esposa;
+                                padre->esposa->hijos->insertarAlInicio(tmp->persona);
+                                }
                             }
                         }
                     }
+                }
+                tmp=tmp->siguiente;
+        }
+    }
+
+}
+void Randomize::asignarPareja(ListaDoble *personas){
+    NodoPersona * tmp = personas->primerNodo;
+    while (tmp != NULL){
+        if(tmp->persona->estadoMarital=="Casado" && !tmp->persona->tienePareja){
+            for(int i=0;i<personas->largo();i++){
+                 NodoPersona * tmp2=personas->BuscarEnPos(i);
+                 if(tmp2->persona->estadoMarital=="Casado" && !tmp2->persona->tienePareja &&
+                         tmp2->persona->ID!=tmp->persona->ID){
+                     tmp2->persona->tienePareja=true;
+                     tmp2->persona->esposa=tmp->persona;
+                     tmp->persona->tienePareja=true;
+                     tmp->persona->esposa=tmp2->persona;
+                 }
             }
 
         }
-        tmp=tmp->siguiente;
+         tmp=tmp->siguiente;
     }
 }
 
@@ -166,19 +206,21 @@ string Randomize::aleatorioMes(){
 }
 
 int Randomize::aletorioAno(){
+
     int ano=int(QRandomGenerator::global()->bounded(1900,2021));
+    //int edad = 2021-ano;
     return ano;
 }
 
 bool Randomize::aleatorioGenero(){
-    std::uniform_int_distribution<int> genero1(1,2);
+     std::uniform_int_distribution<int> genero1(1,2);
     int genero= genero1(*QRandomGenerator::global());
     if(genero==1){
-        cout << "El genero de la persona es masculino:" << genero;
+        //Masculino
         return false;
     }
     else{
-        cout << "El genero de la persona es femenino: "<< genero;
+        //Femenino
         return true;
     }
 }
@@ -226,62 +268,118 @@ string Randomize::generarRangoEtario(int anno){
 }
 
 bool Randomize::comprobarExistencia(Persona *amigo, Persona *personaActual){
-    NodoPersona * tmp = amigo->amigos->primerNodo;
-    NodoPersona * tmp2 = personaActual->amigos->primerNodo;
-    if(tmp==NULL || tmp2==NULL)
-        return false;
-    while(tmp!=NULL){
-        while(tmp2!=NULL){
-            if(tmp->persona->ID==tmp2->persona->ID)
-                return true;
-            tmp2=tmp2->siguiente;
+    Persona * tmp = personaActual;
+    if(personaActual->amigos->isEmpty() || amigo->amigos->isEmpty()){
+        return false; //No esta el amigo en la lista
+    }else{
+        for(int i=0;i<tmp->amigos->largo();i++){
+            NodoPersona *amigoActual=tmp->amigos->BuscarEnPos(i);
+            if(amigoActual->persona->ID==amigo->ID){
+                return true; //El amigo ya esta en la lista
+            }
         }
-        tmp=tmp->siguiente;
+        return false; //El amigo no esta en la lista
     }
-    return false;
 }
 
 bool Randomize::comprobarAmigos(Persona *amigo, Persona *personaActual){
-    NodoPersona * tmp = amigo->amigos->primerNodo;
-    NodoPersona * tmp2 = personaActual->amigos->primerNodo;
-    if(tmp==NULL || tmp2==NULL)
-        return false;
-    while(tmp!=NULL){
-        while(tmp2!=NULL){
-            if(tmp->persona==tmp2->persona)
-                    return true;
-            tmp2=tmp2->siguiente;
+    NodoPersona * tmp = personaActual->amigos->primerNodo;
+    NodoPersona * tmp2 = amigo->amigos->primerNodo;
+    if(tmp==NULL || tmp2==NULL){
+        return false; //No hay amigos en comun
+    }else{
+        while(tmp!=NULL){
+            for(int i=0;i<amigo->amigos->largo();i++){
+                NodoPersona *amigoActual=amigo->amigos->BuscarEnPos(i);
+                if(amigoActual->persona->ID==tmp->persona->ID){
+                    return true; //Hay amigos en comun
+                }
+            }
+            tmp=tmp->siguiente;
         }
-        tmp=tmp->siguiente;
+        return false;
     }
-    return false;
 }
 
 void Randomize::agregarAmigos(ListaDoble *personas,  Persona *personaActual){ //Agrega a algunos varias veces, revisar logica. Consulta?
     int cantidadAmigos=int(QRandomGenerator::global()->bounded(0, 51));
     int probabilidadPais=int(QRandomGenerator::global()->bounded(0, 101));
     int probabilidadComun=int(QRandomGenerator::global()->bounded(0, 101));
-    NodoPersona * tmp = personas->primerNodo;
+    NodoPersona * tmp;
     for(int i=0; i<cantidadAmigos; i++){
-        while (tmp != NULL){
-            if((personaActual->paisVive==tmp->persona->paisVive &&
-               personaActual->ID!=tmp->persona->ID) || probabilidadPais<=40){
+        //while (tmp != NULL){
+        int posicionRandom=int(QRandomGenerator::global()->bounded(0, personas->largo()));
+        tmp=personas->BuscarEnPos(posicionRandom);
+            if(tmp->persona->ID!=personaActual->ID){
                 if(!comprobarExistencia(tmp->persona, personaActual)){
-                    personaActual->amigos->insertarAlFinal(tmp->persona);
-                    tmp->persona->amigos->insertarAlFinal(personaActual);
-                }
-            }else if(comprobarAmigos(tmp->persona,personaActual)
-              && personaActual->ID!=tmp->persona->ID){
-                if(probabilidadComun<=70){
-                    if(!comprobarExistencia(tmp->persona, personaActual)){
-                     personaActual->amigos->insertarAlFinal(tmp->persona);\
-                     tmp->persona->amigos->insertarAlFinal(personaActual);
+                    if(tmp->persona->paisVive==personaActual->paisVive || probabilidadPais<=40){
+                        personaActual->amigos->insertarAlInicio(tmp->persona);
+                            if(!comprobarExistencia(personaActual, tmp->persona)){
+                               tmp->persona->amigos->insertarAlInicio(personaActual);
+                            }
+                    }else if(comprobarAmigos(tmp->persona,personaActual) || probabilidadComun<=70){
+                        personaActual->amigos->insertarAlInicio(tmp->persona);
+                        if(!comprobarExistencia(personaActual, tmp->persona)){
+                           tmp->persona->amigos->insertarAlInicio(personaActual);
+                        }
                     }
                 }
             }
-            tmp=tmp->siguiente;
-        }
+            //tmp=tmp->siguiente;
+        //}
     }
 }
 
+
+
+string Randomize::generarProfesion(vector<string> listaProfesion){
+    int indice=int(QRandomGenerator::global()->bounded(0, 89));
+    for (int i=0; i<int(listaProfesion.size());i++){
+        if(i==indice){
+            string profesion=listaProfesion.at(i);
+            return profesion;
+        }
+    }
+    return 0;
+}
+
+string Randomize::generarCreencia(vector<string> listaCreencia){
+    int indice=int(QRandomGenerator::global()->bounded(0, 17));
+    for (int i=0; i<int(listaCreencia.size());i++){
+        if(i==indice){
+            string nombre=listaCreencia.at(i);
+            return nombre;
+        }
+    }
+    return 0;
+}
+
+void Randomize::generarPaisesVisitados(vector<string> listaPaisesVisitados, ListaSimple *paises){
+    int indice = int(QRandomGenerator::global()->bounded(0, 30));
+    if(indice == 0){
+         paises->insertarAlFinal("No ha visitado ningún país.");
+    }//if
+    else{
+        for(int i=0; i<=indice; i++){
+            int visitado= int(QRandomGenerator::global()->bounded(0, 192));
+            string visi=listaPaisesVisitados.at(visitado);
+            paises->insertarAlFinal(visi);
+        }//for
+    }//else
+}//generarPaisesVisiatdos
+
+void Randomize::generarDeportes(vector<string> listaDeportes, ListaDeportes *listadeportes){
+    int indice = int(QRandomGenerator::global()->bounded(0, 7));
+    if(indice == 0){
+        listadeportes->insertarAlFinal(indice,"No practica ningún deporte en la semana");
+    }//if
+    else{
+        for (int i=0; i<=indice;i++){
+            int deportePractica = int(QRandomGenerator::global()->bounded(0, 157));
+            int vecesSemana = int(QRandomGenerator::global()->bounded(1,7));
+            string deporte=listaDeportes.at(deportePractica);
+            listadeportes->insertarAlFinal(vecesSemana,deporte);
+        }//for
+    }//else
+}//generarDeportes
 

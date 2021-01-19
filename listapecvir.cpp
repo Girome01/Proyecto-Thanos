@@ -28,16 +28,13 @@ void ListaPecVir::insertarAlFinal (int cantidad, string nombre){
     }
 }
 
-bool ListaPecVir::modificarCantidad(int _dato, string _nombre){
+void ListaPecVir::modificarCantidad(){
     PecadoVirtud * temp = primerNodo;
     while(temp!=0) {
-        if(temp->nombre == _nombre){
-            temp->cantidad += _dato;
-            return true;
-        }
+        int _dato = int(QRandomGenerator::global()->bounded(0, 100));
+        temp->cantidad += _dato;
         temp = temp->siguiente;
     }
-    return false;
 }
 
 string ListaPecVir::imprimir(){
@@ -62,6 +59,7 @@ int ListaPecVir::cantidadPecVir(){
     }
     return cantidadTotal;
  }
+
 int ListaPecVir::total(){
     int total=0;
     PecadoVirtud * temp = primerNodo;

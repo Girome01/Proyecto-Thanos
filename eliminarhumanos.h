@@ -5,12 +5,42 @@ struct ListaDoble;
 #include "listadoble.h"
 #include "listadeportes.h"
 #include "heap.h"
+
+#include <QDate>
+#include <QTime>
 #include <cstdlib>
 #include <iostream>
 using namespace std;
 
 struct EliminarHumanos{
     int maximoNebula;
+    QString m_date = QDate::currentDate().toString();
+    string date = m_date.toStdString();
+
+    string datosNebula = "";
+    string datTotNebula = "";
+    int elimNebula = 0;
+    int totalElimNebula = 0;
+
+    string datosEbony = "";
+    string datTotEbony = "";
+    int elimEbony = 0;
+    int totalElimEbony = 0;
+
+    string datosBlack = "";
+    string datTotBlack = "";
+    int elimBlack = 0;
+    int totalElimBlack = 0;
+
+    string datosCorvus = "";
+    string datTotCorvus = "";
+    int elimCorvus = 0;
+    int totalElimCorvus = 0;
+
+    string datosMidnight = "";
+    string datTotMidnight = "";
+    int elimMidnight = 0;
+    int totalElimMidnight = 0;
 
     EliminarHumanos();
 
@@ -23,8 +53,8 @@ struct EliminarHumanos{
     void EbonyMaw(ListaDoble* lista);
 
     ListaDoble* buscarHumBlack(int veces, string deporte, ListaDoble* mundo);
-    void eliminarBlackDwarf(ListaDoble* eliminar);
-    //Falta agregar uno funcion que obtenga un deporte random
+    void eliminarBlackDwarf(ListaDoble* eliminar, int veces, string deporte);
+    vector<string>generarlistaNombres(string texto);
     void BlackDwarf(int veces /*, ListaDeportes* deportes*/, ListaDoble* mundo);
 
     Heap* crearListaCorvus(ListaDoble* mundo);
@@ -34,6 +64,8 @@ struct EliminarHumanos{
     Heap* crearListaMidnight(ListaDoble* mundo);
     void eliminarMidnight(Heap* eliminar,ListaDoble* mundo);
     void Midnight(ListaDoble* mundo);
+
+    string eliminarHumanos();
 
 };
 

@@ -40,7 +40,7 @@ string ListaDoble::imprimir(){
     string texto = "";
     NodoPersona * tmp = primerNodo;
     while (tmp != NULL){
-        texto += tmp->persona->imprimir()+"\n******************\n";
+        texto += tmp->persona->imprimir()+"\n";
         tmp = tmp->siguiente;
     }
     return texto;
@@ -118,3 +118,20 @@ void ListaDoble::listaBlackDwarf(Persona* _persona){
         insertarAlFinal(_persona);
     }
 }
+
+void ListaDoble::hacerPecar(){
+    NodoPersona * temp = primerNodo;
+    for(int i = 1; i < largo(); i++){
+        temp->persona->pecados->modificarCantidad();
+        temp = temp->siguiente;
+    }
+}
+
+void ListaDoble::hacerAccionesBuenas(){
+    NodoPersona * temp = primerNodo;
+    for(int i = 1; i < largo(); i++){
+        temp->persona->virtudes->modificarCantidad();
+        temp = temp->siguiente;
+    }
+}
+

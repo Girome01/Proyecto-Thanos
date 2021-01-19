@@ -49,6 +49,8 @@ struct ListaDoble{
     NodoPersona* BuscarEnPos(int posicion);
     NodoPersona* BuscarPorID(int ID);
     void listaBlackDwarf(Persona* _persona);
+    void hacerPecar();
+    void hacerAccionesBuenas();
 
 };
 
