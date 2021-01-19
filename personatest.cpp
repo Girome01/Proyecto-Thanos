@@ -135,7 +135,7 @@ void PersonaTest::crearPersona(int cantidad){
             //tmp->persona->random->agregarAmigos(personas,tmp->persona);
             tmp=tmp->siguiente;
        }
-        tmp=personas->primerNodo;
+        //tmp=personas->primerNodo;
 
         /*//Para recorrer la lista y ver los resultados
         while(tmp!=NULL){
