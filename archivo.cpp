@@ -5,8 +5,17 @@ Archivo::Archivo(){
 }
 
 void Archivo::escribir(string _texto, string _archivo){
-    ofstream archivo(_archivo);
-    archivo<<_texto<<endl;
+    ofstream archivo;
+
+    archivo.open(_archivo,ios::out);
+
+    if(archivo.fail()){
+        cout<<"No se pudo abrir el archivo"<<endl;
+    }else{
+        archivo<<_texto<<endl;
+        cout<<"Se guardo el archivo"<<endl;
+    }
+    archivo.close();
 }
 
 string Archivo::leer(string _archivo){
@@ -30,12 +39,12 @@ string Archivo::leer(string _archivo){
 }
 
 void Archivo::enviarCorreo(string archivoTxt){
-    string nombreArchivo="pls.txt";
     string exe="D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe";
     string q=" D:/Documents/ProyectoThanos/ProyectoThanos/";
+    cout<<archivoTxt<<endl;
     q.append(archivoTxt);
     exe.append(q);
     exe.append(" 0 1 ");
-    system("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe D:/Documents/ProyectoThanos/ProyectoThanos/pls.txt 0 1 ");
+    //system("D:\Documents\ProyectoThanos\ProyectoThanos\EnviarCorreosQT1.exe D:/Documents/ProyectoThanos/ProyectoThanos/pls.txt 0 1 ");
     system(exe.c_str());
 }

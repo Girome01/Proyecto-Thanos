@@ -181,7 +181,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string date = m_date.toStdString();
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        string nombre = "Humanos eliminados "+date+" | "+time;
+        string nombre = "Humanos eliminados "+date+" "+time+".txt";
         archivo->escribir(eliminados,nombre);
         archivo->enviarCorreo(nombre);
 
@@ -191,7 +191,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string date = m_date.toStdString();
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        string nombre = "Humanos Salvados "+date+" | "+time;
+        string nombre = "Humanos Salvados "+date+" "+time+".txt";
         archivo->escribir(salvados,nombre);
         archivo->enviarCorreo(nombre);
 
@@ -201,7 +201,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string date = m_date.toStdString();
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        string nombre = "Humanos "+date+" | "+time;
+        string nombre = "Humanos "+date+" | "+time+".txt";
         archivo->escribir(humanidad,nombre);
         archivo->enviarCorreo(nombre);
     }
@@ -240,7 +240,7 @@ void MainWindow::on_btnBuscar_clicked(){
         string date = m_date.toStdString();
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        string nombre = "Humanos Eliminados, vivos y salvados "+date+" | "+time;
+        string nombre = "Humanos Eliminados, vivos y salvados "+date+" "+time+".txt";
         archivo->escribir(consulta,nombre);
         archivo->enviarCorreo(nombre);
     }
