@@ -27,11 +27,12 @@ public:
     Arbol* arbol;
     ListaDoble* mundo = new ListaDoble();
     EliminarHumanos elimHumanos = EliminarHumanos();
-    ConsultaMundo* consultas = new ConsultaMundo();
+    ConsultaMundo* consultas = new ConsultaMundo(mundo);
     Archivo* archivo = new Archivo();
     salvaHumanos* salvarHum;
     HashMap* thanos = new HashMap(mundo);
     PersonaTest *personaTest=new PersonaTest(mundo);
+
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

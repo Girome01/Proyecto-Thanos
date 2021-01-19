@@ -215,20 +215,16 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
 
     }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Todo la Humanidad").toString()){
         string humanidad = mundo->imprimir();
-        QString m_date = QDate::currentDate().toString();
-        string date = m_date.toStdString();
+
+        int dia = QDate::currentDate().day();
+        int mes = QDate::currentDate().month();
+        int anno = QDate::currentDate().year();
         QTime* time = new QTime();
-        int hora = time->hour();
-        stringstream buff;
-        buff << hora;
-        string _hora = buff.str();
-        int minuto = time->minute();
-        buff << minuto;
-        string _minuto = buff.str();
-        int segundo = time->second();
-        buff << segundo;
-        string _segundo = buff.str();
-        string nombre = "Humanos "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
+        int hora = time->currentTime().hour();
+        int minuto = time->currentTime().minute();
+        int segundo = time->currentTime().second();
+        string nombre = "Humanos"+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
+                +"_"+to_string(hora)+"-"+to_string(minuto)+"-"+to_string(segundo)+".txt";
         archivo->escribir(humanidad,nombre);
         archivo->enviarCorreo(nombre);
     }

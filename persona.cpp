@@ -24,7 +24,7 @@ string Persona::obtenerVivo(){
 
 string Persona::imprimirAmigos(){
     string texto = "";
-    texto +="Nombre: "+this->nombre+"\tApellido: "+this->apellido+"\nID: "+to_string(this->ID)+"\tEstado: "+
+    texto +="Nombre: "+this->nombre+"\tApellido: "+this->apellido+"\tID: "+to_string(this->ID)+"\tEstado: "+
             this->obtenerVivo();
     return texto;
 }
@@ -54,15 +54,15 @@ string Persona::imprimir(){
     //Faltan los datos que son int
     // Ocupo pasarlos a ints y no se
     string texto = "";
-    texto +="Nombre: "+this->nombre+"\tApellido: "+this->apellido+"\tID: "+id+"\t";
-            /*"\tEstado: "+this->obtenerVivo()+"\tFecha de nacimiento: "+this->nacDia+"-"+this->nacMes+
+    texto +="Nombre: "+this->nombre+"\tApellido: "+this->apellido+"\tID: "+id+"\t"+
+            "\tEstado: "+this->obtenerVivo()+"\tFecha de nacimiento: "+this->nacDia+"-"+this->nacMes+
             "-"+this->nacAno+"\t"+this->rangoEtario+"\tGenero: "+this->obtenerGenero()+
             "\tContinente donde vive: "+this->continenteVive+"\tPais donde vive: "+this->paisVive+
             "\tEstado marital: "+this->estadoMarital+"\tEsposa: "+this->verificarEsposa()+
             "\tHijos: "+this->verificarHijos()+"\tCreencia: "+this->creencia+"\tProfesion: "+
             this->profesion+"\tPecados: "+this->pecados->imprimir()+"\tVirtudes: "+
             this->virtudes->imprimir()+"\tPaises visitados: "+this->paises->imprimir()+
-            "\tAmigos: "+this->verificarAmigos()+"\tEjercicio: "+this->deportes->imprimir()+"\n";*/
+            "\tAmigos: "+this->verificarAmigos()+"\tEjercicio: "+this->deportes->imprimir()+"\n";
 
     return texto;
 }

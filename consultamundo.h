@@ -7,8 +7,8 @@
 
 
 struct ConsultaMundo{
-
-    ConsultaMundo();
+    ListaDoble *personas;
+    ConsultaMundo(ListaDoble *personasHumanidad);
     Arbol *arbol;
     ListaDoble *listaDoble;
 
