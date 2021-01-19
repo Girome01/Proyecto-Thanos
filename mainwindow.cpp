@@ -26,10 +26,7 @@ void MainWindow::on_btnEliminar_clicked(){
         elimHumanos.CorvusGlaive(mundo);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        stringstream buff;
-        buff << elimHumanos.elimCorvus;
-        string elim = buff.str();
-        string txt = date+" | "+time+"-> Soy Corvus Glaive mate a "+elim;
+        string txt = date+" | "+time+"-> Soy Corvus Glaive mate a "+to_string(elimHumanos.elimCorvus);
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
@@ -37,21 +34,16 @@ void MainWindow::on_btnEliminar_clicked(){
         elimHumanos.Midnight(mundo);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        stringstream buff;
-        buff << elimHumanos.elimMidnight;
-        string elim = buff.str();
-        string txt = date+" | "+time+"-> Soy Midnight mate a "+elim;
+        string txt = date+" | "+time+"-> Soy Midnight mate a "+to_string(elimHumanos.elimMidnight);
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
     }else if(ui->cmbEliminar->currentText() == QVariant("Nebula").toString()){
+        cout<<"LLAMO A ELIMINAR NEBULA"<<endl;
         elimHumanos.Nebula(mundo);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        stringstream buff;
-        buff << elimHumanos.elimNebula;
-        string elim = buff.str();
-        string txt = date+" | "+time+"-> Soy Nebula mate a "+elim;
+        string txt = date+" | "+time+"-> Soy Nebula mate a "+to_string(elimHumanos.elimNebula)+"\n";
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
@@ -59,10 +51,7 @@ void MainWindow::on_btnEliminar_clicked(){
         elimHumanos.EbonyMaw(mundo);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        stringstream buff;
-        buff << elimHumanos.elimEbony;
-        string elim = buff.str();
-        string txt = date+" | "+time+"-> Soy Ebony Maw mate a "+elim;
+        string txt = date+" | "+time+"-> Soy Ebony Maw mate a "+to_string(elimHumanos.elimEbony);
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
@@ -71,10 +60,7 @@ void MainWindow::on_btnEliminar_clicked(){
         elimHumanos.BlackDwarf(veces, mundo);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        stringstream buff;
-        buff << elimHumanos.elimBlack;
-        string elim = buff.str();
-        string txt = date+" | "+time+"-> Soy Black Dwarf mate a "+elim;
+        string txt = date+" | "+time+"-> Soy Black Dwarf mate a "+to_string(elimHumanos.elimBlack);
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
@@ -95,10 +81,7 @@ void MainWindow::on_btnEliminar_clicked(){
 
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        stringstream buff;
-        buff << thanos->elimThanos;
-        string elim = buff.str();
-        string txt = date+" | "+time+"-> Soy Thanos mate a "+elim;
+        string txt = date+" | "+time+"-> Soy Thanos mate a "+to_string(thanos->elimThanos);
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
     }
@@ -177,58 +160,43 @@ void MainWindow::on_btnCrearHumanos_clicked(){
 void MainWindow::on_btnEnviarCorreo_clicked(){
     if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Eliminar Humanos").toString()){
         string eliminados = elimHumanos.eliminarHumanos();
-        QString m_date = QDate::currentDate().toString();
-        string date = m_date.toStdString();
+        int dia = QDate::currentDate().day();
+        int mes = QDate::currentDate().month();
+        int anno = QDate::currentDate().year();
         QTime* time = new QTime();
-        int hora = time->hour();
-        stringstream buff;
-        buff << hora;
-        string _hora = buff.str();
-        int minuto = time->minute();
-        buff << minuto;
-        string _minuto = buff.str();
-        int segundo = time->second();
-        buff << segundo;
-        string _segundo = buff.str();
-        string nombre = "Humanos eliminados "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
+        int hora = time->currentTime().hour();
+        int minuto = time->currentTime().minute();
+        int segundo = time->currentTime().second();
+        string nombre = "Humanos eliminados "+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
+                +"_"+to_string(hora)+"-"+to_string(minuto)+"-"+to_string(segundo)+".txt";
         archivo->escribir(eliminados,nombre);
         archivo->enviarCorreo(nombre);
 
     }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Salvar Humanos").toString()){
         string salvados = salvarHum->salvarHumanos();
-        QString m_date = QDate::currentDate().toString();
-        string date = m_date.toStdString();
+        int dia = QDate::currentDate().day();
+        int mes = QDate::currentDate().month();
+        int anno = QDate::currentDate().year();
         QTime* time = new QTime();
-        int hora = time->hour();
-        stringstream buff;
-        buff << hora;
-        string _hora = buff.str();
-        int minuto = time->minute();
-        buff << minuto;
-        string _minuto = buff.str();
-        int segundo = time->second();
-        buff << segundo;
-        string _segundo = buff.str();
-        string nombre = "Humanos Salvados "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
+        int hora = time->currentTime().hour();
+        int minuto = time->currentTime().minute();
+        int segundo = time->currentTime().second();
+        string nombre = "Humanos Salvados "+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
+                +"_"+to_string(hora)+"-"+to_string(minuto)+"-"+to_string(segundo)+".txt";
         archivo->escribir(salvados,nombre);
         archivo->enviarCorreo(nombre);
 
     }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Todo la Humanidad").toString()){
         string humanidad = mundo->imprimir();
-        QString m_date = QDate::currentDate().toString();
-        string date = m_date.toStdString();
+        int dia = QDate::currentDate().day();
+        int mes = QDate::currentDate().month();
+        int anno = QDate::currentDate().year();
         QTime* time = new QTime();
-        int hora = time->hour();
-        stringstream buff;
-        buff << hora;
-        string _hora = buff.str();
-        int minuto = time->minute();
-        buff << minuto;
-        string _minuto = buff.str();
-        int segundo = time->second();
-        buff << segundo;
-        string _segundo = buff.str();
-        string nombre = "Humanos "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
+        int hora = time->currentTime().hour();
+        int minuto = time->currentTime().minute();
+        int segundo = time->currentTime().second();
+        string nombre = "Humanos "+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
+                +"_"+to_string(hora)+"-"+to_string(minuto)+"-"+to_string(segundo)+".txt";
         archivo->escribir(humanidad,nombre);
         archivo->enviarCorreo(nombre);
     }
@@ -263,20 +231,16 @@ void MainWindow::on_btnBuscar_clicked(){
 
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Humanos Vivos,Salvados,Eliminados").toString()){
         string consulta = consultas->humanosViviosSalvadosEliminados();
-        QString m_date = QDate::currentDate().toString();
-        string date = m_date.toStdString();
+        int dia = QDate::currentDate().day();
+        int mes = QDate::currentDate().month();
+        int anno = QDate::currentDate().year();
         QTime* time = new QTime();
-        int hora = time->hour();
-        stringstream buff;
-        buff << hora;
-        string _hora = buff.str();
-        int minuto = time->minute();
-        buff << minuto;
-        string _minuto = buff.str();
-        int segundo = time->second();
-        buff << segundo;
-        string _segundo = buff.str();
-        string nombre = "Humanos Eliminados, vivos y salvados "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
+        int hora = time->currentTime().hour();
+        int minuto = time->currentTime().minute();
+        int segundo = time->currentTime().second();
+        string nombre = "Humanos Eliminados, vivos y salvados "+
+                to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
+                +"_"+to_string(hora)+"-"+to_string(minuto)+"-"+to_string(segundo)+".txt";
         archivo->escribir(consulta,nombre);
         archivo->enviarCorreo(nombre);
     }
