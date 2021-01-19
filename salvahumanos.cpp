@@ -302,3 +302,9 @@ void salvaHumanos::salvarSpiderman(NodoPersona *nodo){ //Tercera funcion Spiderm
     }
     datTotdatosSpiderman+=datosSpiderman+"\n"+"GRACIAS AL TRABAJO DE SPIDERMAN FUERON SALVADAS EN ESTA OCASION: "+to_string(salvdatosSpiderman)+" PERSONAS Y EN TOTAL: "+to_string(totalSpiderman);
 }
+
+string salvaHumanos::salvarHumanos(){
+    return "Soy Ant Man salve a estos humanos \n"+datTotAntman+"\n Soy Iroman salve a estops humanos\n"+
+            datTotdatosIronman+"\nSoy Thor salve a estos humanos\n"+datTotdatosThor+
+            "\nSoy Spiderman salve a estos humanos\n"+datTotdatosSpiderman;
+}

@@ -9,8 +9,11 @@
 struct ConsultaMundo{
 
     ConsultaMundo();
-    Arbol *arbol= new Arbol();
-    ListaDoble *listaDoble = new ListaDoble();
+    Arbol *arbol;
+    ListaDoble *listaDoble;
+
+    void setArbolMundo(Arbol* _arbol, ListaDoble* _mundo);
+    string humanosViviosSalvadosEliminados();
 
     string consultaHumanoID(int idConsultaHumano,NodoArbol *arbol);
     string consultaFamiliaID(int ConsultaFamiliaId, NodoArbol *arbol);
