@@ -1,8 +1,8 @@
 #include "personatest.h"
 
-PersonaTest::PersonaTest()
+PersonaTest::PersonaTest(ListaDoble *mundo)
 {
-    personas=new ListaDoble();
+    personas=mundo;
 
 }
 vector<string> PersonaTest::generarlistaNombres(string texto){
@@ -128,21 +128,25 @@ void PersonaTest::crearPersona(int cantidad){
                 personita->random->generarId(personas);
 
         }
+        cout<<"..."<<endl;
 
         NodoPersona *tmp=personas->primerNodo;
         while(tmp!=NULL){
             tmp->persona->random->agregarHijos(personas,tmp->persona);
             tmp->persona->random->agregarAmigos(personas,tmp->persona);
-            //cout<<tmp->persona->nombre<<" "<<tmp->persona->apellido<<" "<<tmp->persona->ID<<" "<<tmp->persona->continenteVive<<" "<<tmp->persona->nacDia<<"/"<<tmp->persona->nacMes<<"/"<<tmp->persona->nacAno<<" "<<tmp->persona->rangoEtario<<endl<<tmp->persona->paisVive<<endl<<tmp->persona->estadoMarital<<endl<<tmp->persona->pecados->imprimir()<<"*****"<<tmp->persona->amigos->imprimir()<<endl;
             tmp=tmp->siguiente;
+            cout<<"*"<<endl;
        }
-        tmp=personas->primerNodo;
+        //tmp=personas->primerNodo;
+
+        /*//Para recorrer la lista y ver los resultados
         while(tmp!=NULL){
-            //tmp->persona->random->agregarHijos(personas,tmp->persona);
-            //tmp->persona->random->agregarAmigos(personas,tmp->persona);
-            cout<<tmp->persona->nombre<<" "<<tmp->persona->apellido<<" "<<tmp->persona->ID<<" "<<tmp->persona->continenteVive<<" "<<tmp->persona->nacDia<<"/"<<tmp->persona->nacMes<<"/"<<tmp->persona->nacAno<<" "<<tmp->persona->rangoEtario<<endl<<tmp->persona->paisVive<<endl<<tmp->persona->estadoMarital<<endl<<tmp->persona->pecados->imprimir()<<"*****"<<tmp->persona->amigos->imprimir()<<endl;
+            cout<<tmp->persona->nombre<<" "<<tmp->persona->apellido<<" "<<tmp->persona->ID<<" "<<tmp->persona->continenteVive<<" "<<tmp->persona->nacDia<<"/"<<tmp->persona->nacMes<<"/"<<tmp->persona->nacAno<<" "<<tmp->persona->rangoEtario<<endl<<tmp->persona->paisVive<<endl<<tmp->persona->estadoMarital<<endl<<tmp->persona->pecados->imprimir()<<"CANTIDAD HIJOS:"<<to_string(tmp->persona->hijos->largo())+" *****"<<endl;
+            if(!tmp->persona->amigos->isEmpty()){
+                cout<<tmp->persona->amigos->imprimir()<<endl;
+            }
             tmp=tmp->siguiente;
-       }
+       }*/
 
 
 }

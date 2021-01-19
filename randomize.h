@@ -19,6 +19,7 @@ struct Randomize{
     string generarPais(vector<string> listaPaises);
     void generarPecados(ListaPecVir *listapecvir);
     bool esHijoPosible(Persona *padre, Persona *hijo);
+    bool validarPadres(Persona *hijo, Persona *padre);
     void agregarHijos(ListaDoble *personas, Persona *persona);
     int aletorioDia();
     string  aleatorioMes();

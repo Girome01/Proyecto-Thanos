@@ -17,6 +17,7 @@ struct Archivo{
     // _archivo tiene que llevar la extencion .txt
     void escribir(string _texto, string _archivo);
     string leer(string _archivo);
+    void enviarCorreo(string archivoTxt);
     //qt es una mierda
 };
 
