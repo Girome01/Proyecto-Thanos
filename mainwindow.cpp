@@ -39,7 +39,6 @@ void MainWindow::on_btnEliminar_clicked(){
         ui->txtmostrarDatos->append(qstr);
 
     }else if(ui->cmbEliminar->currentText() == QVariant("Nebula").toString()){
-        cout<<"LLAMO A ELIMINAR NEBULA"<<endl;
         elimHumanos.Nebula(mundo);
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();

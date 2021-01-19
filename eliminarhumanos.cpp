@@ -17,7 +17,6 @@ void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
             eliminar->persona->imprimirAmigos()+"\t";
     if(maximoNebula > 0){
         if( eliminar->persona->amigos != NULL){
-            cout<<"VERIFICO QUE EL HUMANO TUVIERA AMIGOS"<<endl;
             for(int i = 0; i < eliminar->persona->amigos->largo();i++){
                 NodoPersona* matar = eliminar->persona->amigos->BuscarEnPos(i);
                 if(matar->persona->vivo){
@@ -27,7 +26,7 @@ void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
                     matar->persona->eliminado->insertarAlFinal(texto);
                     QString m_time = QTime::currentTime().toString();
                     string time = m_time.toStdString();
-                    string mato = date +" "+ time+ " Mate al humano "+matar->persona->imprimirAmigos();
+                    string mato = date +" "+ time+ " Mate al humano \t"+matar->persona->imprimirAmigos();
                     datosNebula += mato+"\n";
                     datTotNebula += mato+"\n";
                 }
