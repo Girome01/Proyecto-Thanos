@@ -1,8 +1,8 @@
 #include "personatest.h"
 
-PersonaTest::PersonaTest()
+PersonaTest::PersonaTest(ListaDoble *mundo)
 {
-    personas=new ListaDoble();
+    personas=mundo;
 
 }
 vector<string> PersonaTest::generarlistaNombres(string texto){
@@ -128,12 +128,14 @@ void PersonaTest::crearPersona(int cantidad){
                 personita->random->generarId(personas);
 
         }
+        cout<<"..."<<endl;
 
         NodoPersona *tmp=personas->primerNodo;
         while(tmp!=NULL){
             tmp->persona->random->agregarHijos(personas,tmp->persona);
-            //tmp->persona->random->agregarAmigos(personas,tmp->persona);
+            tmp->persona->random->agregarAmigos(personas,tmp->persona);
             tmp=tmp->siguiente;
+            cout<<"*"<<endl;
        }
         //tmp=personas->primerNodo;
 

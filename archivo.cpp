@@ -37,3 +37,14 @@ string Archivo::leer(string _archivo){
     archivo.close();
     return texto;
 }
+
+void Archivo::enviarCorreo(string archivoTxt){
+    string nombreArchivo="pls.txt";
+    string exe="D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe";
+    string q=" D:/Documents/ProyectoThanos/ProyectoThanos/";
+    q.append(archivoTxt);
+    exe.append(q);
+    exe.append(" 0 1 ");
+    system("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe D:/Documents/ProyectoThanos/ProyectoThanos/pls.txt 0 1 ");
+    system(exe.c_str());
+}

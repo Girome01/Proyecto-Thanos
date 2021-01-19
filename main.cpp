@@ -4,7 +4,6 @@
 #include "heap.h"
 
 #include <QApplication>
-
 #include <QDate>
 #include<iostream>
 #include<stdlib.h>
@@ -14,10 +13,11 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-   /* MainWindow w;
-    PersonaTest* personaT=new PersonaTest;
-    personaT->pruebaPersona();
-    //w.show();*/
+    MainWindow w;
+    //PersonaTest* personaT=new PersonaTest;
+    //personaT->pruebaPersona();
+    w.show();
+    return a.exec();
 
     /*
     Arbol* arbol = new Arbol();
@@ -63,8 +63,8 @@ int main(int argc, char *argv[])
     //system("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe D:/Documents/ProyectoThanos/ProyectoThanos/pls.txt 0 1 ");
     system(exe.c_str());
     */
-    PersonaTest *persona=new PersonaTest();
-    persona->crearPersona(300);
+    //PersonaTest *persona=new PersonaTest();
+    //persona->crearPersona(300);
 
     return 1;
 

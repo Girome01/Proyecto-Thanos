@@ -9,6 +9,7 @@
 #include "consultamundo.h"
 #include "salvahumanos.h"
 #include "hashmap.h"
+#include "personatest.h"
 
 #include <QDate>
 #include <QTime>
@@ -29,8 +30,8 @@ public:
     ConsultaMundo* consultas = new ConsultaMundo();
     Archivo* archivo = new Archivo();
     salvaHumanos* salvarHum;
-    HashMap* thanos = new HashMap(mundo);;
-
+    HashMap* thanos = new HashMap(mundo);
+    PersonaTest *personaTest=new PersonaTest(mundo);
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
