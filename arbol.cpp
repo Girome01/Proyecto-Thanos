@@ -57,13 +57,17 @@ void Arbol::crearArbol(QList<int> lista, ListaDoble* personas, NodoArbol* nodo){
     int pos = lista.size()/2; // obtengo la posicion de la mitad del array de posiciones
     if(nodo == NULL){
         nodo = new NodoArbol(personas->BuscarEnPos(lista.at(pos))); // crea un nuevo nodo del arbol
+        cout<<"Creo la raiz"<<endl;
     }
+
     if(lista.size() > 1){ //Si solo queda un nunmero en el array no crea mas nodos
         /*
          * Aqui lo que pasa es que como el array coloca las posiciones de las personas
          * y le paso las posiciones menores a un hijo y las mayores a otro si ocupa hacemos llamada
         */
+        cout<<"LLAMA A LA RAMA IZQUIERDA"<<endl;
         crearArbol(listaMayores(lista,pos),personas,nodo->hijoderecho);
+        cout<<"LLAMA A LA RAMA DERECHA"<<endl;
         crearArbol(listaMenores(lista,pos),personas,nodo->hijoizquierdo);
     }
 }

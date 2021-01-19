@@ -2,8 +2,11 @@
 
 salvaHumanos::salvaHumanos(Arbol *arbol)
 {
+    cout<<"ACTUALIZO EL AROBL DE SALVAR"<<endl;
     arbolHumanidad=arbol;
+    cout<<"CREO LA COLA"<<endl;
     colaNivel=new Cola();
+    cout<<"CREO LA LISTA SALVA HUMANOS"<<endl;
     listaHumanidad=new ListaSalvaHumanos();
 }
 
