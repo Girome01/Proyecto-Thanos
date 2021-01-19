@@ -168,7 +168,7 @@ void Randomize::agregarHijos(ListaDoble *personas, Persona *padre){
                             }
                         }
                     }
-            }
+                }
                 tmp=tmp->siguiente;
         }
     }
@@ -268,19 +268,15 @@ string Randomize::generarRangoEtario(int anno){
 }
 
 bool Randomize::comprobarExistencia(Persona *amigo, Persona *personaActual){
-    NodoPersona * tmp = personaActual->amigos->primerNodo;
-    NodoPersona * tmp2 = amigo->amigos->primerNodo;
-    if(tmp==NULL || tmp2==NULL){
+    Persona * tmp = personaActual;
+    if(personaActual->amigos->isEmpty() || amigo->amigos->isEmpty()){
         return false; //No esta el amigo en la lista
     }else{
-        while(tmp!=NULL){
-            for(int i=0;i<tmp->persona->amigos->largo();i++){
-                NodoPersona *amigoActual=tmp->persona->amigos->BuscarEnPos(i);
-                if(amigoActual->persona->ID==amigo->ID){
-                    return true; //El amigo ya esta en la lista
-                }
+        for(int i=0;i<tmp->amigos->largo();i++){
+            NodoPersona *amigoActual=tmp->amigos->BuscarEnPos(i);
+            if(amigoActual->persona->ID==amigo->ID){
+                return true; //El amigo ya esta en la lista
             }
-            tmp=tmp->siguiente;
         }
         return false; //El amigo no esta en la lista
     }
@@ -309,18 +305,16 @@ void Randomize::agregarAmigos(ListaDoble *personas,  Persona *personaActual){ //
     int cantidadAmigos=int(QRandomGenerator::global()->bounded(0, 51));
     int probabilidadPais=int(QRandomGenerator::global()->bounded(0, 101));
     int probabilidadComun=int(QRandomGenerator::global()->bounded(0, 101));
-    NodoPersona * tmp = personas->primerNodo;
+    NodoPersona * tmp;
     for(int i=0; i<cantidadAmigos; i++){
-        while (tmp != NULL){
+        //while (tmp != NULL){
+        int posicionRandom=int(QRandomGenerator::global()->bounded(0, personas->largo()));
+        tmp=personas->BuscarEnPos(posicionRandom);
             if(tmp->persona->ID!=personaActual->ID){
-                cout<<1<<endl;
-                if(!comprobarExistencia(tmp->persona,personaActual)){
-                    cout<<2<<endl;
+                if(!comprobarExistencia(tmp->persona, personaActual)){
                     if(tmp->persona->paisVive==personaActual->paisVive || probabilidadPais<=40){
-                            cout<<3<<endl;
                         personaActual->amigos->insertarAlInicio(tmp->persona);
                             if(!comprobarExistencia(personaActual, tmp->persona)){
-                                cout<<4<<endl;
                                tmp->persona->amigos->insertarAlInicio(personaActual);
                             }
                     }else if(comprobarAmigos(tmp->persona,personaActual) || probabilidadComun<=70){
@@ -331,8 +325,8 @@ void Randomize::agregarAmigos(ListaDoble *personas,  Persona *personaActual){ //
                     }
                 }
             }
-            tmp=tmp->siguiente;
-        }
+            //tmp=tmp->siguiente;
+        //}
     }
 }
 

@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     system(exe.c_str());
     */
     PersonaTest *persona=new PersonaTest();
-    persona->crearPersona(10);
+    persona->crearPersona(300);
 
     return 1;
 
