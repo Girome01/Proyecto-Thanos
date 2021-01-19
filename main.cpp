@@ -66,6 +66,4 @@ int main(int argc, char *argv[])
     //PersonaTest *persona=new PersonaTest();
     //persona->crearPersona(300);
 
-    return 1;
-
 }

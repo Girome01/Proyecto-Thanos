@@ -14,6 +14,7 @@ void HashMap::generarHashMap(){
 }
 
 int HashMap::funcionHash(Persona *persona){
+    cout<<"Creo la key"<<endl;
     int key=0; //La key inicializa en 0
 
     if(persona->virtudes->cantidadPecVir()>persona->pecados->cantidadPecVir()){ //1
@@ -76,7 +77,7 @@ int HashMap::funcionHash(Persona *persona){
         key--;
     }
 
-    if(key<=0){ //Si la persona es muy shitty y da negativo, va a retornar 1
+    if(key <= 0){ //Si la persona es muy shitty y da negativo, va a retornar 1
         return 1;
     }else{
         return key;
@@ -84,9 +85,9 @@ int HashMap::funcionHash(Persona *persona){
 }
 
 void HashMap::generarAnnos(){
-    int anno=1899;
+    int anno = 1899;
     hashtable[0][0].insertarAlInicio(0); //La posicion 0,0 tendra un cero porque ahi van los nums del 1-10
-    for (int i=1; i<121; i++){ //Se llenan las filas en la columna 0 con los annos
+    for (int i=1; i < 122; i++){ //Se llenan las filas en la columna 0 con los annos
         anno++;
         hashtable[i][0].insertarAlInicio(anno);
     }
@@ -101,15 +102,21 @@ void HashMap::generarNum(){
 }
 
 void HashMap::insertarElemento(Persona *persona){
-    int key=funcionHash(persona);
-    persona->key=key;
-    int filas=(sizeof (hashtable)/sizeof (hashtable[0]));
-    int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
-    for(int i=0; i<filas; i++){
-        for(int j=0; j<columnas; j++){ //Se recorre la matriz
-            if(hashtable[i][0].primerNodo->key==std::stoi(persona->nacAno) &&
-            hashtable[0][j].primerNodo->key==key){ //Si la key del hashtable en el anno coincide con el anno de la persona y ademas coincide la key del num
+    cout<<"INSERTA ELEMENTO"<<endl;
+    int key = funcionHash(persona);
+    cout<<"ASIGNO LA KEY"<<endl;
+    persona->key = key;
+    int filas = (sizeof (hashtable)/sizeof (hashtable[0]));
+    int columnas = (sizeof(hashtable[0])/sizeof(hashtable[0][0]));
+    cout<<"Recorre el hasmap"<<endl;
+    for(int i=0; i < filas; i++){
+        for(int j=0; j < columnas; j++){ //Se recorre la matriz
+            if(hashtable[i][0].primerNodo->key == std::stoi(persona->nacAno) &&
+            hashtable[0][j].primerNodo->key == key){ //Si la key del hashtable en el anno coincide con el anno de la persona y ademas coincide la key del num
+                cout<<"AGREGA LA PERSONA AL HASHMAP"<<endl;
                 hashtable[i][j].insertarAlInicio(persona->ID); //Agregue a la persona en esa pos
+                cout<<"AGRAGA LA PERSONA BIEN"<<endl;
+                return ;
             }
         }
     }
@@ -172,13 +179,19 @@ void HashMap::eliminarPersonasNivelAnno(int _keyA, int _keyN){
 }
 
 void HashMap::crearHashmap(ListaDoble* mundo){
+    cout<<"GENERA EL HASMAP"<<endl;
     generarHashMap();
+    cout<<"GENERA LOS ANNOS"<<endl;
     generarAnnos();
+    cout<<"GENERA LOS NIVELES"<<endl;
     generarNum();
+    cout<<"AGREGA LOS HUMANOS"<<endl;
     NodoPersona* temp = mundo->primerNodo;
     while(temp != NULL){
+        cout<<"AGREGA Humano"<<endl;
         insertarElemento(temp->persona);
         temp = temp->siguiente;
     }
+    cout<<"TERMINAA DE CREAR EL HASHMAP"<<endl;
 }
 
