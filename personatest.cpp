@@ -137,14 +137,14 @@ void PersonaTest::crearPersona(int cantidad){
        }
         tmp=personas->primerNodo;
 
-        //Para recorrer la lista y ver los resultados
+        /*//Para recorrer la lista y ver los resultados
         while(tmp!=NULL){
             cout<<tmp->persona->nombre<<" "<<tmp->persona->apellido<<" "<<tmp->persona->ID<<" "<<tmp->persona->continenteVive<<" "<<tmp->persona->nacDia<<"/"<<tmp->persona->nacMes<<"/"<<tmp->persona->nacAno<<" "<<tmp->persona->rangoEtario<<endl<<tmp->persona->paisVive<<endl<<tmp->persona->estadoMarital<<endl<<tmp->persona->pecados->imprimir()<<"CANTIDAD HIJOS:"<<to_string(tmp->persona->hijos->largo())+" *****"<<endl;
             if(!tmp->persona->amigos->isEmpty()){
                 cout<<tmp->persona->amigos->imprimir()<<endl;
             }
             tmp=tmp->siguiente;
-       }
+       }*/
 
 
 }
