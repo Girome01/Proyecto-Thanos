@@ -231,3 +231,11 @@ void EliminarHumanos::Midnight(ListaDoble* mundo){
     Heap* eliminar = crearListaMidnight( mundo);
     eliminarMidnight(eliminar, mundo);
 }
+
+string EliminarHumanos::eliminarHumanos(){
+    return "Soy Nebula mate a estos humanos\n"+datTotNebula+
+            "\nSoy Ebony Maw mate a estos huamnos\n"+datTotEbony+
+            "\nSoy Black Dawrf mate a estos humanos\n"+datTotBlack+
+            "\nSoy Corvus Glaive mate a estos humanos\n"+datTotCorvus+
+            "\nSoy Midnight mate a estos humanos\n"+datTotMidnight;
+}

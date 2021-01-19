@@ -78,20 +78,20 @@ void MainWindow::on_btnEliminar_clicked(){
         if( ui->entEliminarFecha->text() != "" && ui->entElimNivel->text() != ""){
             int fecha = ui->entEliminarFecha->text().toInt();
             int nivel = ui->entElimNivel->text().toInt();
-            // Eliminar con fecha y nivel de thanos
+            thanos->eliminarPersonasNivelAnno(fecha,nivel);
         }else if(ui->entEliminarFecha->text() != ""){
             int fecha = ui->entEliminarFecha->text().toInt();
-            //Eliminar thanos solo de fecha
+            thanos->eliminarPersonasAnno(fecha);
         }else if(ui->entElimNivel->text() != ""){
             int nivel = ui->entElimNivel->text().toInt();
-            //Eliminar thanos por nivel
+            thanos->eliminarPersonasNivel(nivel);
         }
 
 
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
         stringstream buff;
-        buff << elimHumanos.elimBlack;
+        buff << thanos->elimThanos;
         string elim = buff.str();
         string txt = date+" | "+time+"-> Soy Thanos mate a "+elim;
         QString qstr = QString::fromStdString(txt);
@@ -103,14 +103,55 @@ void MainWindow::on_btnEliminar_clicked(){
 
 
 void MainWindow::on_btnSalvar_clicked(){
+    QString m_date = QDate::currentDate().toString();
+    string date = m_date.toStdString();
     if(ui->cmbSalvar->currentText() == QVariant("Ant Man").toString()){
         int veces = ui->entSalvar->text().toInt();
+        salvarHum->salvarAntman(veces);
 
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        stringstream buff;
+        buff << salvarHum->datosAntman;
+        string salvar = buff.str();
+        string txt = date+" | "+time+"-> Soy Ant Man salve a "+salvar;
+        QString qstr = QString::fromStdString(txt);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbSalvar->currentText() == QVariant("Ironman").toString()){
+        salvarHum->salvarIronman();
+
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        stringstream buff;
+        buff << salvarHum->datosAntman;
+        string salvar = buff.str();
+        string txt = date+" | "+time+"-> Soy Iroman salve a "+salvar;
+        QString qstr = QString::fromStdString(txt);
+        ui->txtmostrarDatos->setText(qstr);
 
     }else if(ui->cmbSalvar->currentText() == QVariant("Thor").toString()){
+        salvarHum->salvarThor();
+
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        stringstream buff;
+        buff << salvarHum->datosAntman;
+        string salvar = buff.str();
+        string txt = date+" | "+time+"-> Soy Thor salve a "+salvar;
+        QString qstr = QString::fromStdString(txt);
+        ui->txtmostrarDatos->setText(qstr);
 
     }else if(ui->cmbSalvar->currentText() == QVariant("Spiderman").toString()){
+        salvarHum->recorrerArbolAranna();
+
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        stringstream buff;
+        buff << salvarHum->datosAntman;
+        string salvar = buff.str();
+        string txt = date+" | "+time+"-> Soy Spiderman salve a "+salvar;
+        QString qstr = QString::fromStdString(txt);
+        ui->txtmostrarDatos->setText(qstr);
 
     }
 
@@ -120,30 +161,74 @@ void MainWindow::on_btnSalvar_clicked(){
 void MainWindow::on_btnCrearHumanos_clicked(){
     int cantHumanos = ui->entCantHumanos->text().toInt();
 
+    arbol->construirARBOL(mundo);
+    thanos->crearHashmap(mundo);
+    this->salvarHum = new salvaHumanos(arbol);
 }
 
 void MainWindow::on_btnEnviarCorreo_clicked(){
     if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Eliminar Humanos").toString()){
-
+        string eliminados = elimHumanos.eliminarHumanos();
+        QString m_date = QDate::currentDate().toString();
+        string date = m_date.toStdString();
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        string nombre = "Humanos eliminados "+date+" | "+time;
+        archivo->escribir(eliminados,nombre);
+        //Falta agregar enviar correo
     }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Salvar Humanos").toString()){
-
+        string salvados = salvarHum->salvarHumanos();
+        QString m_date = QDate::currentDate().toString();
+        string date = m_date.toStdString();
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        string nombre = "Humanos Salvados "+date+" | "+time;
+        archivo->escribir(salvados,nombre);
+        //Falta enviar correo
     }else if(ui->cmbEnviarCorreo->currentText() == QVariant("Enviar Todo la Humanidad").toString()){
-
+        string humanidad = mundo->imprimir();
+        QString m_date = QDate::currentDate().toString();
+        string date = m_date.toStdString();
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        string nombre = "Humanos "+date+" | "+time;
+        archivo->escribir(humanidad,nombre);
+        //Falta agregar enviar correo
     }
 
 }
 
 void MainWindow::on_btnBuscar_clicked(){
+    consultas->setArbolMundo(arbol,mundo);
     if(ui->cmbBuscarPor->currentText() == QVariant("Humano Por ID").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        int buscar = ui->entBuscar->text().toInt();
+        string consulta = consultas->consultaHumanoID(buscar,arbol->raiz);
+        QString qstr = QString::fromStdString(consulta);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Familia Por ID").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        int buscar = ui->entBuscar->text().toInt();
+        string consulta = consultas->consultaFamiliaID(buscar,arbol->raiz);
+        QString qstr = QString::fromStdString(consulta);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Amigos por ID").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        int buscar = ui->entBuscar->text().toInt();
+        string consulta = consultas->consultaAmigosID(buscar,arbol->raiz);
+        QString qstr = QString::fromStdString(consulta);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Humanos por Deporte").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        QString buscar = ui->entBuscar->text();
+        string consulta = consultas->consultaDeportes(buscar.toStdString());
+        QString qstr = QString::fromStdString(consulta);
+        ui->txtmostrarDatos->setText(qstr);
     }else if(ui->cmbBuscarPor->currentText() == QVariant("Humanos Vivos,Salvados,Eliminados").toString()){
-        //Consultar si hacerlo un txt o imprimir en pantalla
+        string consulta = consultas->humanosViviosSalvadosEliminados();
+        QString m_date = QDate::currentDate().toString();
+        string date = m_date.toStdString();
+        QString m_time = QTime::currentTime().toString();
+        string time = m_time.toStdString();
+        string nombre = "Humanos Eliminados, vivos y salvados "+date+" | "+time;
+        archivo->escribir(consulta,nombre);
+        //Falta agregar que se envie por coprreo
     }
 }
 

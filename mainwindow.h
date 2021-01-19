@@ -6,7 +6,12 @@
 #include "arbol.h"
 #include "listadoble.h"
 #include "eliminarhumanos.h"
+#include "consultamundo.h"
+#include "salvahumanos.h"
+#include "hashmap.h"
 
+#include <QDate>
+#include <QTime>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +26,10 @@ public:
     Arbol* arbol = new Arbol();
     ListaDoble* mundo = new ListaDoble();
     EliminarHumanos elimHumanos = EliminarHumanos();
+    ConsultaMundo* consultas = new ConsultaMundo();
+    Archivo* archivo = new Archivo();
+    salvaHumanos* salvarHum;
+    HashMap* thanos = new HashMap(mundo);;
 
 
     MainWindow(QWidget *parent = nullptr);

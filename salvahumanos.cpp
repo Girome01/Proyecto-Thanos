@@ -43,7 +43,8 @@ NodoArbol * salvaHumanos::mejorCaminoAntMan(){ //Tercera funcion
     return nodoMayor;
 }
 
-void salvaHumanos::salvarAntman(){ //Segunda funcion
+void salvaHumanos::salvarAntman(int cantidadHormigas){ //Segunda funcion
+    recorrerArbolHormigas(cantidadHormigas);
     NodoArbol *destino=mejorCaminoAntMan();
     NodoArbol *inicioArbol=mejorCaminoAntMan();
     QString m_time = QTime::currentTime().toString();
@@ -79,6 +80,7 @@ void salvaHumanos::generarListaHumanidad(NodoArbol *nodo){ //Primera funcion de 
 }
 
 void salvaHumanos::detonarBomba(){ //Segunda funcion de IronMan
+    generarListaHumanidad(arbolHumanidad->raiz);
     NodoSalvar *temp=listaHumanidad->primerNodo;
     int porcentaje=int(QRandomGenerator::global()->bounded(40,61)); //Cuanto porciento va a explotar
     int cantidadExplosion=listaHumanidad->largo()*(porcentaje/100); //Cantidad de explosiones que se daran
@@ -163,6 +165,7 @@ void salvaHumanos::salvarHijos(NodoPersona *primerNodo){ //Cuarta funcion de Iro
 }
 
 void salvaHumanos::salvarIronman(){ //Tercera funcion de IronMan
+   detonarBomba();
    NodoSalvar *temp=listaHumanidad->primerNodo;
    NodoPersona *temp2=listaHumanidad->primerNodo->nodoA->persona;
    datTotdatosIronman+="Soy Ironman e implanté bombas que fueron detonadas a este árbol: "+recorridoBomba+"."+"\n";
@@ -268,6 +271,7 @@ void salvaHumanos::recorrerArbolAranna(){ //Primera funcion Spiderman
             temp=temp->hijoizquierdo; //Lo mismo que arriba, pero con 3
         }
       }
+    recorrerTeleranna(arbolHumanidad->raiz);
 }
 
 void salvaHumanos::recorrerTeleranna(NodoArbol *nodo){ //Segunda funcion Spiderman
@@ -290,11 +294,17 @@ void salvaHumanos::salvarSpiderman(NodoPersona *nodo){ //Tercera funcion Spiderm
             temp->persona->vivo=true;
             salvdatosSpiderman++;
             totalSpiderman++;
-            datosSpiderman+=date +" "+time+" Soy Thor y salvé a esta persona: "+temp->persona->imprimir()+"\n";
+            datosSpiderman+=date +" "+time+" Soy Spiderman y salvé a esta persona: "+temp->persona->imprimir()+"\n";
             temp->persona->revivido->insertarAlFinal(datosThor);
             cantidadTelarannas--;
         }
         temp=temp->anterior; //Derecha, o sea los menores
     }
     datTotdatosSpiderman+=datosSpiderman+"\n"+"GRACIAS AL TRABAJO DE SPIDERMAN FUERON SALVADAS EN ESTA OCASION: "+to_string(salvdatosSpiderman)+" PERSONAS Y EN TOTAL: "+to_string(totalSpiderman);
+}
+
+string salvaHumanos::salvarHumanos(){
+    return "Soy Ant Man salve a estos humanos \n"+datTotAntman+"\n Soy Iroman salve a estops humanos\n"+
+            datTotdatosIronman+"\nSoy Thor salve a estos humanos\n"+datTotdatosThor+
+            "\nSoy Spiderman salve a estos humanos\n"+datTotdatosSpiderman;
 }

@@ -144,3 +144,8 @@ void Arbol::marcarNiveles(){
     }
 }
 
+void Arbol::construirARBOL(ListaDoble* mundo){
+    int porcentaje = obtenerPor(mundo->largo());
+    crearArray(porcentaje,mundo->largo());
+    crearArbol(this->posiciones,mundo,this->raiz);
+}

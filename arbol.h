@@ -35,6 +35,7 @@ struct Arbol{
 
     Arbol();
 
+    void construirARBOL(ListaDoble* mundo);
     int obtenerPor(int largoLista);
     void crearArray(int _posicion, int largoLista);
     void crearArbol(QList<int> lista, ListaDoble* personas, NodoArbol* nodo);
