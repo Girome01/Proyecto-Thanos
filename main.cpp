@@ -2,6 +2,7 @@
 #include "personatest.h"
 #include "mainwindow.h"
 #include "heap.h"
+#include "archivo.h"
 
 #include <QApplication>
 #include <QDate>
@@ -65,5 +66,9 @@ int main(int argc, char *argv[])
     */
     //PersonaTest *persona=new PersonaTest();
     //persona->crearPersona(300);
+
+    /*Archivo* archivo = new Archivo();
+    archivo->escribir("Hola mundo","PUTA SIRVA.txt");
+    return 1;*/
 
 }
