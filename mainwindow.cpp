@@ -179,9 +179,18 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string eliminados = elimHumanos.eliminarHumanos();
         QString m_date = QDate::currentDate().toString();
         string date = m_date.toStdString();
-        QString m_time = QTime::currentTime().toString();
-        string time = m_time.toStdString();
-        string nombre = "Humanos eliminados "+date+" "+time+".txt";
+        QTime* time = new QTime();
+        int hora = time->hour();
+        stringstream buff;
+        buff << hora;
+        string _hora = buff.str();
+        int minuto = time->minute();
+        buff << minuto;
+        string _minuto = buff.str();
+        int segundo = time->second();
+        buff << segundo;
+        string _segundo = buff.str();
+        string nombre = "Humanos eliminados "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
         archivo->escribir(eliminados,nombre);
         archivo->enviarCorreo(nombre);
 
@@ -189,9 +198,18 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string salvados = salvarHum->salvarHumanos();
         QString m_date = QDate::currentDate().toString();
         string date = m_date.toStdString();
-        QString m_time = QTime::currentTime().toString();
-        string time = m_time.toStdString();
-        string nombre = "Humanos Salvados "+date+" "+time+".txt";
+        QTime* time = new QTime();
+        int hora = time->hour();
+        stringstream buff;
+        buff << hora;
+        string _hora = buff.str();
+        int minuto = time->minute();
+        buff << minuto;
+        string _minuto = buff.str();
+        int segundo = time->second();
+        buff << segundo;
+        string _segundo = buff.str();
+        string nombre = "Humanos Salvados "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
         archivo->escribir(salvados,nombre);
         archivo->enviarCorreo(nombre);
 
@@ -199,9 +217,18 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         string humanidad = mundo->imprimir();
         QString m_date = QDate::currentDate().toString();
         string date = m_date.toStdString();
-        QString m_time = QTime::currentTime().toString();
-        string time = m_time.toStdString();
-        string nombre = "Humanos "+date+" | "+time+".txt";
+        QTime* time = new QTime();
+        int hora = time->hour();
+        stringstream buff;
+        buff << hora;
+        string _hora = buff.str();
+        int minuto = time->minute();
+        buff << minuto;
+        string _minuto = buff.str();
+        int segundo = time->second();
+        buff << segundo;
+        string _segundo = buff.str();
+        string nombre = "Humanos "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
         archivo->escribir(humanidad,nombre);
         archivo->enviarCorreo(nombre);
     }
@@ -238,9 +265,18 @@ void MainWindow::on_btnBuscar_clicked(){
         string consulta = consultas->humanosViviosSalvadosEliminados();
         QString m_date = QDate::currentDate().toString();
         string date = m_date.toStdString();
-        QString m_time = QTime::currentTime().toString();
-        string time = m_time.toStdString();
-        string nombre = "Humanos Eliminados, vivos y salvados "+date+" "+time+".txt";
+        QTime* time = new QTime();
+        int hora = time->hour();
+        stringstream buff;
+        buff << hora;
+        string _hora = buff.str();
+        int minuto = time->minute();
+        buff << minuto;
+        string _minuto = buff.str();
+        int segundo = time->second();
+        buff << segundo;
+        string _segundo = buff.str();
+        string nombre = "Humanos Eliminados, vivos y salvados "+date+" "+_hora+"-"+_minuto+"-"+_segundo+".txt";
         archivo->escribir(consulta,nombre);
         archivo->enviarCorreo(nombre);
     }
