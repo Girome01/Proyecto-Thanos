@@ -5,17 +5,8 @@ Archivo::Archivo(){
 }
 
 void Archivo::escribir(string _texto, string _archivo){
-    ofstream archivo;
-
-    archivo.open(_archivo.c_str(),ios::out);
-
-    if(archivo.fail()){
-        cout<<"No se pudo abrir el archivo"<<endl;
-    }else{
-        archivo<<_texto<<endl;
-        cout<<"Se guardo el archivo"<<endl;
-    }
-    archivo.close();
+    ofstream archivo(_archivo);
+    archivo<<_texto<<endl;
 }
 
 string Archivo::leer(string _archivo){

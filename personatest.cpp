@@ -22,38 +22,38 @@ vector<string> PersonaTest::generarlistaNombres(string texto){
 void PersonaTest::crearPersona(int cantidad){
 
         //LISTA NOMBRES FEMENINOS
-        string texto0=archivito.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\NombreMujeres.txt");
+        string texto0=archivito.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\NombreMujeres.txt");
         std::vector<string> listaNombresF;
         listaNombresF=generarlistaNombres(texto0);
 
         //LISTA NOMBRES MASCULINOS
-        string texto1=archivito.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\NombreHombres.txt");
+        string texto1=archivito.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\NombreHombres.txt");
         std::vector<string> listaNombresM;
         listaNombresM=generarlistaNombres(texto1);
 
         //LISTA APELLIDOS
-        string texto2=archivito.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\Apellidos.txt");
+        string texto2=archivito.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\Apellidos.txt");
         std::vector<string> listaApellidos;
         listaApellidos=generarlistaNombres(texto2);
 
         //LISTA PAISES
-        string texto3=archivito.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\Paises.txt");
+        string texto3=archivito.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\Paises.txt");
         std::vector<string> listaPaises;
         listaPaises=generarlistaNombres(texto3);
         cout<<listaPaises.size()<<endl;
 
         //LISTA PROFESIONES
-        string texto4=archivito.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\Profesiones.txt");
+        string texto4=archivito.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\Profesiones.txt");
         std::vector<string> listaProfesiones;
         listaProfesiones=generarlistaNombres(texto4);
 
         //LISTA CREENCIAS
-        string texto5=archivito.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\Creencias.txt");
+        string texto5=archivito.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\Creencias.txt");
         std::vector<string> listaCreencias;
         listaCreencias=generarlistaNombres(texto5);
 
         //LISTA DEPORTES
-        string texto6=archivito.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\Deportes.txt");
+        string texto6=archivito.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\Deportes.txt");
         std::vector<string> listaDeportes;
         listaDeportes=generarlistaNombres(texto6);
 

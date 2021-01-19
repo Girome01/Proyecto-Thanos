@@ -24,7 +24,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    Arbol* arbol = new Arbol();
+    Arbol* arbol;
     ListaDoble* mundo = new ListaDoble();
     EliminarHumanos elimHumanos = EliminarHumanos();
     ConsultaMundo* consultas = new ConsultaMundo();
