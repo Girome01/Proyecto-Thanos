@@ -27,7 +27,7 @@ public:
     Arbol* arbol;
     ListaDoble* mundo = new ListaDoble();
     EliminarHumanos elimHumanos = EliminarHumanos();
-    ConsultaMundo* consultas = new ConsultaMundo(mundo);
+    ConsultaMundo* consultas = new ConsultaMundo(mundo,arbol);
     Archivo* archivo = new Archivo();
     salvaHumanos* salvarHum;
     HashMap* thanos = new HashMap(mundo);

@@ -18,14 +18,14 @@ int Arbol::obtenerPor(int largoLista){
 
 void Arbol::crearArray(int _posicion, int largoLista){
     int lugar = largoLista / _posicion; // obtiene la cantidad de posiciones que recorre para obtener el lugar
-    cout<<"Lugar   "<<lugar<<endl;
+    //cout<<"Lugar   "<<lugar<<endl;
     for(int i = 0; i < _posicion; i++){
         if(lugar*1 > largoLista){ // Si se pasa del largo de la lista se coloca el ultimo lugar
             this->posiciones.append(largoLista); // se agrega la posicion
-            cout<<"Posiciones   "<<i<<" = "<<largoLista<<endl;
+            //cout<<"Posiciones   "<<i<<" = "<<largoLista<<endl;
         }else{
             this->posiciones.append(lugar*i); // se agrega la posicion dnode deberia estar
-            cout<<"Posiciones   "<<i<<" = "<<lugar*i<<endl;
+            //cout<<"Posiciones   "<<i<<" = "<<lugar*i<<endl;
         }
     }
 }
@@ -71,10 +71,10 @@ void Arbol::insertarNodo(NodoListaArbol *NodoPersona){
 void Arbol::llenarArbol(ListaArbol *lista){
     insertarNodo(lista->centroLista());
     if(lista->largoLista() > 1){
-        cout<<"PEIMER MITAD"<<endl;
+        //cout<<"PEIMER MITAD"<<endl;
         lista->primerMitad()->imprimir();
         llenarArbol(lista->primerMitad());
-        cout<<"SEGUNDA MITAD"<<endl;
+        //cout<<"SEGUNDA MITAD"<<endl;
         lista->segundaMitad()->imprimir();
         llenarArbol(lista->segundaMitad());
     }
@@ -82,9 +82,9 @@ void Arbol::llenarArbol(ListaArbol *lista){
 
 void Arbol::crearArbol(int largoLista, ListaDoble *listaHumanidad){
     int cantidadNodos=obtenerPor(largoLista);
-    cout<<"CANTIDADNODOS"<<cantidadNodos<<endl;
+    //cout<<"CANTIDADNODOS"<<cantidadNodos<<endl;
     double secuencia=ceil((largoLista*1.0)/(cantidadNodos*1.0));
-    cout<<"secuencias"<<secuencia<<endl;
+    //cout<<"secuencias"<<secuencia<<endl;
     ListaArbol *listaNodos = listaHumanidad->nodosArbol(secuencia,cantidadNodos);
     listaNodos->imprimir();
 
@@ -125,7 +125,7 @@ void Arbol::print2DUtil(NodoArbol* root, int space){
     buff << root->persona->persona->ID;
     string id = buff.str();
     arbolS += id+"\n";
-    cout<<root->persona->persona->ID<<"\n";
+    //cout<<root->persona->persona->ID<<"\n";
 
     // Process left child
     print2DUtil(root->hijoizquierdo, space);
@@ -133,8 +133,9 @@ void Arbol::print2DUtil(NodoArbol* root, int space){
 
 // Wrapper over print2DUtil()
 void Arbol::print2D(NodoArbol* root){
+     arbolS="";
     // Pass initial space count as 0
-    cout<<"Entrq al print2D"<<endl;
+    cout<<"Entra al print2D"<<endl;
     print2DUtil(root, 0);
 }
 

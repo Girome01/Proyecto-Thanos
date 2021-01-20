@@ -373,7 +373,7 @@ void Randomize::generarDeportes(vector<string> listaDeportes, ListaDeportes *lis
     }//if
     else{
         for (int i=0; i<=indice;i++){
-            int deportePractica = int(QRandomGenerator::global()->bounded(0, 157));
+            int deportePractica = int(QRandomGenerator::global()->bounded(0, 97));
             int vecesSemana = int(QRandomGenerator::global()->bounded(1,7));
             string deporte=listaDeportes.at(deportePractica);
             listadeportes->insertarAlFinal(vecesSemana,deporte);

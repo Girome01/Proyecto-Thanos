@@ -21,6 +21,7 @@ SOURCES += \
     eliminarhumanos.cpp \
     heap.cpp \
     listaarbol.cpp \
+    listablackdwarf.cpp \
     listadeportes.cpp \
     listadoble.cpp \
     listaelimsalv.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     eliminarhumanos.h \
     heap.h \
     listaarbol.h \
+    listablackdwarf.h \
     listadeportes.h \
     listadoble.h \
     listaelimsalv.h \

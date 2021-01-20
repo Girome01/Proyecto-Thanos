@@ -69,7 +69,7 @@ void Cola::imprimir(void)
      while (tmp != NULL)
      {
            // imprime el dato del nodo en el que esta tmp
-           cout << tmp->nodo << "  " << endl;
+           cout << tmp->nodo->persona->persona->ID << "  " << endl;
            // tmp avanza al siguiente nodo
            // esto no puede faltar porque se encicla
            tmp = tmp->siguiente;
