@@ -64,7 +64,7 @@ void salvaHumanos::salvarAntman(int cantidadHormigas){ //Segunda funcion
     QString m_time = QTime::currentTime().toString();
     string time = m_time.toStdString();
     ramasSeleccionadas+="Las ramas seleccionadas son: "+to_string(inicioArbol->marcaNodo)+" y "+to_string(destino->marcaNodo);
-    rangoSeleccionado+="El rango de personas salvadas es de "+to_string(inicioArbol->persona->persona->ID)+"->"+to_string(destino->persona->persona->ID);
+    rangoSeleccionado+=" El rango de personas salvadas es de "+to_string(inicioArbol->persona->persona->ID)+"->"+to_string(destino->persona->persona->ID);
     datTotAntman+="Soy Antman e implanté hormigas a este árbol: "+recorridoHormiga+". "+ramasSeleccionadas+rangoSeleccionado+"\n";
 
     NodoPersona *inicio=inicioArbol->persona;
@@ -349,7 +349,7 @@ void salvaHumanos::recorrerArbolAranna(){ //Primera funcion Spiderman
     NodoArbol *temp=arbolHumanidad->raiz;
     cantidadTelarannas=0;
     temp->telaranna=true;
-    recorridoTelaranna+="Los nodos con telaranas: \n";
+    recorridoTelaranna+="";
     while(temp!=NULL){
         int indice=int(QRandomGenerator::global()->bounded(0, 4)); //Randomly ira poniendo telerannas con nums del 0 al 3
         if(indice==0){ //Si es cero entonces por la izq
@@ -385,7 +385,7 @@ void salvaHumanos::salvarSpiderman(NodoPersona *nodo){ //Tercera funcion Spiderm
     NodoPersona *temp=nodo;
     QString m_time = QTime::currentTime().toString();
     string time = m_time.toStdString();
-    datTotdatosSpiderman+="Soy Spiderman e implanté "+to_string(cantidadTelarannas)+" telaranas a este árbol: "+recorridoTelaranna+"\n";
+    datTotdatosSpiderman+="Soy Spiderman e implanté "+to_string(cantidadTelarannas)+" telaranas a este árbol: \n Los nodos con telerannas: "+recorridoTelaranna+"\n";
     while(temp!=NULL && cantidadTelarannas>0){ //Recorre las personas hacia la derecha mientras se cumpla la cantidad de Telerannas deseada
         if(!temp->persona->vivo){
             temp->persona->vivo=true;

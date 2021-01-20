@@ -193,7 +193,7 @@ vector<string>EliminarHumanos::generarlistaNombres(string texto){
 
 void EliminarHumanos::BlackDwarf(int veces , ListaDoble* mundo){
     int deportePractica = int(QRandomGenerator::global()->bounded(0, 97));
-    string texto=archivoDeportes.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\Deportes.txt");
+    string texto=archivoDeportes.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\Deportes.txt");
     std::vector<string> listaDeportes;
     listaDeportes=generarlistaNombres(texto);
     deporte=listaDeportes.at(deportePractica);

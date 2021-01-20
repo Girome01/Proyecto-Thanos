@@ -17,6 +17,7 @@ void MainWindow::on_btnMostrarArbol_clicked(){
     cout<<"ENtro a imprimir el arbol"<<endl;
     arbol->print2D(arbol->raiz);
     QString dato = QString::fromLocal8Bit(arbol->arbolS.c_str());
+
     ui->txtArbol->setText(dato);
 }
 
@@ -82,7 +83,7 @@ void MainWindow::on_btnEliminar_clicked(){
 
         QString m_time = QTime::currentTime().toString();
         string time = m_time.toStdString();
-        string txt = date+" | "+time+"-> Soy Thanos mate a "+to_string(thanos->elimThanos);
+        string txt = date+" | "+time+"-> Soy Thanos mate a "+to_string(thanos->elimThanos)+"\n";
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
     }
@@ -103,7 +104,7 @@ void MainWindow::on_btnSalvar_clicked(){
         stringstream buff;
         buff << salvarHum->datosAntman;
         string salvar = buff.str();
-        string txt = date+" | "+time+"-> Soy Ant Man salve a "+salvar;
+        string txt = date+" | "+time+"-> Soy Ant Man salve a "+to_string(salvarHum->salvAntman)+"\n";
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
@@ -115,7 +116,7 @@ void MainWindow::on_btnSalvar_clicked(){
         stringstream buff;
         buff << salvarHum->datosAntman;
         string salvar = buff.str();
-        string txt = date+" | "+time+"-> Soy Iroman salve a "+salvar;
+        string txt = date+" | "+time+"-> Soy Iroman salve a "+to_string(salvarHum->salvdatosIronman)+"\n";
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
@@ -127,7 +128,7 @@ void MainWindow::on_btnSalvar_clicked(){
         stringstream buff;
         buff << salvarHum->datosAntman;
         string salvar = buff.str();
-        string txt = date+" | "+time+"-> Soy Thor salve a "+salvar;
+        string txt = date+" | "+time+"-> Soy Thor salve a "+to_string(salvarHum->salvdatosThor);
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
@@ -139,7 +140,7 @@ void MainWindow::on_btnSalvar_clicked(){
         stringstream buff;
         buff << salvarHum->datosAntman;
         string salvar = buff.str();
-        string txt = date+" | "+time+"-> Soy Spiderman salve a "+salvar;
+        string txt = date+" | "+time+"-> Soy Spiderman salve a "+to_string(salvarHum->salvdatosSpiderman);
         QString qstr = QString::fromStdString(txt);
         ui->txtmostrarDatos->append(qstr);
 
@@ -154,6 +155,7 @@ void MainWindow::on_btnCrearHumanos_clicked(){
     arbol = new Arbol();
     arbol->crearArbol(mundo->largo(),mundo);
     //arbol->construirARBOL(mundo,arbol->raiz);
+    arbol->marcarNiveles();
     thanos->crearHashmap(mundo);
     this->salvarHum = new salvaHumanos(arbol);
     ui->txtmostrarDatos->append("Se crearon los humanos.\n");
@@ -169,7 +171,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         int hora = time->currentTime().hour();
         int minuto = time->currentTime().minute();
         int segundo = time->currentTime().second();
-        string nombre = "Humanos eliminados "+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
+        string nombre = "HumanosEliminados"+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
                 +"_"+to_string(hora)+"-"+to_string(minuto)+"-"+to_string(segundo)+".txt";
         archivo->escribir(eliminados,nombre);
         archivo->enviarCorreo(nombre);
@@ -183,7 +185,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         int hora = time->currentTime().hour();
         int minuto = time->currentTime().minute();
         int segundo = time->currentTime().second();
-        string nombre = "Humanos Salvados "+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
+        string nombre = "HumanosSalvados"+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
                 +"_"+to_string(hora)+"-"+to_string(minuto)+"-"+to_string(segundo)+".txt";
         archivo->escribir(salvados,nombre);
         archivo->enviarCorreo(nombre);

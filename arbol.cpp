@@ -125,7 +125,7 @@ void Arbol::print2DUtil(NodoArbol* root, int space){
     buff << root->persona->persona->ID;
     string id = buff.str();
     arbolS += id+"\n";
-    cout<<root->persona->persona->ID<<"\n";
+    //cout<<root->persona->persona->ID<<"\n";
 
     // Process left child
     print2DUtil(root->hijoizquierdo, space);
@@ -133,6 +133,7 @@ void Arbol::print2DUtil(NodoArbol* root, int space){
 
 // Wrapper over print2DUtil()
 void Arbol::print2D(NodoArbol* root){
+     arbolS="";
     // Pass initial space count as 0
     cout<<"Entra al print2D"<<endl;
     print2DUtil(root, 0);
