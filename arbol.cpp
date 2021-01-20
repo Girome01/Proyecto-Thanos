@@ -53,29 +53,47 @@ QList<int> Arbol::listaMayores(QList<int> _posiciones, int pos){
     return mayores;
 }
 
-void Arbol::crearArbol(QList<int> lista, ListaDoble* personas, NodoArbol* nodo){
-    int pos = lista.size()/2; // obtengo la posicion de la mitad del array de posiciones
-    if(nodo == NULL){
-        nodo = new NodoArbol(personas->BuscarEnPos(lista.at(pos))); // crea un nuevo nodo del arbol
-        cout<<"Creo la raiz"<<endl;
+NodoArbol *Arbol::agregarNodo(NodoArbol *nodo, NodoPersona *personaAgregar){
+    if(nodo==NULL){
+        return new NodoArbol(personaAgregar);
+    }else if(nodo->persona->persona->ID > personaAgregar->persona->ID){
+        nodo->hijoizquierdo = agregarNodo(nodo->hijoizquierdo, personaAgregar);
+    }else{
+        nodo->hijoderecho = agregarNodo(nodo->hijoderecho, personaAgregar);
     }
+    return nodo;
+}
 
-    if(lista.size() > 1){ //Si solo queda un nunmero en el array no crea mas nodos
-        /*
-         * Aqui lo que pasa es que como el array coloca las posiciones de las personas
-         * y le paso las posiciones menores a un hijo y las mayores a otro si ocupa hacemos llamada
-        */
-        cout<<"LLAMA A LA RAMA IZQUIERDA"<<endl;
-        crearArbol(listaMayores(lista,pos),personas,nodo->hijoderecho);
-        cout<<"LLAMA A LA RAMA DERECHA"<<endl;
-        crearArbol(listaMenores(lista,pos),personas,nodo->hijoizquierdo);
+void Arbol::insertarNodo(NodoListaArbol *NodoPersona){
+    raiz = agregarNodo(raiz,NodoPersona->persona);
+}
+
+void Arbol::llenarArbol(ListaArbol *lista){
+    insertarNodo(lista->centroLista());
+    if(lista->largoLista() > 1){
+        cout<<"PEIMER MITAD"<<endl;
+        lista->primerMitad()->imprimir();
+        llenarArbol(lista->primerMitad());
+        cout<<"SEGUNDA MITAD"<<endl;
+        lista->segundaMitad()->imprimir();
+        llenarArbol(lista->segundaMitad());
     }
+}
+
+void Arbol::crearArbol(int largoLista, ListaDoble *listaHumanidad){
+    int cantidadNodos=obtenerPor(largoLista);
+    cout<<"CANTIDADNODOS"<<cantidadNodos<<endl;
+    double secuencia=ceil((largoLista*1.0)/(cantidadNodos*1.0));
+    cout<<"secuencias"<<secuencia<<endl;
+    ListaArbol *listaNodos = listaHumanidad->nodosArbol(secuencia,cantidadNodos);
+    listaNodos->imprimir();
+
+    llenarArbol(listaNodos);
 }
 
 void Arbol::inOrden(NodoArbol* nodo){
     //Un in orden normal
-   if (nodo != NULL)
-   {
+   if (nodo != NULL){
      inOrden(nodo->hijoizquierdo);
      cout << nodo->persona->persona->imprimir()<< " -> ";
      inOrden(nodo->hijoderecho);
@@ -84,13 +102,15 @@ void Arbol::inOrden(NodoArbol* nodo){
 
 void Arbol::print2DUtil(NodoArbol* root, int space){
     // Base case
-    if (root == NULL)
+    if (root == NULL){
         return;
+    }
 
     // Increase distance between levels
     space += COUNT;
 
     // Process right child first
+    //cout<<"Procesa un hijo derecho"<<endl;
     print2DUtil(root->hijoderecho, space);
 
     // Print current node after space
@@ -112,8 +132,9 @@ void Arbol::print2DUtil(NodoArbol* root, int space){
 }
 
 // Wrapper over print2DUtil()
-void Arbol::print2D(NodoArbol *root){
+void Arbol::print2D(NodoArbol* root){
     // Pass initial space count as 0
+    cout<<"Entrq al print2D"<<endl;
     print2DUtil(root, 0);
 }
 
@@ -146,10 +167,4 @@ void Arbol::marcarNiveles(){
     for(int i=0;i<profundidad(raiz);i++){
         encontrarNiveles(raiz, 0, i);
     }
-}
-
-void Arbol::construirARBOL(ListaDoble* mundo){
-    int porcentaje = obtenerPor(mundo->largo());
-    crearArray(porcentaje,mundo->largo());
-    crearArbol(this->posiciones,mundo,this->raiz);
 }

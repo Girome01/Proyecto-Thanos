@@ -65,14 +65,15 @@ void ListaDoble::insertionSort(Persona* _persona){
         insertarAlFinal(_persona);
     }else{
         NodoPersona* temp = primerNodo;
-        while(temp->siguiente->persona->ID < _persona->ID){
+        while(temp->persona->ID < _persona->ID){
+            //cout<<temp->persona->ID<<"---"<<_persona->ID<<endl;
             temp = temp->siguiente;
         }
         NodoPersona * nuevo = new NodoPersona(_persona);
-        nuevo->siguiente = temp->siguiente;
-        nuevo->anterior = temp;
-        temp->siguiente->anterior = nuevo;
-        temp->siguiente = nuevo;
+        nuevo->siguiente = temp;
+        nuevo->anterior = temp->anterior;
+        temp->anterior->siguiente = nuevo;
+        temp->anterior = nuevo;
     }
 }
 
@@ -135,3 +136,30 @@ void ListaDoble::hacerAccionesBuenas(){
     }
 }
 
+ListaArbol *ListaDoble::nodosArbol(int secuencia, int cant){
+    ListaArbol *newList=new ListaArbol();
+
+    if(primerNodo!=NULL){
+        cout<<"ENTRO AL IF"<<endl;
+        NodoPersona *tmp = primerNodo;
+        int contador=secuencia-1;
+        /*for(int i = 0; i < cant; i++){
+            if(secuencia*1 > largo()){ // Si se pasa del largo de la lista se coloca el ultimo lugar
+                newList->agregarHumanos(BuscarEnPos(largo()));
+            }else{
+                newList->agregarHumanos(BuscarEnPos(secuencia*i));
+            }
+        }*/
+        do{
+            contador++;
+            if(contador==secuencia){
+                cout<<"AGREGO HUMANO"<<endl;
+                newList->agregarHumanos(tmp);
+                cout<<"Logro agregar el humano"<<endl;
+                contador=0;
+            }
+            tmp=tmp->siguiente;
+        }while(tmp!=NULL);
+    }
+    return newList;
+}

@@ -3,6 +3,7 @@
 
 struct ListaDoble;
 #include "listadoble.h"
+#include "listaarbol.h"
 #define COUNT 10
 
 #include<iostream>
@@ -22,7 +23,9 @@ struct NodoArbol{
        bool telaranna=false;
 
        NodoArbol(NodoPersona* _persona){
+           cout<<"CREO EL NODO"<<endl;
             persona = _persona;
+            cout<<"DEFINE SUS HIJOS COMO NULL"<<endl;
             hijoizquierdo = hijoderecho = NULL;
        }
 };
@@ -35,10 +38,17 @@ struct Arbol{
 
     Arbol();
 
-    void construirARBOL(ListaDoble* mundo);
+    void construirARBOL(ListaDoble* mundo,NodoArbol* nodo);
+
     int obtenerPor(int largoLista);
     void crearArray(int _posicion, int largoLista);
-    void crearArbol(QList<int> lista, ListaDoble* personas, NodoArbol* nodo);
+
+    NodoArbol* agregarNodo(NodoArbol *nodo, NodoPersona *personaAgregar);
+    void insertarNodo(NodoListaArbol *NodoPersona);
+    void llenarArbol(ListaArbol *lista);
+    void crearArbol(int largoLista, ListaDoble *listaHumanidad);
+
+
     void imprimirArray();
     QList<int> listaMenores(QList<int> _posiciones, int pos);
     QList<int> listaMayores(QList<int> _posiciones, int pos);

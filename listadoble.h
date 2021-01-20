@@ -2,7 +2,9 @@
 #define LISTADOBLE_H
 
 struct Persona;
+struct ListaArbol;
 #include "persona.h"
+#include "listaarbol.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -51,6 +53,7 @@ struct ListaDoble{
     void listaBlackDwarf(Persona* _persona);
     void hacerPecar();
     void hacerAccionesBuenas();
+    ListaArbol *nodosArbol(int secuencia, int cant);
 
 };
 

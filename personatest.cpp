@@ -121,11 +121,11 @@ void PersonaTest::crearPersona(int cantidad){
                 //PAREJA
                 personita->random->asignarPareja(personas);
 
-                //INSERTA PERSONA A LA LISTA
-                personas->insertarAlInicio(personita);
-
                 //ID
-                personita->random->generarId(personas);
+                personita->ID = personita->random->generarId(personas);
+
+                //INSERTA PERSONA A LA LISTA
+                personas->insertionSort(personita);
 
         }
         cout<<"..."<<endl;

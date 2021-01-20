@@ -14,6 +14,7 @@ MainWindow::~MainWindow(){
 
 
 void MainWindow::on_btnMostrarArbol_clicked(){
+    cout<<"ENtro a imprimir el arbol"<<endl;
     arbol->print2D(arbol->raiz);
     QString dato = QString::fromLocal8Bit(arbol->arbolS.c_str());
     ui->txtArbol->setText(dato);
@@ -149,8 +150,11 @@ void MainWindow::on_btnSalvar_clicked(){
 void MainWindow::on_btnCrearHumanos_clicked(){
     int cantHumanos = ui->entCantHumanos->text().toInt();
     personaTest->crearPersona(cantHumanos);
+    cout<<"LARGO DEL MUNDO"<<mundo->largo()<<endl;
     arbol = new Arbol();
-    arbol->construirARBOL(mundo);
+    arbol->crearArbol(mundo->largo(),mundo);
+    arbol->inOrden(arbol->raiz);
+    //arbol->construirARBOL(mundo,arbol->raiz);
     thanos->crearHashmap(mundo);
     this->salvarHum = new salvaHumanos(arbol);
     ui->txtmostrarDatos->append("Se crearon los humanos.\n");
