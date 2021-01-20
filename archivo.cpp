@@ -40,7 +40,7 @@ string Archivo::leer(string _archivo){
 
 void Archivo::enviarCorreo(string archivoTxt){
     string exe="D:\\Documents\\ProyectoThanos\\ProyectoThanos\\EnviarCorreosQT1.exe";
-    string q=" D:/Documents/ProyectoThanos/ProyectoThanos/";
+    string q=" D:/Documents/ProyectoThanos/build-ProyectoThanos-Desktop_Qt_5_15_1_MinGW_32_bit-Debug/";
     cout<<archivoTxt<<endl;
     q.append(archivoTxt);
     exe.append(q);

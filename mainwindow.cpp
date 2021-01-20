@@ -198,7 +198,7 @@ void MainWindow::on_btnEnviarCorreo_clicked(){
         int hora = time->currentTime().hour();
         int minuto = time->currentTime().minute();
         int segundo = time->currentTime().second();
-        string nombre = "Humanos "+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
+        string nombre = "Humanos"+to_string(dia)+"-"+to_string(mes)+"-"+to_string(anno)
                 +"_"+to_string(hora)+"-"+to_string(minuto)+"-"+to_string(segundo)+".txt";
         archivo->escribir(humanidad,nombre);
         archivo->enviarCorreo(nombre);
