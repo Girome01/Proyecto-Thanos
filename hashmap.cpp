@@ -18,62 +18,42 @@ int HashMap::funcionHash(Persona *persona){
 
     if(persona->virtudes->cantidadPecVir()>persona->pecados->cantidadPecVir()){ //1
         key++;
-    }else{
-        key--;
     }
 
-    if(persona->amigos->largo()>=25){ //2
+    if(persona->amigos->largo()>=10){ //2
         key++;
-    }else{
-        key--;
     }
 
-    if(persona->hijos->largo()>=4){ //3
+    if(persona->hijos->largo()>=2){ //3
         key++;
-    }else{
-        key--;
     }
 
-    if(2021-std::stoi(persona->nacAno)<=34){ //4
+    if(2021-std::stoi(persona->nacAno)<=35){ //4
         key++;
-    }else{
-        key--;
     }
 
     if(persona->estadoMarital=="Casado"){ //5
         key++;
-    }else{
-        key--;
     }
 
     if(persona->paisVive=="Costa Rica: San José"){ //6
         key++;
-    }else{
-        key--;
     }
 
     if(persona->profesion=="Ingeniero(a)"){ //7
         key++;
-    }else{
-        key--;
     }
 
     if(persona->deportes->largo()>=3){ //8
         key++;
-    }else{
-        key--;
     }
 
     if(persona->deportes->frecuenciaDeporte()>=5){ //9
         key++;
-    }else{
-        key--;
     }
 
     if(persona->continenteVive=="America"){ //10
         key++;
-    }else{
-        key--;
     }
 
     if(key <= 0){ //Si la persona es muy shitty y da negativo, va a retornar 1
@@ -119,18 +99,21 @@ void HashMap::insertarElemento(Persona *persona){
 void HashMap::eliminarPersonasAnno(int key){
     datThanos = "";
     elimThanos = 0;
-    int filas=(sizeof (hashtable)/sizeof (hashtable[0]));
-    int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
+    int filas=(sizeof(hashtable)/sizeof(hashtable[0])); //Cant filas
+    int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0])); //Cant cols
     int filaEsp=0;
     for(int i=0; i<filas; i++){
+        //cout<<"Entro a recorrer filas"<<endl;
             if(hashtable[i][0].primerNodo->key==key) //El anno
                 filaEsp=i;
     }
    for(int j=0; j<columnas; j++){
+       //cout<<"Entro a recorrer columnas"<<endl;
             hashtable[filaEsp][j].matarPersonas(personas);
             elimThanos += hashtable[filaEsp][j].elimThanos;
             datThanos += hashtable[filaEsp][j].datosThanos;
    }
+   //cout<<"uwu"<<endl;
    datThanosTot += datThanos;
    elimThanosTotal += elimThanos;
 }
@@ -138,8 +121,8 @@ void HashMap::eliminarPersonasAnno(int key){
 void HashMap::eliminarPersonasNivel(int key){
     datThanos = "";
     elimThanos = 0;
-    int filas=(sizeof (hashtable)/sizeof (hashtable[0]));
-    int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0]));
+    int filas=(sizeof(hashtable)/sizeof(hashtable[0])); //Cant filas
+    int columnas=(sizeof(hashtable[0])/sizeof(hashtable[0][0])); //Cant cols
     int colEsp=0;
     for(int j=0; j<columnas; j++){
             if(hashtable[0][j].primerNodo->key==key) //El nivel

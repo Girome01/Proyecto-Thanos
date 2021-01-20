@@ -140,7 +140,7 @@ ListaArbol *ListaDoble::nodosArbol(int secuencia, int cant){
     ListaArbol *newList=new ListaArbol();
 
     if(primerNodo!=NULL){
-        cout<<"ENTRO AL IF"<<endl;
+        //cout<<"ENTRO AL IF"<<endl;
         NodoPersona *tmp = primerNodo;
         int contador=secuencia-1;
         /*for(int i = 0; i < cant; i++){
@@ -153,9 +153,9 @@ ListaArbol *ListaDoble::nodosArbol(int secuencia, int cant){
         do{
             contador++;
             if(contador==secuencia){
-                cout<<"AGREGO HUMANO"<<endl;
+                //cout<<"AGREGO HUMANO"<<endl;
                 newList->agregarHumanos(tmp);
-                cout<<"Logro agregar el humano"<<endl;
+                //cout<<"Logro agregar el humano"<<endl;
                 contador=0;
             }
             tmp=tmp->siguiente;

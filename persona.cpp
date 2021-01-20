@@ -48,6 +48,17 @@ string Persona::verificarEsposa(){
     return "";
 }
 
+string Persona::verificarPadre(){
+    if(this->padre != NULL)
+        return this->padre->imprimirAmigos();
+    return "";
+}
+string Persona::verificarMadre(){
+    if(this->madre != NULL)
+        return this->madre->imprimirAmigos();
+    return "";
+}
+
 string Persona::imprimir(){
     stringstream buff;
     buff << this->ID;
@@ -59,6 +70,7 @@ string Persona::imprimir(){
             "\tEstado: "+this->obtenerVivo()+"\tFecha de nacimiento: "+this->nacDia+"-"+this->nacMes+
             "-"+this->nacAno+"\t"+this->rangoEtario+"\tGenero: "+this->obtenerGenero()+
             "\tContinente donde vive: "+this->continenteVive+"\tPais donde vive: "+this->paisVive+
+            "\tMadre: "+this->verificarMadre()+"\tPadre: "+this->verificarPadre()+
             "\tEstado marital: "+this->estadoMarital+"\tEsposa: "+this->verificarEsposa()+
             "\tHijos: "+this->verificarHijos()+"\tCreencia: "+this->creencia+"\tProfesion: "+
             this->profesion+"\tPecados: "+this->pecados->imprimir()+"\tVirtudes: "+
