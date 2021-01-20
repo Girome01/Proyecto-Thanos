@@ -14,7 +14,6 @@ void HashMap::generarHashMap(){
 }
 
 int HashMap::funcionHash(Persona *persona){
-    cout<<"Creo la key"<<endl;
     int key=0; //La key inicializa en 0
 
     if(persona->virtudes->cantidadPecVir()>persona->pecados->cantidadPecVir()){ //1
@@ -102,20 +101,15 @@ void HashMap::generarNum(){
 }
 
 void HashMap::insertarElemento(Persona *persona){
-    cout<<"INSERTA ELEMENTO"<<endl;
     int key = funcionHash(persona);
-    cout<<"ASIGNO LA KEY"<<endl;
     persona->key = key;
     int filas = (sizeof (hashtable)/sizeof (hashtable[0]));
     int columnas = (sizeof(hashtable[0])/sizeof(hashtable[0][0]));
-    cout<<"Recorre el hasmap"<<endl;
     for(int i=0; i < filas; i++){
         for(int j=0; j < columnas; j++){ //Se recorre la matriz
             if(hashtable[i][0].primerNodo->key == std::stoi(persona->nacAno) &&
             hashtable[0][j].primerNodo->key == key){ //Si la key del hashtable en el anno coincide con el anno de la persona y ademas coincide la key del num
-                cout<<"AGREGA LA PERSONA AL HASHMAP"<<endl;
                 hashtable[i][j].insertarAlInicio(persona->ID); //Agregue a la persona en esa pos
-                cout<<"AGRAGA LA PERSONA BIEN"<<endl;
                 return ;
             }
         }
@@ -179,19 +173,13 @@ void HashMap::eliminarPersonasNivelAnno(int _keyA, int _keyN){
 }
 
 void HashMap::crearHashmap(ListaDoble* mundo){
-    cout<<"GENERA EL HASMAP"<<endl;
     generarHashMap();
-    cout<<"GENERA LOS ANNOS"<<endl;
     generarAnnos();
-    cout<<"GENERA LOS NIVELES"<<endl;
     generarNum();
-    cout<<"AGREGA LOS HUMANOS"<<endl;
     NodoPersona* temp = mundo->primerNodo;
     while(temp != NULL){
-        cout<<"AGREGA Humano"<<endl;
         insertarElemento(temp->persona);
         temp = temp->siguiente;
     }
-    cout<<"TERMINAA DE CREAR EL HASHMAP"<<endl;
 }
 

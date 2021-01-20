@@ -20,6 +20,7 @@ SOURCES += \
     hashmap.cpp \
     eliminarhumanos.cpp \
     heap.cpp \
+    listaarbol.cpp \
     listadeportes.cpp \
     listadoble.cpp \
     listaelimsalv.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     hashmap.h \
     eliminarhumanos.h \
     heap.h \
+    listaarbol.h \
     listadeportes.h \
     listadoble.h \
     listaelimsalv.h \

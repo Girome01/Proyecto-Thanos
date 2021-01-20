@@ -6,6 +6,7 @@ EliminarHumanos::EliminarHumanos(){
 
 NodoPersona* EliminarHumanos::obtenerHumNebula(ListaDoble* lista){
     int largo = int(QRandomGenerator::global()->bounded(0, lista->largo()));
+    cout<<"BUSCA AL HUMANO"<<endl;
     return lista->BuscarEnPos(largo);
 }
 
@@ -25,12 +26,12 @@ void EliminarHumanos::eliminarHumaNebula(NodoPersona* eliminar){
                     matar->persona->eliminado->insertarAlFinal(texto);
                     QString m_time = QTime::currentTime().toString();
                     string time = m_time.toStdString();
-                    string mato = date +" "+ time+ " Mate al humano "+matar->persona->imprimirAmigos();
+                    string mato = date +" "+ time+ " Mate al humano \t"+matar->persona->imprimirAmigos();
                     datosNebula += mato+"\n";
                     datTotNebula += mato+"\n";
                 }
-                eliminarHumaNebula(matar);
-                maximoNebula--;// Si no funciona cambiarlo por que solo mate a los amigos de la persona si la persona esta viva
+                maximoNebula--;
+                eliminarHumaNebula(matar);// Si no funciona cambiarlo por que solo mate a los amigos de la persona si la persona esta viva
             }
         }
     }
@@ -40,7 +41,9 @@ void EliminarHumanos::Nebula(ListaDoble* lista){
     datosNebula = "";
     elimNebula = 0;
     this->maximoNebula = lista->largo()/3;
+    cout<<"ELIMINAR NEBULA"<<endl;
     NodoPersona* persona = obtenerHumNebula(lista);
+    cout<<"MANDA A MATAR LOS AMIGOS"<<endl;
     eliminarHumaNebula(persona);
 }
 

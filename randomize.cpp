@@ -57,8 +57,6 @@ int Randomize::generarId(ListaDoble *personas){
             if(estaID(personas, id)){
                 Randomize::generarId(personas);
             }
-            tmp->persona->ID=id;
-
             tmp=tmp->siguiente;
         }
     }

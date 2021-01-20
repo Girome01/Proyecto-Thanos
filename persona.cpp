@@ -7,7 +7,8 @@ Persona::Persona(){
     amigos=new ListaDoble;
     deportes=new ListaDeportes;
     paises=new ListaSimple();
-
+    eliminado = new ListaElimSalv();
+    revivido = new ListaElimSalv();
 }
 
 string Persona::obtenerGenero(){
