@@ -5,6 +5,8 @@ struct ListaDoble;
 #include "listadoble.h"
 #include "listadeportes.h"
 #include "heap.h"
+#include "archivo.h"
+#include "listablackdwarf.h"
 
 #include <QDate>
 #include <QTime>
@@ -14,6 +16,9 @@ using namespace std;
 
 struct EliminarHumanos{
     int maximoNebula;
+    Archivo archivoDeportes;
+    string deporte;
+
     QString m_date = QDate::currentDate().toString();
     string date = m_date.toStdString();
 
@@ -48,12 +53,12 @@ struct EliminarHumanos{
     void eliminarHumaNebula(NodoPersona* eliminar);
     void Nebula(ListaDoble* lista);
 
-    NodoPersona* obtenerHumEbony(ListaDoble* lista);
+    NodoPersona* obtenerHumEbony(ListaDoble* lista,int id);
     void eliminarHumaEbony(NodoPersona* eliminar);
-    void EbonyMaw(ListaDoble* lista);
+    void EbonyMaw(ListaDoble* lista, int id);
 
-    ListaDoble* buscarHumBlack(int veces, string deporte, ListaDoble* mundo);
-    void eliminarBlackDwarf(ListaDoble* eliminar, int veces, string deporte);
+    ListaBlackDwarf* buscarHumBlack(int veces, string deporte, ListaDoble* mundo);
+    void eliminarBlackDwarf(ListaBlackDwarf* eliminar, int veces, string deporte);
     vector<string>generarlistaNombres(string texto);
     void BlackDwarf(int veces /*, ListaDeportes* deportes*/, ListaDoble* mundo);
 

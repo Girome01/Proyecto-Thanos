@@ -60,6 +60,8 @@ struct Persona{
     string obtenerVivo();
     string verificarAmigos();
     string verificarEsposa();
+    string verificarMadre();
+    string verificarPadre();
     string verificarHijos();
 };
 
