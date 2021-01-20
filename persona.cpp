@@ -7,7 +7,8 @@ Persona::Persona(){
     amigos=new ListaDoble;
     deportes=new ListaDeportes;
     paises=new ListaSimple();
-
+    eliminado = new ListaElimSalv();
+    revivido = new ListaElimSalv();
 }
 
 string Persona::obtenerGenero(){
@@ -24,7 +25,7 @@ string Persona::obtenerVivo(){
 
 string Persona::imprimirAmigos(){
     string texto = "";
-    texto +="Nombre: "+this->nombre+"\tApellido: "+this->apellido+"\nID: "+to_string(this->ID)+"\tEstado: "+
+    texto +="Nombre: "+this->nombre+"\tApellido: "+this->apellido+"\tID: "+to_string(this->ID)+"\tEstado: "+
             this->obtenerVivo();
     return texto;
 }
