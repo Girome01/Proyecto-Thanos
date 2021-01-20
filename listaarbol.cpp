@@ -67,7 +67,7 @@ int ListaArbol::largoLista(){
 void ListaArbol::imprimir(){
     NodoListaArbol * temp = primerNodo;
     while(temp!=0){
-        cout<<temp->persona->persona->ID<<" -> ";
+        //cout<<temp->persona->persona->ID<<" -> ";
         temp = temp->siguiente;
     }
     cout<<endl<<endl;
