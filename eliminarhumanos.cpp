@@ -6,7 +6,7 @@ EliminarHumanos::EliminarHumanos(){
 
 NodoPersona* EliminarHumanos::obtenerHumNebula(ListaDoble* lista){
     int largo = int(QRandomGenerator::global()->bounded(0, lista->largo()));
-    cout<<"BUSCA AL HUMANO"<<endl;
+    //cout<<"BUSCA AL HUMANO"<<endl;
     return lista->BuscarEnPos(largo);
 }
 
@@ -41,9 +41,9 @@ void EliminarHumanos::Nebula(ListaDoble* lista){
     datosNebula = "";
     elimNebula = 0;
     this->maximoNebula = lista->largo()/3;
-    cout<<"ELIMINAR NEBULA"<<endl;
+    //cout<<"ELIMINAR NEBULA"<<endl;
     NodoPersona* persona = obtenerHumNebula(lista);
-    cout<<"MANDA A MATAR LOS AMIGOS"<<endl;
+    //cout<<"MANDA A MATAR LOS AMIGOS"<<endl;
     eliminarHumaNebula(persona);
 }
 
@@ -58,7 +58,7 @@ void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
             eliminar->persona->imprimirAmigos()+"\t";
     if(eliminar != NULL){
         if(eliminar->persona->padre!=NULL){
-             cout<<"Padre"<<endl;
+             //cout<<"Padre"<<endl;
             if(eliminar->persona->padre->vivo){
             eliminar->persona->padre->vivo = false;
             elimEbony += 1;
@@ -71,7 +71,7 @@ void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
             }
         }
         if(eliminar->persona->esposa!=NULL){
-             cout<<"Esposa"<<endl;
+             //cout<<"Esposa"<<endl;
             if(eliminar->persona->esposa->vivo){
                 eliminar->persona->esposa->vivo = false;
                 elimEbony += 1;
@@ -84,7 +84,7 @@ void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
             }
         }
         if(eliminar->persona->madre!=NULL){
-             cout<<"Madre"<<endl;
+             //cout<<"Madre"<<endl;
             if(eliminar->persona->madre->vivo){
                 eliminar->persona->madre->vivo = false;
                 elimEbony += 1;
@@ -98,7 +98,7 @@ void EliminarHumanos::eliminarHumaEbony(NodoPersona* eliminar){
         }
 
         if(eliminar->persona->hijos->primerNodo != NULL){
-            cout<<"Hijitos"<<endl;
+            //cout<<"Hijitos"<<endl;
             for(int i = 0; i  < eliminar->persona->hijos->largo(); i++){
                 NodoPersona* temp = eliminar->persona->hijos->BuscarEnPos(i);
                 if(temp->persona->vivo){
@@ -134,13 +134,14 @@ ListaBlackDwarf* EliminarHumanos::buscarHumBlack(int veces, string deporte, List
     ListaBlackDwarf *refTemp=new ListaBlackDwarf();
     NodoPersona* temp = mundo->primerNodo;
     for (int i = 0; i < mundo->largo() ; i++) {
+
         if(temp->persona->deportes->esta(deporte) &&
                 temp->persona->deportes->obtener(deporte)->vecesSemana >= veces){
             refTemp->insertarAlFinal(temp->persona);
         }
+        temp = temp->siguiente;
 
     }
-    cout<<"LD: "<<refTemp->largoBD()<<endl;
     return refTemp;
 }
 
@@ -157,13 +158,10 @@ void EliminarHumanos::eliminarBlackDwarf(ListaBlackDwarf* eliminar, int veces, s
         elim=1;
     }else
         elim = eliminar->largoBD()*0.5;
-    cout<<eliminar->largoBD()<<endl;
     for (int i = 0; i <elim; i++ ) {
         NodoBlackDwarf* temp = eliminar->BuscarEnPos(i);
         if(temp!=NULL){
-            cout<<"If matar"<<endl;
             if(temp->personaBD->vivo){
-                cout<<"Mata"<<endl;
                 temp->personaBD->vivo = false;
                 elimBlack += 1;
                 totalElimBlack += 1;
@@ -195,7 +193,7 @@ vector<string>EliminarHumanos::generarlistaNombres(string texto){
 
 void EliminarHumanos::BlackDwarf(int veces , ListaDoble* mundo){
     int deportePractica = int(QRandomGenerator::global()->bounded(0, 97));
-    string texto=archivoDeportes.leer("D:\\Documents\\ProyectoThanos\\ProyectoThanos\\Deportes.txt");
+    string texto=archivoDeportes.leer("C:\\Users\\Gilberth\\Desktop\\TEC\\2 Semestre\\Estructura de datos\\Tareas\\Proyecto Thanos\\Proyecto\\ProyectoThanos\\Deportes.txt");
     std::vector<string> listaDeportes;
     listaDeportes=generarlistaNombres(texto);
     deporte=listaDeportes.at(deportePractica);

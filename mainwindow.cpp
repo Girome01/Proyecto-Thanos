@@ -151,10 +151,8 @@ void MainWindow::on_btnSalvar_clicked(){
 void MainWindow::on_btnCrearHumanos_clicked(){
     int cantHumanos = ui->entCantHumanos->text().toInt();
     personaTest->crearPersona(cantHumanos);
-    cout<<"LARGO DEL MUNDO"<<mundo->largo()<<endl;
     arbol = new Arbol();
     arbol->crearArbol(mundo->largo(),mundo);
-    arbol->inOrden(arbol->raiz);
     //arbol->construirARBOL(mundo,arbol->raiz);
     thanos->crearHashmap(mundo);
     this->salvarHum = new salvaHumanos(arbol);

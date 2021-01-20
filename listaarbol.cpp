@@ -1,3 +1,4 @@
+
 #include "listaarbol.h"
 
 ListaArbol::ListaArbol(){
@@ -9,22 +10,22 @@ NodoListaArbol *ListaArbol::centroLista(){
     if(largoLista()==1){
         return tmp;
     }
-    cout<<largoLista()/2<<endl;
+    //cout<<largoLista()/2<<endl;
     for(int i=0; i<largoLista()/2;i++){
-        cout<<"DENTRO DEL FOR DE CENTROLISTA"<<endl;
+        //cout<<"DENTRO DEL FOR DE CENTROLISTA"<<endl;
         tmp = tmp->siguiente;
     }
     return tmp;
 }
 
 ListaArbol *ListaArbol::primerMitad(){
-    cout<<"ENTRO A PRIMER MITAS"<<endl;
+    //cout<<"ENTRO A PRIMER MITAS"<<endl;
     ListaArbol *newList=new ListaArbol();
     NodoListaArbol *tmp = primerNodo;
     while(tmp != centroLista()){
-        cout<<"DENTRO DEL WHILE DE PRIMER MITAD"<<endl;
+        //cout<<"DENTRO DEL WHILE DE PRIMER MITAD"<<endl;
         newList->agregarHumanos(tmp->persona);
-        cout<<tmp->persona->persona->ID<<endl;
+        //cout<<tmp->persona->persona->ID<<endl;
         tmp=tmp->siguiente;
     }
     return newList;
